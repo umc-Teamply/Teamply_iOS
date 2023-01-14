@@ -2,7 +2,7 @@
 name: Feature request
 about: about Feature Issue
 title: "[Feat]"
-labels: ''
+labels: "\U0001F499Feat"
 assignees: ''
 
 ---
