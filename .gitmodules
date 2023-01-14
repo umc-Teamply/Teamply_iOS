@@ -1,0 +1,3 @@
+[submodule "Teamply/Alamofire"]
+	path = Teamply/Alamofire
+	url = https://github.com/Alamofire/Alamofire.git
