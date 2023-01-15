@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,20 +13,44 @@
             <objects>
                 <viewController storyboardIdentifier="Home" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="lS7-jg-QKS">
+                                <rect key="frame" x="7" y="48" width="43" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="43" id="3n4-va-cd3"/>
+                                    <constraint firstAttribute="height" constant="43" id="ng7-8S-M0J"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Teamply" translatesAutoresizingMaskIntoConstraints="NO" id="bnb-Nf-19c">
+                                <rect key="frame" x="51" y="58" width="78" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="VEf-Ca-yzf"/>
+                                    <constraint firstAttribute="height" constant="23" id="epe-cc-uFd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lS7-jg-QKS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="1" id="K1z-gq-9qx"/>
+                            <constraint firstItem="bnb-Nf-19c" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="VHC-Gn-PYR"/>
+                            <constraint firstItem="bnb-Nf-19c" firstAttribute="leading" secondItem="lS7-jg-QKS" secondAttribute="trailing" constant="1" id="lHU-Dp-asL"/>
+                            <constraint firstItem="lS7-jg-QKS" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="7" id="rbq-9b-QNr"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="G6T-zm-kI8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49.618320610687022" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="49.230769230769226" y="-2.1327014218009479"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="381" height="381"/>
+        <image name="Teamply" width="687" height="199"/>
         <image name="home" width="22" height="22"/>
         <image name="home_selected" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">
