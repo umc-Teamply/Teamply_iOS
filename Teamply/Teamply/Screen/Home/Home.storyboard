@@ -30,14 +30,42 @@
                                     <constraint firstAttribute="height" constant="23" id="epe-cc-uFd"/>
                                 </constraints>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i5A-pJ-BIF">
+                                <rect key="frame" x="0.0" y="98" width="390" height="663"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wg6-9D-BeN">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="663"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Wg6-9D-BeN" firstAttribute="top" secondItem="i5A-pJ-BIF" secondAttribute="top" id="28k-be-Onf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wg6-9D-BeN" secondAttribute="trailing" constant="-150" id="5MN-yJ-LWP"/>
+                                    <constraint firstItem="Wg6-9D-BeN" firstAttribute="top" secondItem="i5A-pJ-BIF" secondAttribute="top" id="QDq-Xs-d9n"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wg6-9D-BeN" secondAttribute="bottom" id="ZNt-Oo-g5Y"/>
+                                    <constraint firstItem="Wg6-9D-BeN" firstAttribute="top" secondItem="i5A-pJ-BIF" secondAttribute="top" id="dsK-Du-sKd"/>
+                                    <constraint firstItem="Wg6-9D-BeN" firstAttribute="leading" secondItem="i5A-pJ-BIF" secondAttribute="leading" id="qtS-zF-XRy"/>
+                                    <constraint firstItem="Wg6-9D-BeN" firstAttribute="width" secondItem="i5A-pJ-BIF" secondAttribute="width" id="yku-yh-JbS"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="hcI-sx-zwT"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="T7s-ei-dnQ"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i5A-pJ-BIF" secondAttribute="trailing" id="0Rz-NY-gHI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="i5A-pJ-BIF" secondAttribute="bottom" id="AnJ-Oy-vhA"/>
                             <constraint firstItem="lS7-jg-QKS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="1" id="K1z-gq-9qx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i5A-pJ-BIF" secondAttribute="trailing" id="MdT-2P-WnW"/>
                             <constraint firstItem="bnb-Nf-19c" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="11" id="VHC-Gn-PYR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="i5A-pJ-BIF" secondAttribute="bottom" id="Wwm-HX-Xkd"/>
                             <constraint firstItem="bnb-Nf-19c" firstAttribute="leading" secondItem="lS7-jg-QKS" secondAttribute="trailing" constant="1" id="lHU-Dp-asL"/>
+                            <constraint firstItem="i5A-pJ-BIF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="51" id="mwT-pQ-m3w"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i5A-pJ-BIF" secondAttribute="trailing" id="ova-je-xlF"/>
+                            <constraint firstItem="i5A-pJ-BIF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rav-Tt-ZH0"/>
                             <constraint firstItem="lS7-jg-QKS" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="7" id="rbq-9b-QNr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="i5A-pJ-BIF" secondAttribute="bottom" id="zxe-Nz-HpV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="G6T-zm-kI8"/>
