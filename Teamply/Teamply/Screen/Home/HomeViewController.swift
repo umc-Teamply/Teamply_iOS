@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         calendarOrigin.appearance.headerTitleAlignment = .left
         calendarOrigin.appearance.headerDateFormat = "YYYY년 M월 D일 E요일" //날짜(헤더) 표시 형식
         calendarOrigin.appearance.headerTitleColor = .black //2021년 1월(헤더) 색
-        calendarOrigin.appearance.headerTitleFont = UIFont.systemFont(ofSize: 16) //타이틀 폰트 크기
+        calendarOrigin.appearance.headerTitleFont = .sub1 //UIFont.systemFont(ofSize: 16) //타이틀 폰트 크기
                
                
             //MARK: -캘린더(날짜 부분) 관련
