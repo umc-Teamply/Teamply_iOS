@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YF1-xC-pOX">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YF1-xC-pOX">
                                 <rect key="frame" x="0.0" y="47" width="390" height="714"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzr-6Q-bQZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="714"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzr-6Q-bQZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="689"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="yVg-og-jXT">
                                                 <rect key="frame" x="7" y="1" width="43" height="43"/>
@@ -45,13 +46,21 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Koa-na-bwM">
                                                 <rect key="frame" x="24" y="81" width="342" height="235"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-tg-Maq" customClass="FSCalendar">
-                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="128"/>
-                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-tg-Maq" customClass="FSCalendar">
+                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="135"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="135" id="Ntx-a3-znH"/>
+                                                        </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEx-l3-h3K">
-                                                        <rect key="frame" x="20" y="146" width="302" height="81"/>
-                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEx-l3-h3K">
+                                                        <rect key="frame" x="0.0" y="135" width="342" height="100"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhF-cS-xew">
+                                                        <rect key="frame" x="14" y="135" width="314" height="1"/>
+                                                        <color key="backgroundColor" name="gray2"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="mfG-pY-9Gx"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -59,10 +68,20 @@
                                                     <accessibilityTraits key="traits" adjustable="YES"/>
                                                 </accessibility>
                                                 <constraints>
-                                                    <constraint firstItem="AEx-l3-h3K" firstAttribute="leading" secondItem="Koa-na-bwM" secondAttribute="leading" constant="20" id="9I2-v6-UwY"/>
+                                                    <constraint firstItem="AEx-l3-h3K" firstAttribute="top" secondItem="7CA-tg-Maq" secondAttribute="bottom" id="3Qf-My-bhE"/>
+                                                    <constraint firstItem="qhF-cS-xew" firstAttribute="top" secondItem="7CA-tg-Maq" secondAttribute="bottom" id="7hn-Dj-Uvi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qhF-cS-xew" secondAttribute="trailing" constant="14" id="BYL-9Y-dz2"/>
+                                                    <constraint firstItem="AEx-l3-h3K" firstAttribute="leading" secondItem="Koa-na-bwM" secondAttribute="leading" id="Bax-6V-Gse"/>
                                                     <constraint firstAttribute="width" constant="342" id="K5y-ui-Wyl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="AEx-l3-h3K" secondAttribute="trailing" constant="20" id="XSU-zW-Wtc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qhF-cS-xew" secondAttribute="trailing" constant="14" id="Ldz-Ql-abu"/>
+                                                    <constraint firstItem="qhF-cS-xew" firstAttribute="leading" secondItem="Koa-na-bwM" secondAttribute="leading" constant="14" id="NTf-Bh-jXf"/>
+                                                    <constraint firstItem="AEx-l3-h3K" firstAttribute="top" secondItem="7CA-tg-Maq" secondAttribute="bottom" id="OqQ-zI-y1B"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AEx-l3-h3K" secondAttribute="trailing" id="TuL-VT-hZC"/>
+                                                    <constraint firstItem="qhF-cS-xew" firstAttribute="top" secondItem="7CA-tg-Maq" secondAttribute="bottom" id="ZRL-it-23a"/>
+                                                    <constraint firstAttribute="bottom" secondItem="AEx-l3-h3K" secondAttribute="bottom" id="bwf-bF-UJr"/>
                                                     <constraint firstItem="7CA-tg-Maq" firstAttribute="leading" secondItem="Koa-na-bwM" secondAttribute="leading" id="h91-AC-NCh"/>
+                                                    <constraint firstItem="7CA-tg-Maq" firstAttribute="top" secondItem="Koa-na-bwM" secondAttribute="top" id="kfP-cw-NZz"/>
+                                                    <constraint firstItem="qhF-cS-xew" firstAttribute="leading" secondItem="Koa-na-bwM" secondAttribute="leading" constant="14" id="mQF-gr-NaF"/>
                                                     <constraint firstAttribute="trailing" secondItem="7CA-tg-Maq" secondAttribute="trailing" id="ueK-1T-Sdj"/>
                                                     <constraint firstAttribute="height" constant="235" id="yTD-tK-oul"/>
                                                 </constraints>
@@ -106,6 +125,7 @@
                                             <constraint firstItem="Koa-na-bwM" firstAttribute="top" secondItem="rsD-SU-Jc9" secondAttribute="bottom" constant="8" id="TxA-DQ-LXW"/>
                                             <constraint firstAttribute="trailing" secondItem="AH8-Qg-6cq" secondAttribute="trailing" constant="24" id="UJX-tc-m6Y"/>
                                             <constraint firstItem="yVg-og-jXT" firstAttribute="top" secondItem="Xzr-6Q-bQZ" secondAttribute="top" constant="1" id="VP5-Cp-VTf"/>
+                                            <constraint firstAttribute="bottom" secondItem="iC9-WB-Pe6" secondAttribute="bottom" constant="36" id="Vau-jT-Jnv"/>
                                             <constraint firstItem="Tll-bQ-1kz" firstAttribute="leading" secondItem="Xzr-6Q-bQZ" secondAttribute="leading" constant="30" id="WOf-b9-Wai"/>
                                             <constraint firstAttribute="trailing" secondItem="Koa-na-bwM" secondAttribute="trailing" constant="24" id="b7g-9R-V2m"/>
                                             <constraint firstItem="JkD-BW-Q6y" firstAttribute="top" secondItem="AH8-Qg-6cq" secondAttribute="bottom" constant="32" id="doB-jD-GlX"/>
@@ -141,6 +161,7 @@
                     <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="G6T-zm-kI8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="calendarOrigin" destination="7CA-tg-Maq" id="fhp-UL-wFz"/>
                         <outlet property="userSecheduleLabel" destination="rsD-SU-Jc9" id="ZaS-gM-fW3"/>
                     </connections>
                 </viewController>
@@ -155,6 +176,9 @@
         <image name="add_project" width="23" height="24"/>
         <image name="home" width="22" height="22"/>
         <image name="home_selected" width="22" height="22"/>
+        <namedColor name="gray2">
+            <color red="0.83300000429153442" green="0.83300000429153442" blue="0.83300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -163,9 +187,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
