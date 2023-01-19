@@ -9,59 +9,117 @@ import UIKit
 import SnapKit
 import FSCalendar
 
-class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
-    
-    @IBOutlet weak var userSecheduleLabel: UILabel!
+class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    @IBOutlet weak var userScheduleLabel: UILabel!
     @IBOutlet weak var todayPlanLabel: UILabel!
-    @IBOutlet weak var userTeamplay: UILabel!
-    @IBOutlet weak var calendarOrigin: FSCalendar! {
-        didSet{
-            calendarOrigin.delegate = self
-            calendarOrigin.dataSource = self
-        }
-    }
+    @IBOutlet weak var todayDateLabel: UILabel!
+    @IBOutlet weak var userTeamPlayLabel: UILabel!
+    @IBOutlet weak var todayPlanContentLabel: UILabel!
+    @IBOutlet weak var teamPlayTitleLabel: UILabel!
+    @IBOutlet weak var todayScheduleLabel: UILabel!
+    @IBOutlet weak var todayScheduleContentLabel: UILabel!
+    
+    @IBOutlet weak var scheduleView: UIView!
+    @IBOutlet weak var weeklyCalendar: UIView!
+    @IBOutlet weak var teamPlayView: UIView!
+    @IBOutlet weak var todayScheduleView: UIView!
+    @IBOutlet weak var todayPlanView: UIView!
+    
+    @IBOutlet weak var weeklyCalendarView: FSCalendar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendarStyle()
+        
+        weeklyCalendarView.delegate = self
+        weeklyCalendarView.dataSource = self
+        
+        setTitleInit()
+        setTodayPlayContent()
+        setTodayScheduleContent()
+        setTeamPlay()
+        setViewInit()
+        setTodayDate()
+        weeklyCalendarInit()
+    }
+
+    func setTodayDate() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        let date = formatter.string(from: Date())
+        todayDateLabel.text = date
+        todayDateLabel.font = .sub1
+        todayDateLabel.textColor = .basic2
     }
     
-    @IBAction func addTeamProject(_ sender: Any) {
+    func weeklyCalendarInit() {
+        //weeklyCalendarView.scope = .week
+        weeklyCalendarView.locale = Locale(identifier: "ko_KR")
+        weeklyCalendarView.scrollEnabled = false
+        weeklyCalendarView.headerHeight = 57
+        weeklyCalendarView.appearance.headerDateFormat = " "
+        weeklyCalendarView.appearance.headerMinimumDissolvedAlpha = 0.0
+        weeklyCalendarView.firstWeekday = 2
+        weeklyCalendarView.backgroundColor = .basic1
+        
+        weeklyCalendarView.appearance.subtitleDefaultColor = .gray
+        weeklyCalendarView.appearance.subtitleTodayColor = .basic2
+
+        weeklyCalendarView.appearance.weekdayFont = .cap2
+        weeklyCalendarView.appearance.weekdayTextColor = .gray4
+        weeklyCalendarView.weekdayHeight = 17
+        
+        weeklyCalendarView.appearance.titleOffset = CGPoint(x: 0, y: 13)
+        weeklyCalendarView.appearance.titleFont = .cap2
+        weeklyCalendarView.appearance.titleDefaultColor = .gray4
+        weeklyCalendarView.appearance.titleWeekendColor = .gray4
+        weeklyCalendarView.appearance.todayColor = .clear
+        
+        weeklyCalendarView.appearance.titleTodayColor = .basic2
+        weeklyCalendarView.appearance.todaySelectionColor = .none
+
     }
     
-    func calendarStyle() {
-        calendarOrigin.locale = Locale(identifier: "ko_KR")
+    func setTitleInit() {
+        userScheduleLabel.text = "이프로님의 일정"
+        userScheduleLabel.font = .head1
         
-        calendarOrigin.scope = .week // 주간달력
-        calendarOrigin.firstWeekday = 2 // 월요일부터 시작
-        calendarOrigin.headerHeight = 23 // YYYY년 M월 표시부 영역 높이
-        calendarOrigin.weekdayHeight = 19 // 날짜 표시부 행의 높이
-        calendarOrigin.appearance.headerMinimumDissolvedAlpha = 0.0 //헤더 좌,우측 흐릿한 글씨 삭제
-        calendarOrigin.appearance.headerTitleAlignment = .left
-        calendarOrigin.appearance.headerDateFormat = "YYYY년 M월 D일 E요일" //날짜(헤더) 표시 형식
-        calendarOrigin.appearance.headerTitleColor = .black //2021년 1월(헤더) 색
-        calendarOrigin.appearance.headerTitleFont = .sub1 //UIFont.systemFont(ofSize: 16) //타이틀 폰트 크기
-               
-               
-            //MARK: -캘린더(날짜 부분) 관련
-        //calendarOrigin.backgroundColor = .white // 배경색
-        calendarOrigin.appearance.weekdayTextColor = .gray3 //요일(월,화,수..) 글씨 색
-        //calendarOrigin.appearance.selectionColor = .none //선택 된 날의 동그라미 색
-        calendarOrigin.appearance.titleWeekendColor = .gray3 //주말 날짜 색
-        calendarOrigin.appearance.titleDefaultColor = .gray3 //기본 날짜 색
-                
-                
-            //MARK: -오늘 날짜(Today) 관련
-        calendarOrigin.appearance.titleTodayColor = .basic2 //Today에 표시되는 특정 글자색
-        calendarOrigin.appearance.todayColor = .clear //Today에 표시되는 선택 전 동그라미 색
-        calendarOrigin.appearance.todaySelectionColor = .none  //Today에 표시되는 선택 후 동그라미 색
-                
-                
-            // Month 폰트 설정
-        //calendarOrigin.appearance.headerTitleFont = .sub2
-                
-                
-            // day 폰트 설정
-        //calendarOrigin.appearance.titleFont = .cap2
+        todayScheduleLabel.text = "오늘 일정"
+        todayScheduleLabel.font = .sub1
+    
+        userTeamPlayLabel.text = "이프로님의 팀플"
+        userTeamPlayLabel.font = .head1
         
-        }
+        todayPlanLabel.text = "오늘 계획"
+        todayPlanLabel.font = .sub1
+    }
+    
+    func setTodayScheduleContent() {
+        todayScheduleContentLabel.text = "팀 프로젝트를 등록해보세요"
+        todayScheduleContentLabel.font = .body
+        todayScheduleContentLabel.textColor = .gray3
+    }
+    
+    func setTodayPlayContent() {
+        todayPlanContentLabel.text = "아직 계획이 없어요"
+        todayPlanContentLabel.font = .body
+        todayPlanContentLabel.textColor = .gray3
+    }
+    
+    func setTeamPlay() {
+        teamPlayTitleLabel.text = "팀프로젝트를\n등록해보세요"
+        teamPlayTitleLabel.font = .sub1
+        teamPlayTitleLabel.textColor = .gray3
+    }
+    
+    func setViewInit() {
+        scheduleView.makeRound(radius: 10)
+        scheduleView.makeShadow(UIColor.gray2!, 1, CGSize(width: 0, height: 11), 16)
+        todayPlanView.makeRound(radius: 10)
+        todayPlanView.makeShadow(UIColor.gray2!, 1, CGSize(width: 0, height: 11), 16)
+        teamPlayView.makeRound(radius: 10)
+    }
+    
+    @IBAction func addTeamProjectButton(_ sender: Any) {
+    }
+    
 }
