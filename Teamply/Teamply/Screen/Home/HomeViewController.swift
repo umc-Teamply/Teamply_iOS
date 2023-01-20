@@ -49,33 +49,43 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         todayDateLabel.text = date
         todayDateLabel.font = .sub1
         todayDateLabel.textColor = .basic2
+        
     }
     
     func weeklyCalendarInit() {
-        //weeklyCalendarView.scope = .week
+        weeklyCalendarView.scope = .week
         weeklyCalendarView.locale = Locale(identifier: "ko_KR")
         weeklyCalendarView.scrollEnabled = false
-        weeklyCalendarView.headerHeight = 57
-        weeklyCalendarView.appearance.headerDateFormat = " "
-        weeklyCalendarView.appearance.headerMinimumDissolvedAlpha = 0.0
         weeklyCalendarView.firstWeekday = 2
         weeklyCalendarView.backgroundColor = .basic1
         
-        weeklyCalendarView.appearance.subtitleDefaultColor = .gray
-        weeklyCalendarView.appearance.subtitleTodayColor = .basic2
+        weeklyCalendarView.headerHeight = 60
+        weeklyCalendarView.appearance.headerDateFormat = ""
+        weeklyCalendarView.appearance.headerMinimumDissolvedAlpha = 0.0
 
         weeklyCalendarView.appearance.weekdayFont = .cap2
         weeklyCalendarView.appearance.weekdayTextColor = .gray4
         weeklyCalendarView.weekdayHeight = 17
         
-        weeklyCalendarView.appearance.titleOffset = CGPoint(x: 0, y: 13)
+        weeklyCalendarView.appearance.titleOffset = CGPoint(x: 0, y: 8)
         weeklyCalendarView.appearance.titleFont = .cap2
         weeklyCalendarView.appearance.titleDefaultColor = .gray4
         weeklyCalendarView.appearance.titleWeekendColor = .gray4
-        weeklyCalendarView.appearance.todayColor = .clear
         
         weeklyCalendarView.appearance.titleTodayColor = .basic2
+        
+        weeklyCalendarView.appearance.todayColor = .clear
         weeklyCalendarView.appearance.todaySelectionColor = .none
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E"
+        let weekday = formatter.string(from: Date())
+        let weekdayIndex =  weeklyCalendarView.calendarWeekdayView.weekdayLabels
+        for w in weekdayIndex {
+            if w.text == weekday {
+                w.textColor = .basic2
+            }
+        }
 
     }
     
