@@ -10,7 +10,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="UmS-8L-IEj">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qHS-SC-jjy" customClass="MainTabBarController" customModule="MainTabBarController" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qHS-SC-jjy" customClass="MainTabBarController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tg7-R9-Ves">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
