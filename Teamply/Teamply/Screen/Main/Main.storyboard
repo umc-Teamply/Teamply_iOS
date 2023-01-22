@@ -12,11 +12,9 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qHS-SC-jjy" customClass="MainTabBarController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tg7-R9-Ves">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backgroundImage=" " id="Tg7-R9-Ves">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="basic1"/>
                     </tabBar>
                     <connections>
@@ -72,6 +70,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name=" " width="128" height="128"/>
         <namedColor name="basic1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
