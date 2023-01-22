@@ -32,7 +32,7 @@ extension UIFont {
     }
     
     class var sub2: UIFont {
-        return UIFont(name: "NotoSansKR-Medium", size: 16.0) ?? UIFont()
+        return UIFont(name: "NotoSansKR-Medium", size: 16.0)!
     }
     
     class var body: UIFont {

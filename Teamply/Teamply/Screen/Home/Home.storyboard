@@ -165,6 +165,9 @@
                                                 <rect key="frame" x="319" y="481" width="47" height="38"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="add_project"/>
+                                                <connections>
+                                                    <action selector="addTeamProjectButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZDs-zG-Bz8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -231,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172.30769230769229" y="-2.1327014218009479"/>
+            <point key="canvasLocation" x="-249" y="-242"/>
         </scene>
     </scenes>
     <resources>

@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var todayScheduleContentLabel: UILabel!
     
     @IBOutlet weak var scheduleView: UIView!
-    @IBOutlet weak var weeklyCalendar: UIView!
     @IBOutlet weak var teamPlayView: UIView!
     @IBOutlet weak var todayScheduleView: UIView!
     @IBOutlet weak var todayPlanView: UIView!
@@ -29,9 +28,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        weeklyCalendarView.delegate = self
-        weeklyCalendarView.dataSource = self
         
         setTitleInit()
         setTodayPlayContent()
@@ -53,6 +49,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     
     func weeklyCalendarInit() {
+        weeklyCalendarView.delegate = self
+        weeklyCalendarView.dataSource = self
+        
         weeklyCalendarView.scope = .week
         weeklyCalendarView.locale = Locale(identifier: "ko_KR")
         weeklyCalendarView.scrollEnabled = false
@@ -62,12 +61,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         weeklyCalendarView.headerHeight = 60
         weeklyCalendarView.appearance.headerDateFormat = ""
         weeklyCalendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-
+        
         weeklyCalendarView.appearance.weekdayFont = .cap2
         weeklyCalendarView.appearance.weekdayTextColor = .gray4
         weeklyCalendarView.weekdayHeight = 17
         
-        weeklyCalendarView.appearance.titleOffset = CGPoint(x: 0, y: 8)
+        weeklyCalendarView.appearance.titleOffset = CGPoint(x: 0, y: 5)
         weeklyCalendarView.appearance.titleFont = .cap2
         weeklyCalendarView.appearance.titleDefaultColor = .gray4
         weeklyCalendarView.appearance.titleWeekendColor = .gray4
@@ -77,16 +76,18 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         weeklyCalendarView.appearance.todayColor = .clear
         weeklyCalendarView.appearance.todaySelectionColor = .none
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E"
-        let weekday = formatter.string(from: Date())
-        let weekdayIndex =  weeklyCalendarView.calendarWeekdayView.weekdayLabels
-        for w in weekdayIndex {
-            if w.text == weekday {
-                w.textColor = .basic2
-            }
-        }
-
+        let weekFormatter = DateFormatter()
+                weekFormatter.dateFormat = "E"
+                let weekday = weekFormatter.string(from: Date())
+                
+                let weekdayLabel =  weeklyCalendarView.calendarWeekdayView.weekdayLabels
+                
+                for w in weekdayLabel {
+                    if w.text == weekday {
+                        w.textColor = .basic2
+                        //w.font = .sub2
+                    }
+                }
     }
     
     func setTitleInit() {
@@ -130,6 +131,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     
     @IBAction func addTeamProjectButton(_ sender: Any) {
+        
     }
     
 }
