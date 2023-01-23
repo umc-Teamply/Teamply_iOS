@@ -8,7 +8,15 @@ target 'Teamply' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.2'
   pod 'FSCalendar'
-  
-  # Pods for Teamply
+  pod 'MaterialComponents/BottomSheet'
+  pod 'PanModal'
 
+  # Pods for Teamply
+  # Workaround for Cocoapods issue #7606
+  post_install do |installer|
+      installer.pods_project.build_configurations.each do |config|
+          config.build_settings.delete('CODE_SIGNING_ALLOWED')
+          config.build_settings.delete('CODE_SIGNING_REQUIRED')
+       end
+  end
 end

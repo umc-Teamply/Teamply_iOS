@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import FSCalendar
+import MaterialComponents
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     @IBOutlet weak var userScheduleLabel: UILabel!
@@ -130,8 +131,24 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         teamPlayView.makeRound(radius: 10)
     }
     
-    @IBAction func addTeamProjectButton(_ sender: Any) {
+
+    @IBAction func addTeamProjectButton(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "addTeamProjectVC") as! addTeamProjectViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: vc)
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)
         
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 180
+        bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        bottomSheet
+        present(bottomSheet, animated: true, completion: nil)
     }
     
 }
