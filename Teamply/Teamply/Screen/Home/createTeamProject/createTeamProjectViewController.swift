@@ -8,7 +8,7 @@
 import UIKit
 import MaterialComponents
 
-class createTeamProjectViewController: UIViewController {
+class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
@@ -28,6 +28,8 @@ class createTeamProjectViewController: UIViewController {
         super.viewDidLoad()
         viewInit()
         textFieldInit()
+        
+        self.contentTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,12 +88,18 @@ class createTeamProjectViewController: UIViewController {
         self.dateTextField.inputView = self.datePicker
     }
     
-    @ objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
+    @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
         let formmater = DateFormatter()
         formmater.dateFormat = "yyyy.MM.dd.E"
         formmater.locale = Locale(identifier: "ko_KR") 
         self.startDate = datePicker.date
         self.dateTextField.text = formmater.string(from: datePicker.date)
+    }
+    
+    
+    @objc func textFieldShouldReturn(_ codeTextField: UITextField) -> Bool {
+        contentTextField.resignFirstResponder()
+        return true
     }
     
     

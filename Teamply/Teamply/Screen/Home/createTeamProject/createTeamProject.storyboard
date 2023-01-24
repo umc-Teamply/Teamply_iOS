@@ -123,14 +123,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf2-sO-jVQ">
                                         <rect key="frame" x="24" y="169" width="342" height="173"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-gC-9XO">
-                                                <rect key="frame" x="17" y="14.000000000000002" width="308" height="18.666666666666671"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="top" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-gC-9XO">
+                                                <rect key="frame" x="17" y="14" width="308" height="145"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" name="gray0"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FV3-gC-9XO" secondAttribute="bottom" constant="14" id="SeV-Nr-XEi"/>
                                             <constraint firstItem="FV3-gC-9XO" firstAttribute="top" secondItem="xf2-sO-jVQ" secondAttribute="top" constant="14" id="VB6-9z-Tvx"/>
                                             <constraint firstItem="FV3-gC-9XO" firstAttribute="leading" secondItem="xf2-sO-jVQ" secondAttribute="leading" constant="17" id="VVF-Wd-Lm9"/>
                                             <constraint firstAttribute="trailing" secondItem="FV3-gC-9XO" secondAttribute="trailing" constant="17" id="h6V-NS-2Nl"/>
