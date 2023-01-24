@@ -22,10 +22,13 @@ class selectProjectColorViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var colorStactView: UIStackView!
     
+    let colors: [UIColor] = [.black, .team1!, .team2!, .team3!, .team4!, .team5!, .team6!]
+    var index = 0
+    var colorHandler: ((UIColor) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setInit()
-
     }
     
     func setInit() {
@@ -42,20 +45,38 @@ class selectProjectColorViewController: UIViewController {
     
     
     @IBAction func selectProjectColor(_ sender: Any) {
-
+        //        if index == 0 {
+        //            print("프로젝트 색상을 선택하지 않았습니다")
+        //        }
+        //        let preVC = self.presentingViewController
+        //        guard let vc = preVC as? createTeamProjectViewController else {
+        //            return
+        //        }
+        //
+        //        vc.paramColor = self.colors[index]
+        //
+        //        self.presentingViewController?.dismiss(animated: true)
+        
+        colorHandler?(self.colors[index])
+        self.presentingViewController?.dismiss(animated: true)
     }
     
-    @IBAction func team1ColorTap(_ sender: Any) {
+    @IBAction func team1ColorTap(_ sender: UITapGestureRecognizer) {
+        index = 1
     }
-    @IBAction func team2ColorTap(_ sender: Any) {
+    @IBAction func team2ColorTap(_ sender: UITapGestureRecognizer) {
+        index = 2
     }
-    @IBAction func team3ColorTap(_ sender: Any) {
+    @IBAction func team3ColorTap(_ sender: UITapGestureRecognizer) {
+        index = 3
     }
-    @IBAction func team4ColorTap(_ sender: Any) {
+    @IBAction func team4ColorTap(_ sender: UITapGestureRecognizer) {
+        index = 4
     }
-    @IBAction func team5ColorTap(_ sender: Any) {
-        
+    @IBAction func team5ColorTap(_ sender: UITapGestureRecognizer) {
+        index = 5
     }
-    @IBAction func team6ColorTap(_ sender: Any) {
+    @IBAction func team6ColorTap(_ sender: UITapGestureRecognizer) {
+        index = 6
     }
 }

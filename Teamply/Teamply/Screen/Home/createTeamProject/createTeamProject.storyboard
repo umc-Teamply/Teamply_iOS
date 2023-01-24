@@ -12,7 +12,7 @@
         <!--Create Team Project View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="createTeamProjectVC" id="Y6W-OH-hqX" customClass="createTeamProjectViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createTeamProjectVC" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="createTeamProjectViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,6 +42,9 @@
                                         <rect key="frame" x="321" y="64" width="46" height="23"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="submitTeamProjectData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dpZ-TS-iCv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -178,7 +181,7 @@
                     <navigationItem key="navigationItem" id="fpb-rc-1HT"/>
                     <connections>
                         <outlet property="contentFieldView" destination="xf2-sO-jVQ" id="tUm-mf-Xf6"/>
-                        <outlet property="contentTextField" destination="FV3-gC-9XO" id="MMf-Np-bdH"/>
+                        <outlet property="contentTextField" destination="FV3-gC-9XO" id="CrC-nV-ZUd"/>
                         <outlet property="dateTextField" destination="gkw-ib-IFm" id="nxR-SR-erz"/>
                         <outlet property="headcountTextField" destination="2rD-Jw-bUr" id="gxV-du-uEf"/>
                         <outlet property="okButton" destination="KLn-fM-Tu0" id="sYe-lC-2YM"/>
@@ -199,7 +202,7 @@
         <!--Select Project Color View Controller-->
         <scene sceneID="4gV-1w-ZQ9">
             <objects>
-                <viewController storyboardIdentifier="selectColorVC" id="fEg-nU-Mrq" customClass="selectProjectColorViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectColorVC" modalPresentationStyle="fullScreen" id="fEg-nU-Mrq" customClass="selectProjectColorViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWR-Vp-OFd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -213,7 +216,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-O0-XVe">
                                 <rect key="frame" x="30" y="76" width="327" height="28"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team1" translatesAutoresizingMaskIntoConstraints="NO" id="UjU-Ji-dEk">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team1" translatesAutoresizingMaskIntoConstraints="NO" id="UjU-Ji-dEk">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="28"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -224,7 +227,7 @@
                                             <outletCollection property="gestureRecognizers" destination="v8q-64-wYq" appends="YES" id="Xwf-dc-pMg"/>
                                         </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team2" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-q8-aBL">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team2" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-q8-aBL">
                                         <rect key="frame" x="57" y="0.0" width="42" height="28"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -235,7 +238,7 @@
                                             <outletCollection property="gestureRecognizers" destination="zp1-1F-wx5" appends="YES" id="RJO-0z-zXj"/>
                                         </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team3" translatesAutoresizingMaskIntoConstraints="NO" id="qLX-xx-9Pe">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team3" translatesAutoresizingMaskIntoConstraints="NO" id="qLX-xx-9Pe">
                                         <rect key="frame" x="114" y="0.0" width="42" height="28"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -246,7 +249,7 @@
                                             <outletCollection property="gestureRecognizers" destination="9l1-ic-Jtg" appends="YES" id="rRQ-O6-UL9"/>
                                         </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team4" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-wc-6PY">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team4" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-wc-6PY">
                                         <rect key="frame" x="171" y="0.0" width="42" height="28"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -257,7 +260,7 @@
                                             <outletCollection property="gestureRecognizers" destination="lFW-1o-UDv" appends="YES" id="ORX-M3-QyN"/>
                                         </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team5" translatesAutoresizingMaskIntoConstraints="NO" id="QLt-0x-v0b">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team5" translatesAutoresizingMaskIntoConstraints="NO" id="QLt-0x-v0b">
                                         <rect key="frame" x="228" y="0.0" width="42" height="28"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -268,7 +271,7 @@
                                             <outletCollection property="gestureRecognizers" destination="W7z-nD-xzt" appends="YES" id="LDe-mY-xVB"/>
                                         </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team6" translatesAutoresizingMaskIntoConstraints="NO" id="A53-FG-qDb">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team6" translatesAutoresizingMaskIntoConstraints="NO" id="A53-FG-qDb">
                                         <rect key="frame" x="285" y="0.0" width="42" height="28"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -333,14 +336,14 @@
                         <action selector="team2ColorTap:" destination="fEg-nU-Mrq" id="YuX-SM-uis"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="9l1-ic-Jtg">
-                    <connections>
-                        <action selector="team3ColorTap:" destination="fEg-nU-Mrq" id="oPn-le-daE"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="lFW-1o-UDv">
                     <connections>
                         <action selector="team4ColorTap:" destination="fEg-nU-Mrq" id="ccA-Ep-0gf"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="9l1-ic-Jtg">
+                    <connections>
+                        <action selector="team3ColorTap:" destination="fEg-nU-Mrq" id="oPn-le-daE"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="W7z-nD-xzt">

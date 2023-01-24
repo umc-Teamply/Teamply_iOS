@@ -16,8 +16,6 @@ class addTeamProjectViewController: UIViewController {
         super.viewDidLoad()
         attendButtonInit()
         createButtonInit()
-        
-        
     }
     
     func attendButtonInit() {
@@ -50,4 +48,7 @@ class addTeamProjectViewController: UIViewController {
         self.present(nextVC, animated: true, completion: nil)
     }
     
+    @IBAction func cancle(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
 }

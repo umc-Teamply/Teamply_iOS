@@ -253,6 +253,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                <connections>
+                                    <action selector="cancle:" destination="yD3-El-qnl" eventType="touchUpInside" id="ZwV-s4-JYa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpP-i8-4Y9">
                                 <rect key="frame" x="25" y="55" width="340" height="47"/>
