@@ -22,7 +22,7 @@ class addTeamProjectViewController: UIViewController {
     
     func attendButtonInit() {
         attendProjectButton.alignTextLeft()
-        attendProjectButton.setTitle(" 팀 프로젝트 추가하기", for: .normal)
+        attendProjectButton.setTitle(" 팀 프로젝트 추가 하기", for: .normal)
         attendProjectButton.titleLabel?.font = .sub2
         attendProjectButton.setTitleColor(.basic2, for: .normal)
     }
@@ -39,7 +39,15 @@ class addTeamProjectViewController: UIViewController {
     }
     
     @IBAction func createNewTeamProject(_ sender: Any) {
-    
+        //스토리보드 이름
+        let createVC = UIStoryboard.init(name: "createTeamProject", bundle: nil)
+        //스토리보드 ID
+        guard let nextVC = createVC.instantiateViewController(withIdentifier: "createTeamProjectVC") as? createTeamProjectViewController else {
+            return
+        }
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
     }
     
 }

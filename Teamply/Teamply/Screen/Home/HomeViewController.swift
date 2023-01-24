@@ -147,7 +147,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 180
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
         
-        bottomSheet
         present(bottomSheet, animated: true, completion: nil)
     }
     

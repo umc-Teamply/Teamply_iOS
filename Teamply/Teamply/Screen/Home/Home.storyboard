@@ -214,7 +214,8 @@
                             <constraint firstItem="YF1-xC-pOX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="p7x-Uw-uaG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="G6T-zm-kI8"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="53L-5j-gnm"/>
+                    <navigationItem key="navigationItem" id="nUg-1O-puh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scheduleView" destination="Koa-na-bwM" id="Ed3-Ww-v4G"/>
@@ -234,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-249.23076923076923" y="-242.41706161137441"/>
+            <point key="canvasLocation" x="680" y="-242.41706161137441"/>
         </scene>
         <!--Add Team Project View Controller-->
         <scene sceneID="dcI-ib-avL">
@@ -303,7 +304,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKi-sB-gGH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="v5d-pf-46c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="460" y="-242.41706161137441"/>
+            <point key="canvasLocation" x="1389.2307692307693" y="-242.41706161137441"/>
         </scene>
     </scenes>
     <resources>
