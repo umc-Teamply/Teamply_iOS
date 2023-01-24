@@ -10,6 +10,7 @@ import MaterialComponents
 
 class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var projectColorView: UIView!
@@ -20,10 +21,12 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var contentFieldView: UIView!
     
+    // MARK: - Properties
     let datePicker = UIDatePicker()
     var startDate: Date?
     var paramColor: UIColor?
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewInit()
@@ -38,6 +41,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - Method
     func viewInit() {
         titleLabel.text = "팀프로젝트 만들기"
         titleLabel.font = .head2
@@ -56,13 +60,11 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     func textFieldInit() {
         titleTextField.attributedPlaceholder = NSAttributedString(string: "프로젝트 이름", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2!, NSAttributedString.Key.font: UIFont.sub2])
         titleTextField.keyboardType = .default
-        
         titleTextField.font = .sub2
         titleTextField.textColor = .basic2
         
         headcountTextField.attributedPlaceholder = NSAttributedString(string: "프로젝트 참여 인원", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2!, NSAttributedString.Key.font: UIFont.sub2])
         headcountTextField.keyboardType = .numberPad
-        
         headcountTextField.font = .sub2
         headcountTextField.textColor = .basic2
         
@@ -77,8 +79,6 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         contentTextField.font = .sub2
         contentTextField.textColor = .basic2
     }
-    
-    
     
     func configureDatePicker(){
         self.datePicker.datePickerMode = .date
@@ -102,7 +102,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
+    // MARK: - IBAction
     @IBAction func backToHome(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
