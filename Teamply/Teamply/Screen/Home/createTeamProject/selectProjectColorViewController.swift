@@ -45,18 +45,6 @@ class selectProjectColorViewController: UIViewController {
     
     
     @IBAction func selectProjectColor(_ sender: Any) {
-        //        if index == 0 {
-        //            print("프로젝트 색상을 선택하지 않았습니다")
-        //        }
-        //        let preVC = self.presentingViewController
-        //        guard let vc = preVC as? createTeamProjectViewController else {
-        //            return
-        //        }
-        //
-        //        vc.paramColor = self.colors[index]
-        //
-        //        self.presentingViewController?.dismiss(animated: true)
-        
         colorHandler?(self.colors[index])
         self.presentingViewController?.dismiss(animated: true)
     }
