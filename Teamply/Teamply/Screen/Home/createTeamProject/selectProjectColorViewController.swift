@@ -9,28 +9,29 @@ import UIKit
 import SnapKit
 
 class selectProjectColorViewController: UIViewController {
-
+    // MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
-
+    @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var team1colorImage: UIImageView!
     @IBOutlet weak var team2ColorImage: UIImageView!
     @IBOutlet weak var team3ColorImage: UIImageView!
     @IBOutlet weak var team4ColorImage: UIImageView!
     @IBOutlet weak var team5ColorImage: UIImageView!
     @IBOutlet weak var team6ColorImage: UIImageView!
-    
-    @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var colorStactView: UIStackView!
     
+    // MARK: - Properties
     let colors: [UIColor] = [.black, .team1!, .team2!, .team3!, .team4!, .team5!, .team6!]
     var index = 0
     var colorHandler: ((UIColor) -> ())?
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setInit()
     }
     
+    // MARK: - Method
     func setInit() {
         titleLabel.text = "프로젝트 색상"
         titleLabel.font = .cap1
@@ -43,12 +44,13 @@ class selectProjectColorViewController: UIViewController {
         selectButton.makeRound(radius: 10)
     }
     
-    
+    // MARK: - IBAction
     @IBAction func selectProjectColor(_ sender: Any) {
         colorHandler?(self.colors[index])
         self.presentingViewController?.dismiss(animated: true)
     }
     
+    // MARK: - Gesture
     @IBAction func team1ColorTap(_ sender: UITapGestureRecognizer) {
         index = 1
     }

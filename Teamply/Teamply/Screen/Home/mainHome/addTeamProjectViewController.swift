@@ -8,16 +8,19 @@
 import UIKit
 
 class addTeamProjectViewController: UIViewController {
-
+    
+    // MARK: - IBOutlet
     @IBOutlet weak var attendProjectButton: UIButton!
     @IBOutlet weak var createProjectButton: UIButton!
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         attendButtonInit()
         createButtonInit()
     }
     
+    // MARK: - Method
     func attendButtonInit() {
         attendProjectButton.alignTextLeft()
         attendProjectButton.setTitle(" 팀 프로젝트 추가 하기", for: .normal)
@@ -32,6 +35,7 @@ class addTeamProjectViewController: UIViewController {
         createProjectButton.setTitleColor(.basic2, for: .normal)
     }
     
+    // MARK: - IBAction
     @IBAction func attendTeamProject(_ sender: Any) {
         let attendVC = UIStoryboard.init(name: "attendTeamProject", bundle: nil)
         guard let nextVC = attendVC.instantiateViewController(withIdentifier: "attendTeamProjectVC") as? attendTeamProjectViewController else { return }

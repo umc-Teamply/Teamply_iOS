@@ -11,6 +11,8 @@ import FSCalendar
 import MaterialComponents
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+    //MARK: - IBOutlet
     @IBOutlet weak var userScheduleLabel: UILabel!
     @IBOutlet weak var todayPlanLabel: UILabel!
     @IBOutlet weak var todayDateLabel: UILabel!
@@ -27,6 +29,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +42,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         weeklyCalendarInit()
     }
 
+    // MARK: - Method
     func setTodayDate() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
@@ -131,7 +135,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         teamPlayView.makeRound(radius: 10)
     }
     
-
+    // MARK: - IBAction
     @IBAction func addTeamProjectButton(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "addTeamProjectVC") as! addTeamProjectViewController
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: vc)

@@ -107,6 +107,15 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         self.presentingViewController?.dismiss(animated: true)
     }
     
+    @IBAction func submitTeamProjectData(_ sender: Any) {
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+            let homeVC = HomeViewController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController?.present(homeVC, animated: true)
+        })
+    }
+    
+    // MARK: - Gesture
     @IBAction func projectColorTap(_ sender: Any) {
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectColorVC") as! selectProjectColorViewController
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
@@ -128,14 +137,5 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         }
             
         self.present(bottomSheet, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func submitTeamProjectData(_ sender: Any) {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-            let homeVC = HomeViewController()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController?.present(homeVC, animated: true)
-        })
     }
 }

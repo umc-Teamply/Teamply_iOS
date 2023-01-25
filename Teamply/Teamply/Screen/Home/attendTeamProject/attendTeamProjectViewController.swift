@@ -102,10 +102,10 @@ class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
     }
     
     // MARK: - IBAction
-    
     @IBAction func backToHome(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
+    
     @IBAction func submitInviteCode(_ sender: Any) {
         if isExistCode() {
             self.view.window?.rootViewController?.dismiss(animated: false, completion: {
