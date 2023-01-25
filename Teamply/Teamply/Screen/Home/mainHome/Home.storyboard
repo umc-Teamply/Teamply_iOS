@@ -89,12 +89,12 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="AEx-l3-h3K" secondAttribute="trailing" id="7Zc-PU-MAu"/>
-                                                            <constraint firstItem="AEx-l3-h3K" firstAttribute="leading" secondItem="sDT-FY-C1f" secondAttribute="leading" id="I88-f3-GLG"/>
+                                                            <constraint firstItem="AEx-l3-h3K" firstAttribute="leading" secondItem="sDT-FY-C1f" secondAttribute="leading" id="4xK-5b-9FT"/>
                                                             <constraint firstAttribute="trailing" secondItem="qhF-cS-xew" secondAttribute="trailing" constant="-6" id="LGI-eG-22D"/>
                                                             <constraint firstItem="qhF-cS-xew" firstAttribute="leading" secondItem="sDT-FY-C1f" secondAttribute="leading" constant="-6" id="Lhf-N1-Q9z"/>
                                                             <constraint firstAttribute="height" constant="235" id="STs-KW-pr1"/>
                                                             <constraint firstItem="z5r-oD-G0x" firstAttribute="leading" secondItem="sDT-FY-C1f" secondAttribute="leading" id="b0d-ED-IV9"/>
+                                                            <constraint firstAttribute="trailing" secondItem="AEx-l3-h3K" secondAttribute="trailing" id="blV-W4-1qD"/>
                                                             <constraint firstAttribute="bottom" secondItem="AEx-l3-h3K" secondAttribute="bottom" id="eOw-iG-RxW"/>
                                                             <constraint firstItem="qhF-cS-xew" firstAttribute="top" secondItem="sDT-FY-C1f" secondAttribute="top" constant="135" id="g8G-6h-ywd"/>
                                                             <constraint firstItem="z5r-oD-G0x" firstAttribute="top" secondItem="sDT-FY-C1f" secondAttribute="top" constant="20" id="wrT-3P-rEO"/>
@@ -166,7 +166,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="add_project"/>
                                                 <connections>
-                                                    <action selector="addTeamProjectButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZDs-zG-Bz8"/>
+                                                    <action selector="addTeamProjectButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9iD-8z-gha"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -214,7 +214,8 @@
                             <constraint firstItem="YF1-xC-pOX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="p7x-Uw-uaG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="G6T-zm-kI8"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="53L-5j-gnm"/>
+                    <navigationItem key="navigationItem" id="nUg-1O-puh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scheduleView" destination="Koa-na-bwM" id="Ed3-Ww-v4G"/>
@@ -234,17 +235,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-249" y="-242"/>
+            <point key="canvasLocation" x="680" y="-242.41706161137441"/>
+        </scene>
+        <!--Add Team Project View Controller-->
+        <scene sceneID="dcI-ib-avL">
+            <objects>
+                <viewController storyboardIdentifier="addTeamProjectVC" id="yD3-El-qnl" customClass="addTeamProjectViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cxu-Y1-UTE">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZf-PS-OoN">
+                                <rect key="frame" x="351" y="25" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="Tqw-4m-Lpg"/>
+                                    <constraint firstAttribute="height" constant="12" id="aNl-c9-zxT"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                <connections>
+                                    <action selector="cancle:" destination="yD3-El-qnl" eventType="touchUpInside" id="ZwV-s4-JYa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpP-i8-4Y9">
+                                <rect key="frame" x="25" y="55" width="340" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="CfE-nX-Dzd"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="attend_project">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="attendTeamProject:" destination="yD3-El-qnl" eventType="touchUpInside" id="6nf-vx-mvi"/>
+                                    <action selector="attendTeamProjectButton:" destination="v5d-pf-46c" eventType="touchUpInside" id="TgO-Au-ItY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxH-ec-uLg">
+                                <rect key="frame" x="25" y="102" width="340" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="XEU-Qn-3SP"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="create_new_project">
+                                    <color key="titleColor" name="basic2"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewTeamProject:" destination="yD3-El-qnl" eventType="touchUpInside" id="Pjw-ng-LEc"/>
+                                    <action selector="createNewTeamProjectButton:" destination="v5d-pf-46c" eventType="touchUpInside" id="YnI-xN-RS4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pfX-84-zkB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rpP-i8-4Y9" firstAttribute="top" secondItem="pfX-84-zkB" secondAttribute="top" constant="8" id="8nQ-Nh-daF"/>
+                            <constraint firstItem="FxH-ec-uLg" firstAttribute="top" secondItem="rpP-i8-4Y9" secondAttribute="bottom" id="P0L-ZD-CNK"/>
+                            <constraint firstItem="pfX-84-zkB" firstAttribute="trailing" secondItem="FxH-ec-uLg" secondAttribute="trailing" constant="25" id="VnG-BX-CQf"/>
+                            <constraint firstItem="FxH-ec-uLg" firstAttribute="leading" secondItem="pfX-84-zkB" secondAttribute="leading" constant="25" id="bPj-1K-DbQ"/>
+                            <constraint firstItem="rpP-i8-4Y9" firstAttribute="leading" secondItem="pfX-84-zkB" secondAttribute="leading" constant="25" id="ele-bq-QN2"/>
+                            <constraint firstItem="pfX-84-zkB" firstAttribute="trailing" secondItem="YZf-PS-OoN" secondAttribute="trailing" constant="27" id="gKo-EG-Ufh"/>
+                            <constraint firstItem="pfX-84-zkB" firstAttribute="trailing" secondItem="rpP-i8-4Y9" secondAttribute="trailing" constant="25" id="naG-Dj-opJ"/>
+                            <constraint firstItem="YZf-PS-OoN" firstAttribute="top" secondItem="cxu-Y1-UTE" secondAttribute="top" constant="25" id="oS4-nb-aAe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="attendProjectButton" destination="rpP-i8-4Y9" id="I6x-9f-y29"/>
+                        <outlet property="createProjectButton" destination="FxH-ec-uLg" id="bRJ-eZ-ImZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKi-sB-gGH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="v5d-pf-46c" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1389.2307692307693" y="-242.41706161137441"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="381" height="381"/>
         <image name="Teamply" width="687" height="199"/>
         <image name="add_project" width="23" height="24"/>
+        <image name="attend_project" width="21" height="21"/>
+        <image name="close" width="15" height="14"/>
+        <image name="create_new_project" width="21" height="21"/>
         <image name="home" width="22" height="22"/>
         <image name="home_selected" width="22" height="22"/>
         <namedColor name="basic1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="basic2">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray1">
             <color red="0.90399998426437378" green="0.90399998426437378" blue="0.90399998426437378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

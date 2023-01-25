@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 import FSCalendar
+import MaterialComponents
 
 class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+    //MARK: - IBOutlet
     @IBOutlet weak var userScheduleLabel: UILabel!
     @IBOutlet weak var todayPlanLabel: UILabel!
     @IBOutlet weak var todayDateLabel: UILabel!
@@ -26,6 +29,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +42,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         weeklyCalendarInit()
     }
 
+    // MARK: - Method
     func setTodayDate() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
@@ -130,8 +135,23 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         teamPlayView.makeRound(radius: 10)
     }
     
-    @IBAction func addTeamProjectButton(_ sender: Any) {
+    // MARK: - IBAction
+    @IBAction func addTeamProjectButton(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "addTeamProjectVC") as! addTeamProjectViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: vc)
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)
         
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 180
+        bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        present(bottomSheet, animated: true, completion: nil)
     }
     
 }
