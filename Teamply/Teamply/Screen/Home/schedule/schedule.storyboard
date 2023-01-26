@@ -58,6 +58,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgh-Vk-Dd6">
+                                <rect key="frame" x="312" y="725" width="58" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="6oT-km-dMz"/>
+                                    <constraint firstAttribute="height" constant="58" id="mhe-dL-IIA"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="regist"/>
+                                <connections>
+                                    <action selector="registSchedule:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="atM-B1-cZI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,12 +77,14 @@
                             <constraint firstItem="zhW-3H-e0Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="129" id="4jh-8S-RuD"/>
                             <constraint firstItem="zhW-3H-e0Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="9Na-sY-6Qp"/>
                             <constraint firstItem="wf9-yG-AAh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="28" id="EUl-jv-lPZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="sgh-Vk-Dd6" secondAttribute="bottom" constant="35" id="Nx2-ga-dsd"/>
                             <constraint firstItem="hOQ-ew-96Z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="P4x-TI-M2z"/>
                             <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="590" id="PGS-aL-8UK"/>
                             <constraint firstItem="XFU-I5-E8h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="PyL-l1-vqg"/>
                             <constraint firstItem="wf9-yG-AAh" firstAttribute="top" secondItem="h8g-fH-UVc" secondAttribute="bottom" constant="3" id="RPr-Ce-6nr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wf9-yG-AAh" secondAttribute="trailing" constant="28" id="X4V-iR-xMy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TbJ-si-vsJ" secondAttribute="trailing" constant="24" id="ZHk-j8-aCe"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sgh-Vk-Dd6" secondAttribute="trailing" constant="23" id="cnC-fp-cNM"/>
                             <constraint firstItem="XFU-I5-E8h" firstAttribute="top" secondItem="hOQ-ew-96Z" secondAttribute="bottom" constant="16" id="d8o-C6-zVO"/>
                             <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="wf9-yG-AAh" secondAttribute="bottom" constant="23" id="dz5-L9-Yyp"/>
                             <constraint firstItem="h8g-fH-UVc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="23" id="g9X-vh-sPr"/>
@@ -93,6 +107,7 @@
     </scenes>
     <resources>
         <image name="back" width="10" height="16"/>
+        <image name="regist" width="58" height="58"/>
         <namedColor name="gray0">
             <color red="0.96200001239776611" green="0.95599997043609619" blue="0.95599997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

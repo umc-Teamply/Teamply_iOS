@@ -119,5 +119,10 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     //MARK: - IBAction
     @IBAction func backToHome(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    
+    @IBAction func registSchedule(_ sender: Any) {
     }
 }
