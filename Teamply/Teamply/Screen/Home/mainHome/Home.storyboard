@@ -272,7 +272,7 @@
                                     <constraint firstAttribute="height" constant="47" id="CfE-nX-Dzd"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="attend_project">
+                                <state key="normal" title="Button" image="attend">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -286,7 +286,7 @@
                                     <constraint firstAttribute="height" constant="47" id="XEU-Qn-3SP"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="create_new_project">
+                                <state key="normal" title="Button" image="create">
                                     <color key="titleColor" name="basic2"/>
                                 </state>
                                 <connections>
@@ -323,9 +323,9 @@
         <image name="Logo" width="381" height="381"/>
         <image name="Teamply" width="687" height="199"/>
         <image name="add_project" width="23" height="24"/>
-        <image name="attend_project" width="21" height="21"/>
+        <image name="attend" width="21" height="21"/>
         <image name="close" width="15" height="14"/>
-        <image name="create_new_project" width="21" height="21"/>
+        <image name="create" width="21" height="21"/>
         <image name="home" width="22" height="22"/>
         <image name="home_selected" width="22" height="22"/>
         <namedColor name="basic1">
