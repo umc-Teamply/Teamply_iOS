@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -12,7 +12,7 @@
         <!--Schedule View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="scheduleViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scheduleVC" id="Y6W-OH-hqX" customClass="scheduleViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wf9-yG-AAh" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="96" width="393" height="553"/>
+                                <rect key="frame" x="28" y="101" width="337" height="525"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhW-3H-e0Y">
@@ -52,29 +52,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lVB-MH-Hsu">
-                                <rect key="frame" x="34" y="715" width="325" height="103"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-I5-E8h">
+                                <rect key="frame" x="34" y="715" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="wf9-yG-AAh" secondAttribute="bottom" id="2YY-2F-W6l"/>
                             <constraint firstItem="zhW-3H-e0Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="129" id="4jh-8S-RuD"/>
-                            <constraint firstItem="wf9-yG-AAh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7ww-LD-tQl"/>
                             <constraint firstItem="zhW-3H-e0Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="9Na-sY-6Qp"/>
-                            <constraint firstItem="wf9-yG-AAh" firstAttribute="top" secondItem="zhW-3H-e0Y" secondAttribute="bottom" id="Nzd-U4-OOV"/>
+                            <constraint firstItem="wf9-yG-AAh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="28" id="EUl-jv-lPZ"/>
                             <constraint firstItem="hOQ-ew-96Z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="P4x-TI-M2z"/>
                             <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="590" id="PGS-aL-8UK"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lVB-MH-Hsu" secondAttribute="bottom" id="ShQ-yX-WNm"/>
+                            <constraint firstItem="XFU-I5-E8h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="PyL-l1-vqg"/>
+                            <constraint firstItem="wf9-yG-AAh" firstAttribute="top" secondItem="h8g-fH-UVc" secondAttribute="bottom" constant="3" id="RPr-Ce-6nr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wf9-yG-AAh" secondAttribute="trailing" constant="28" id="X4V-iR-xMy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TbJ-si-vsJ" secondAttribute="trailing" constant="24" id="ZHk-j8-aCe"/>
+                            <constraint firstItem="XFU-I5-E8h" firstAttribute="top" secondItem="hOQ-ew-96Z" secondAttribute="bottom" constant="16" id="d8o-C6-zVO"/>
+                            <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="wf9-yG-AAh" secondAttribute="bottom" constant="23" id="dz5-L9-Yyp"/>
                             <constraint firstItem="h8g-fH-UVc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="23" id="g9X-vh-sPr"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wf9-yG-AAh" secondAttribute="trailing" id="gxe-lb-TvC"/>
-                            <constraint firstItem="lVB-MH-Hsu" firstAttribute="top" secondItem="hOQ-ew-96Z" secondAttribute="bottom" constant="16" id="koE-fY-lMn"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lVB-MH-Hsu" secondAttribute="trailing" constant="34" id="nXG-R5-W8B"/>
                             <constraint firstItem="hOQ-ew-96Z" firstAttribute="top" secondItem="TbJ-si-vsJ" secondAttribute="bottom" constant="24" id="rea-hL-Vjy"/>
-                            <constraint firstItem="lVB-MH-Hsu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="tgO-md-yPw"/>
                             <constraint firstItem="h8g-fH-UVc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="22" id="vsr-pt-XLf"/>
                             <constraint firstItem="TbJ-si-vsJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="xPh-fq-gEc"/>
                         </constraints>
@@ -82,7 +82,7 @@
                     <connections>
                         <outlet property="calendarView" destination="wf9-yG-AAh" id="wad-bY-iXS"/>
                         <outlet property="dateLabel" destination="hOQ-ew-96Z" id="tCO-7H-vYZ"/>
-                        <outlet property="scheduleTableView" destination="lVB-MH-Hsu" id="dDI-mL-r7j"/>
+                        <outlet property="schedulContentLabel" destination="XFU-I5-E8h" id="Qyt-uP-Vv3"/>
                         <outlet property="userScheduleLabel" destination="zhW-3H-e0Y" id="Ve3-9B-lo6"/>
                     </connections>
                 </viewController>

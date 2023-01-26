@@ -88,6 +88,7 @@
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstItem="AEx-l3-h3K" firstAttribute="leading" secondItem="sDT-FY-C1f" secondAttribute="leading" id="4xK-5b-9FT"/>
                                                             <constraint firstAttribute="trailing" secondItem="qhF-cS-xew" secondAttribute="trailing" constant="-6" id="LGI-eG-22D"/>
@@ -99,6 +100,9 @@
                                                             <constraint firstItem="qhF-cS-xew" firstAttribute="top" secondItem="sDT-FY-C1f" secondAttribute="top" constant="135" id="g8G-6h-ywd"/>
                                                             <constraint firstItem="z5r-oD-G0x" firstAttribute="top" secondItem="sDT-FY-C1f" secondAttribute="top" constant="20" id="wrT-3P-rEO"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Ev5-qR-Fkx" appends="YES" id="6Dy-GM-toi"/>
+                                                        </connections>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -234,6 +238,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ev5-qR-Fkx">
+                    <connections>
+                        <action selector="scheduleViewTap:" destination="Y6W-OH-hqX" id="Xeh-vh-lcT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="680" y="-242.41706161137441"/>
         </scene>
