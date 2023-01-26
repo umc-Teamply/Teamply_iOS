@@ -124,5 +124,9 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     @IBAction func registSchedule(_ sender: Any) {
+        guard let nextVC = storyboard?.instantiateViewController(withIdentifier: "registVC") as? registScheduleViewController else { return }
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
     }
 }
