@@ -18,18 +18,28 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var schedulContentLabel: UILabel!
     
     // MARK: - Properties
+    let today = Date()
+    var startDate: String? = nil
+    var endDate: String?
     var sendDate: String?
     var sendIntervar: Double = 0.0
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateInit()
         titleInit()
         scheduleInit()
         setCalendarView()
     }
     
     // MARK: - Method
+    func dateInit() {
+        startDate = today.toString(format: "YYYY.MM.DD")
+        endDate = today.toString(format: "YYYY.MM.DD")
+        sendDate = today.toString(format: "YYYY.MM.DD.E요일 ")
+    }
+    
     func titleInit() {
         userScheduleLabel.text = "이프로님의 일정"
         userScheduleLabel.font = .head1
@@ -108,12 +118,24 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         else {
             dateLabel.text = date.toString(format: "YYYY년 MM월 DD일 E요일 일정")
         }
-        sendDate = date.toString(format: "YYYY.MM.DD.E요일")
+        sendDate = date.toString(format: "YYYY.MM.DD.E요일 ")
+        endDate = date.toString(format: "YYYY.MM.DD")
         
         dateLabel.textColor = .basic2
         dateLabel.font = .sub1
         
         setScheduleContent()
+    }
+    
+    func calculateTimeInterval() -> Double {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let startDate = formatter.date(from: startDate!) ?? Date()
+        let endDate = formatter.date(from: endDate!) ?? Date()
+
+        let interval = endDate.timeIntervalSince(startDate)
+        return interval
     }
     
     func isExistSchedule() -> Bool {
@@ -132,7 +154,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         guard let nextVC = registVC.instantiateViewController(withIdentifier: "registScheduleVC") as? registScheduleViewController else { return }
         
         nextVC.selectionDate = sendDate
-        nextVC.interval = sendIntervar
+        nextVC.interval = calculateTimeInterval()
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
