@@ -99,7 +99,7 @@ class registScheduleViewController: UIViewController {
         bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
         bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
         bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
-        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 200
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 150
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
         
         self.present(bottomSheet, animated: true, completion: nil)

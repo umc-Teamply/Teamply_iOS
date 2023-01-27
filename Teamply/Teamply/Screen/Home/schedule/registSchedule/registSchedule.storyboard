@@ -176,13 +176,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZO-TC-Eal">
-                                <rect key="frame" x="27" y="132" width="339" height="28"/>
+                                <rect key="frame" x="27" y="70.333333333333329" width="339" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="iVc-Mw-58y"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVG-ZT-QHz">
-                                <rect key="frame" x="24" y="192" width="345" height="56"/>
+                                <rect key="frame" x="24" y="89" width="345" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="hST-w8-3cP"/>
                                 </constraints>
@@ -193,13 +193,13 @@
                         <viewLayoutGuide key="safeArea" id="9ej-dc-ObO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uZO-TC-Eal" firstAttribute="top" secondItem="FGE-UJ-Wpg" secondAttribute="topMargin" constant="73" id="1j2-hY-Xy1"/>
                             <constraint firstItem="cui-WW-v6P" firstAttribute="leading" secondItem="9ej-dc-ObO" secondAttribute="leading" constant="24" id="4vW-yi-ivL"/>
                             <constraint firstItem="cui-WW-v6P" firstAttribute="top" secondItem="FGE-UJ-Wpg" secondAttribute="top" constant="22" id="80v-Zc-ker"/>
                             <constraint firstItem="GVG-ZT-QHz" firstAttribute="leading" secondItem="9ej-dc-ObO" secondAttribute="leading" constant="24" id="DxG-hz-9UG"/>
                             <constraint firstItem="uZO-TC-Eal" firstAttribute="leading" secondItem="9ej-dc-ObO" secondAttribute="leading" constant="27" id="F6J-88-g5O"/>
                             <constraint firstItem="9ej-dc-ObO" firstAttribute="trailing" secondItem="uZO-TC-Eal" secondAttribute="trailing" constant="27" id="FPD-78-VKn"/>
-                            <constraint firstItem="GVG-ZT-QHz" firstAttribute="top" secondItem="FGE-UJ-Wpg" secondAttribute="topMargin" constant="133" id="iXj-Zy-F6e"/>
+                            <constraint firstItem="uZO-TC-Eal" firstAttribute="top" secondItem="cui-WW-v6P" secondAttribute="bottom" constant="28" id="c5q-IV-U2O"/>
+                            <constraint firstItem="GVG-ZT-QHz" firstAttribute="top" secondItem="FGE-UJ-Wpg" secondAttribute="topMargin" constant="30" id="fyp-3g-MoF"/>
                             <constraint firstItem="9ej-dc-ObO" firstAttribute="trailing" secondItem="GVG-ZT-QHz" secondAttribute="trailing" constant="24" id="klW-Gz-ILW"/>
                         </constraints>
                     </view>
