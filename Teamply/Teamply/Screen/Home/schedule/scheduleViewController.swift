@@ -18,6 +18,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var schedulContentLabel: UILabel!
     
     // MARK: - Properties
+    var sendDate: String?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -52,6 +53,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             schedulContentLabel.textColor = .gray4
         }
     }
+    
     func setCalendarView() {
         calendarView.delegate = self
         calendarView.dataSource = self
@@ -107,6 +109,11 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             dateFormatter.dateFormat = "YYYY년 MM월 DD일 E요일 일정"
             dateLabel.text =  dateFormatter.string(from: date)
         }
+        
+        let sendDateFormatter = DateFormatter()
+        sendDateFormatter.dateFormat = "YYYY.MM.DD.E요일/"
+        sendDate = sendDateFormatter.string(from: date)
+        
         dateLabel.textColor = .basic2
         dateLabel.font = .sub1
         
@@ -126,6 +133,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBAction func registSchedule(_ sender: Any) {
         guard let nextVC = storyboard?.instantiateViewController(withIdentifier: "registVC") as? registScheduleViewController else { return }
         
+        nextVC.selectionDate = sendDate
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
