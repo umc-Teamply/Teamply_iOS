@@ -117,7 +117,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Gesture
     @IBAction func projectColorTap(_ sender: Any) {
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectColorVC") as! selectProjectColorViewController
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectColorVC") as! selectColorViewController
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
         let shapeGenerator = MDCRectangleShapeGenerator()
         let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)

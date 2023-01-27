@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class registScheduleViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var projectLabel: UILabel!
-    @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var contentField: UITextField!
     @IBOutlet weak var timeField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
@@ -38,10 +39,12 @@ class registScheduleViewController: UIViewController {
         projectLabel.text = "프로젝트 선택"
         projectLabel.font = .sub2
         projectLabel.textColor = .gray2
+        projectLabel.isUserInteractionEnabled = true
         
-        scheduleLabel.text = "일정 종류 선택"
-        scheduleLabel.font = .sub2
-        scheduleLabel.textColor = .gray2
+        typeLabel.text = "일정 종류 선택"
+        typeLabel.font = .sub2
+        typeLabel.textColor = .gray2
+        typeLabel.isUserInteractionEnabled = true
     }
     func buttonInit() {
         saveButton.setTitle("저장", for: .normal)
@@ -81,5 +84,43 @@ class registScheduleViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func backToSchedule(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    // MARK: - Gesture
+    @IBAction func projectTap(_ sender: Any) {
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectProjectVC") as! selectProjectViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)
+        
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+        
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 200
+        bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        self.present(bottomSheet, animated: true, completion: nil)
+    }
+    
+    @IBAction func scheduleTypeTap(_ sender: Any) {
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectTypeVC") as! selectTypeViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
+        
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 15)
+        
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 200
+        bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        present(bottomSheet, animated: true, completion: nil)
     }
 }
