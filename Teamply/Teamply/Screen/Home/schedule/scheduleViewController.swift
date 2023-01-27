@@ -19,6 +19,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     // MARK: - Properties
     var sendDate: String?
+    var sendIntervar: Double = 0.0
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -105,14 +106,9 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             dateLabel.text = "오늘 일정"
         }
         else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY년 MM월 DD일 E요일 일정"
-            dateLabel.text =  dateFormatter.string(from: date)
+            dateLabel.text = date.toString(format: "YYYY년 MM월 DD일 E요일 일정")
         }
-        
-        let sendDateFormatter = DateFormatter()
-        sendDateFormatter.dateFormat = "YYYY.MM.DD.E요일/"
-        sendDate = sendDateFormatter.string(from: date)
+        sendDate = date.toString(format: "YYYY.MM.DD.E요일")
         
         dateLabel.textColor = .basic2
         dateLabel.font = .sub1
@@ -131,9 +127,12 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     @IBAction func registSchedule(_ sender: Any) {
-        guard let nextVC = storyboard?.instantiateViewController(withIdentifier: "registVC") as? registScheduleViewController else { return }
+        let registVC = UIStoryboard.init(name: "registSchedule", bundle: nil)
+        
+        guard let nextVC = registVC.instantiateViewController(withIdentifier: "registScheduleVC") as? registScheduleViewController else { return }
         
         nextVC.selectionDate = sendDate
+        nextVC.interval = sendIntervar
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }

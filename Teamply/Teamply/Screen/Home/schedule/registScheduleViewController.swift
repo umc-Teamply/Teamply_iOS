@@ -19,6 +19,7 @@ class registScheduleViewController: UIViewController {
     // MARK: - Properties
     let timePicker = UIDatePicker()
     var selectionDate: String?
+    var interval: Double?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -66,19 +67,16 @@ class registScheduleViewController: UIViewController {
     }
     
     func configureDatePicker(){
-        self.timePicker.datePickerMode = .time
-        self.timePicker.preferredDatePickerStyle = .wheels
-        self.timePicker.tintColor = .basic2
-        self.timePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
+        timePicker.datePickerMode = .time
+        timePicker.preferredDatePickerStyle = .wheels
+        timePicker.tintColor = .basic2
+        timePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
         
-        self.timeField.inputView = self.timePicker
+        timeField.inputView = timePicker
     }
     
     @objc private func datePickerValueDidChange(_ timePicker: UIDatePicker){
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "YYYY.MM.dd.E요일 / a HH:mm"
-        self.timeField.text = formatter.string(from: timePicker.date)
+        timeField.text = timePicker.date.toString(format: "YYYY.MM.DD.E요일 / a HH:mm")
     }
     
     // MARK: - IBAction
