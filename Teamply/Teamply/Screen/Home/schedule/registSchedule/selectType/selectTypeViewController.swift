@@ -14,6 +14,7 @@ class selectTypeViewController: UIViewController {
     @IBOutlet weak var todoLabel: UILabel!
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
+    @IBOutlet weak var sessionLabel: UILabel!
     
     // MARK: - Properties
     var typeHandler: ((String) -> ())?
@@ -21,6 +22,7 @@ class selectTypeViewController: UIViewController {
     var todoFlag = false
     var scheduleFlag = false
     var deadlineFlag = false
+    var sessionFalg = false
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -35,16 +37,25 @@ class selectTypeViewController: UIViewController {
             todoFlag = true
             scheduleFlag = false
             deadlineFlag = false
+            sessionFalg = false
         } else if typeLabel == "일정" {
             scheduleLabel.backgroundColor = .basic2
             todoFlag = false
             scheduleFlag = true
             deadlineFlag = false
+            sessionFalg = false
         } else if typeLabel == "마감일" {
             deadlineLabel.backgroundColor = .basic2
             todoFlag = false
             scheduleFlag = false
             deadlineFlag = true
+            sessionFalg = false
+        } else if typeLabel == "회의" {
+            sessionLabel.backgroundColor = .basic2
+            todoFlag = false
+            scheduleFlag = false
+            deadlineFlag = false
+            sessionFalg = true
         }
     }
     
@@ -82,6 +93,13 @@ class selectTypeViewController: UIViewController {
         deadlineLabel.makeRound(radius: 4.95)
         deadlineLabel.isUserInteractionEnabled = true
         deadlineLabel.backgroundColor = .gray2
+        
+        sessionLabel.text = "회의"
+        sessionLabel.font = .sub1
+        sessionLabel.textColor = .basic1
+        sessionLabel.makeRound(radius: 4.95)
+        sessionLabel.isUserInteractionEnabled = true
+        sessionLabel.backgroundColor = .gray2
     }
     
     
@@ -104,6 +122,7 @@ class selectTypeViewController: UIViewController {
             todoFlag = true
             scheduleFlag = false
             deadlineFlag = false
+            sessionFalg = false
         }
     }
     
@@ -119,6 +138,7 @@ class selectTypeViewController: UIViewController {
             todoFlag = false
             scheduleFlag = true
             deadlineFlag = false
+            sessionFalg = false
         }
     }
     
@@ -134,6 +154,24 @@ class selectTypeViewController: UIViewController {
             todoFlag = false
             scheduleFlag = false
             deadlineFlag = true
+            sessionFalg = false
         }
     }
+    
+    @IBAction func sessionTap(_ sender: Any) {
+        typeInit()
+        if sessionFalg {
+            sessionFalg = false
+            typeLabel = "일정 종류 선택"
+        }
+        else {
+            typeLabel = sessionLabel.text!
+            sessionLabel.backgroundColor = .basic2
+            todoFlag = false
+            scheduleFlag = false
+            deadlineFlag = false
+            sessionFalg = true
+        }
+    }
+    
 }

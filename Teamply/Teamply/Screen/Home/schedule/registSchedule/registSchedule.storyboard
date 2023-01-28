@@ -280,14 +280,30 @@
                                     <outletCollection property="gestureRecognizers" destination="bOn-CY-UHo" appends="YES" id="rJv-du-pKr"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfK-qz-fzf">
+                                <rect key="frame" x="251.99999999999997" y="62.333333333333343" width="57.666666666666657" height="33"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="hwd-Qh-Xvt"/>
+                                    <constraint firstAttribute="width" constant="57.75" id="yCR-KM-Okh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zJN-zc-jcX" appends="YES" id="Jeg-Bj-7OX"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yUL-mg-eU1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kIL-dO-JZ9" firstAttribute="leading" secondItem="yUL-mg-eU1" secondAttribute="leading" constant="24" id="4mA-cs-rCy"/>
+                            <constraint firstItem="OfK-qz-fzf" firstAttribute="top" secondItem="C65-SX-zXZ" secondAttribute="bottom" constant="20" id="7E5-Xy-Xd2"/>
                             <constraint firstItem="Fw1-99-WMw" firstAttribute="top" secondItem="C65-SX-zXZ" secondAttribute="bottom" constant="20" id="8mr-Hi-GKv"/>
                             <constraint firstItem="tpE-rE-9qS" firstAttribute="leading" secondItem="yUL-mg-eU1" secondAttribute="leading" constant="24" id="CjQ-Ak-9L3"/>
                             <constraint firstItem="C65-SX-zXZ" firstAttribute="top" secondItem="65n-vi-XNS" secondAttribute="top" constant="22" id="GMI-1f-RiO"/>
+                            <constraint firstItem="OfK-qz-fzf" firstAttribute="leading" secondItem="FGq-g4-yLt" secondAttribute="trailing" constant="18.329999999999998" id="Rl3-sQ-kEB"/>
                             <constraint firstItem="yUL-mg-eU1" firstAttribute="trailing" secondItem="tpE-rE-9qS" secondAttribute="trailing" constant="24" id="TPD-LD-7DS"/>
                             <constraint firstItem="kIL-dO-JZ9" firstAttribute="top" secondItem="C65-SX-zXZ" secondAttribute="bottom" constant="20" id="ZXY-f6-LIR"/>
                             <constraint firstItem="FGq-g4-yLt" firstAttribute="top" secondItem="C65-SX-zXZ" secondAttribute="bottom" constant="20" id="ba5-xq-zhU"/>
@@ -300,6 +316,7 @@
                     <connections>
                         <outlet property="deadlineLabel" destination="FGq-g4-yLt" id="u4k-1m-A3r"/>
                         <outlet property="scheduleLabel" destination="Fw1-99-WMw" id="6DP-Nj-PJB"/>
+                        <outlet property="sessionLabel" destination="OfK-qz-fzf" id="hEi-Fy-m0g"/>
                         <outlet property="submitButton" destination="tpE-rE-9qS" id="5yQ-xh-wvB"/>
                         <outlet property="titleLabel" destination="C65-SX-zXZ" id="Zc2-im-Pwx"/>
                         <outlet property="todoLabel" destination="kIL-dO-JZ9" id="zDL-bY-zd9"/>
@@ -319,6 +336,11 @@
                 <tapGestureRecognizer id="cSm-8p-hbb">
                     <connections>
                         <action selector="todoTap:" destination="w4x-qy-pkF" id="WDg-9u-ub4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="zJN-zc-jcX">
+                    <connections>
+                        <action selector="sessionTap:" destination="w4x-qy-pkF" id="AIT-yz-49F"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
