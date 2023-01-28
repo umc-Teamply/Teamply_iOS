@@ -99,8 +99,19 @@ class registScheduleViewController: UIViewController {
         bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
         bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
         bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
-        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 150
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 200
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        nextVC.projectHandler = { name in
+            self.projectLabel.text = name
+            if name == "프로젝트 이름" {
+                self.projectLabel.textColor = .gray2
+            }
+            else {
+                self.projectLabel.textColor = .basic2
+            }
+        }
+        nextVC.projectName = self.projectLabel.text!
         
         self.present(bottomSheet, animated: true, completion: nil)
     }
