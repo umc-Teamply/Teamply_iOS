@@ -31,6 +31,7 @@ class registScheduleViewController: UIViewController {
         contentFieldInit()
     }
     
+    // MARK: Method
     func labelInit() {
         titleLabel.text = "일정추가"
         titleLabel.font = .head1
@@ -67,7 +68,6 @@ class registScheduleViewController: UIViewController {
     }
     
     func configureDatePicker(){
-        timePicker.datePickerMode = .time
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.tintColor = .basic2
         timePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
@@ -106,7 +106,7 @@ class registScheduleViewController: UIViewController {
     }
     
     @IBAction func scheduleTypeTap(_ sender: Any) {
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectTypeVC") as! selectTypeViewController
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "selectTypeVC") as? selectTypeViewController else { return }
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
         
         let shapeGenerator = MDCRectangleShapeGenerator()
@@ -121,6 +121,21 @@ class registScheduleViewController: UIViewController {
         bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 200
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
         
-        present(bottomSheet, animated: true, completion: nil)
+        bottomSheet.dismissOnDraggingDownSheet = false
+        bottomSheet.dismissOnBackgroundTap = false
+        
+        nextVC.typeHandler = {type in
+            self.typeLabel.text = type
+            if type == "일정 종류 선택" {
+                self.typeLabel.textColor = .gray2
+            }
+            else {
+                self.typeLabel.textColor = .basic2
+            }
+        }
+        
+        nextVC.typeLabel = self.typeLabel.text
+        
+        self.present(bottomSheet, animated: true, completion: nil)
     }
 }

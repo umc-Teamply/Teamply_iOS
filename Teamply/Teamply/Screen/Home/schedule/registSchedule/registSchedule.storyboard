@@ -231,11 +231,16 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="x2w-Go-h6c"/>
                                 </constraints>
+                                <color key="tintColor" name="basic1"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="submitType:" destination="w4x-qy-pkF" eventType="touchUpInside" id="bNc-3F-JNa"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIL-dO-JZ9">
                                 <rect key="frame" x="23.999999999999996" y="62.333333333333343" width="57.666666666666657" height="33"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="17K-ll-CAL"/>
                                     <constraint firstAttribute="width" constant="57.75" id="GdG-QN-Pd3"/>
@@ -243,9 +248,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cSm-8p-hbb" appends="YES" id="s67-o1-Nhg"/>
+                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-99-WMw">
                                 <rect key="frame" x="100.00000000000001" y="62.333333333333343" width="57.666666666666671" height="33"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57.75" id="CLB-v3-qwH"/>
                                     <constraint firstAttribute="height" constant="33" id="hrB-GH-9f6"/>
@@ -253,9 +262,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TX0-JV-Pul" appends="YES" id="FKS-Pm-Svo"/>
+                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGq-g4-yLt">
                                 <rect key="frame" x="176" y="62.333333333333343" width="57.666666666666657" height="33"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57.75" id="jsh-kA-pV0"/>
                                     <constraint firstAttribute="height" constant="33" id="qUX-1K-0w6"/>
@@ -263,6 +276,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bOn-CY-UHo" appends="YES" id="rJv-du-pKr"/>
+                                </connections>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yUL-mg-eU1"/>
@@ -290,12 +306,30 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vO-fv-JRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TX0-JV-Pul">
+                    <connections>
+                        <action selector="scheduleTap:" destination="w4x-qy-pkF" id="rlJ-22-uWy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bOn-CY-UHo">
+                    <connections>
+                        <action selector="deadlineTap:" destination="w4x-qy-pkF" id="QNu-uE-Nyw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="cSm-8p-hbb">
+                    <connections>
+                        <action selector="todoTap:" destination="w4x-qy-pkF" id="WDg-9u-ub4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1603.8167938931297" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
         <image name="back" width="10" height="16"/>
+        <namedColor name="basic1">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="basic2">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
