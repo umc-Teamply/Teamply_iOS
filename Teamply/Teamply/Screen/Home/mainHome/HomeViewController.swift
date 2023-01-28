@@ -153,5 +153,4 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         present(bottomSheet, animated: true, completion: nil)
     }
-    
 }
