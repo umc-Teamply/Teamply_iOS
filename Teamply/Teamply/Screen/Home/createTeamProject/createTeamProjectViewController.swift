@@ -89,11 +89,11 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
-        let formmater = DateFormatter()
-        formmater.dateFormat = "yyyy.MM.dd.E"
-        formmater.locale = Locale(identifier: "ko_KR") 
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd.E"
+        formatter.locale = Locale(identifier: "ko_KR")
         self.startDate = datePicker.date
-        self.dateTextField.text = formmater.string(from: datePicker.date)
+        self.dateTextField.text = formatter.string(from: datePicker.date)
     }
     
     
@@ -117,7 +117,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Gesture
     @IBAction func projectColorTap(_ sender: Any) {
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectColorVC") as! selectProjectColorViewController
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectColorVC") as! selectColorViewController
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
         let shapeGenerator = MDCRectangleShapeGenerator()
         let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)

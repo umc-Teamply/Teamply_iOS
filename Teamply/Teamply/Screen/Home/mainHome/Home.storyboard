@@ -88,6 +88,7 @@
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstItem="AEx-l3-h3K" firstAttribute="leading" secondItem="sDT-FY-C1f" secondAttribute="leading" id="4xK-5b-9FT"/>
                                                             <constraint firstAttribute="trailing" secondItem="qhF-cS-xew" secondAttribute="trailing" constant="-6" id="LGI-eG-22D"/>
@@ -99,6 +100,9 @@
                                                             <constraint firstItem="qhF-cS-xew" firstAttribute="top" secondItem="sDT-FY-C1f" secondAttribute="top" constant="135" id="g8G-6h-ywd"/>
                                                             <constraint firstItem="z5r-oD-G0x" firstAttribute="top" secondItem="sDT-FY-C1f" secondAttribute="top" constant="20" id="wrT-3P-rEO"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Ev5-qR-Fkx" appends="YES" id="6Dy-GM-toi"/>
+                                                        </connections>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -234,6 +238,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ev5-qR-Fkx">
+                    <connections>
+                        <action selector="scheduleViewTap:" destination="Y6W-OH-hqX" id="Xeh-vh-lcT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="680" y="-242.41706161137441"/>
         </scene>
@@ -263,7 +272,7 @@
                                     <constraint firstAttribute="height" constant="47" id="CfE-nX-Dzd"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="attend_project">
+                                <state key="normal" title="Button" image="modify">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -277,7 +286,7 @@
                                     <constraint firstAttribute="height" constant="47" id="XEU-Qn-3SP"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="create_new_project">
+                                <state key="normal" title="Button" image="copy">
                                     <color key="titleColor" name="basic2"/>
                                 </state>
                                 <connections>
@@ -314,11 +323,11 @@
         <image name="Logo" width="381" height="381"/>
         <image name="Teamply" width="687" height="199"/>
         <image name="add_project" width="23" height="24"/>
-        <image name="attend_project" width="21" height="21"/>
         <image name="close" width="15" height="14"/>
-        <image name="create_new_project" width="21" height="21"/>
+        <image name="copy" width="21" height="21"/>
         <image name="home" width="22" height="22"/>
         <image name="home_selected" width="22" height="22"/>
+        <image name="modify" width="21" height="21"/>
         <namedColor name="basic1">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
