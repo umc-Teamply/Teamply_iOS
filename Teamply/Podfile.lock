@@ -30,6 +30,10 @@ PODS:
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
   - PanModal (1.2.7)
   - SnapKit (5.0.1)
 
@@ -37,6 +41,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.2)
   - FSCalendar
   - MaterialComponents/BottomSheet
+  - Moya
   - PanModal
   - SnapKit (~> 5.0.0)
 
@@ -45,6 +50,7 @@ SPEC REPOS:
     - Alamofire
     - FSCalendar
     - MaterialComponents
+    - Moya
     - PanModal
     - SnapKit
 
@@ -52,9 +58,10 @@ SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 2112c35c9adc5fef8541b10888cc693e7b9b6c8e
+PODFILE CHECKSUM: ed8dff5d11b9c7ab1e9b0d5ec01217f23fed9bd2
 
 COCOAPODS: 1.11.3

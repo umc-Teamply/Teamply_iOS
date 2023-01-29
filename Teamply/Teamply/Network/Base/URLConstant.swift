@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct URLConstant {
+    
+    // MARK: - base URL
+    
+    static let baseURL = ""
+
+}

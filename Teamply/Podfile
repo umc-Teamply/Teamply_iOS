@@ -10,6 +10,7 @@ target 'Teamply' do
   pod 'FSCalendar'
   pod 'MaterialComponents/BottomSheet'
   pod 'PanModal'
+  pod 'Moya'
 
   # Pods for Teamply
   # Workaround for Cocoapods issue #7606
