@@ -202,6 +202,17 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="my" selectedImage="my_selected" id="3eJ-lE-ntl"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="hnZ-dh-3G3" id="6w1-uy-4Sp"/>
+                        <outlet property="helpLabel" destination="18c-fY-eRn" id="F4W-Q2-wbU"/>
+                        <outlet property="infoLabel" destination="tE3-jX-mtD" id="aSX-ZA-tyc"/>
+                        <outlet property="nameLabel" destination="d3m-mh-bEg" id="Mm2-Bd-c8g"/>
+                        <outlet property="privacyPolicyLabel" destination="Qmu-Ft-0hA" id="6Bi-Ac-C5N"/>
+                        <outlet property="questionLabel" destination="58z-jK-FOh" id="UYD-Li-NFT"/>
+                        <outlet property="scheduleLabel" destination="zIo-bV-XZW" id="mqU-EP-eJm"/>
+                        <outlet property="termsOfUseLabel" destination="Opy-Za-48M" id="Y7d-LT-Qnn"/>
+                        <outlet property="titleLabel" destination="hvp-mq-nQ7" id="itT-9m-57M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
