@@ -154,6 +154,7 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="gray1"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="zsh-09-elH" firstAttribute="top" secondItem="iC9-WB-Pe6" secondAttribute="top" constant="17" id="dEE-oF-7nm"/>
                                                     <constraint firstAttribute="height" constant="151" id="fjK-FG-fdl"/>

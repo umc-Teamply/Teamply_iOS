@@ -25,8 +25,6 @@ class TeamPageViewController: UIViewController {
     
     @IBOutlet weak var voteScheduleLabel: UILabel!
     
-    @IBOutlet weak var memberEvalLabel: UILabel!
-    @IBOutlet weak var memberEvalButton: UIButton!
     @IBOutlet weak var projectInfoLabel: UILabel!
     @IBOutlet weak var projectInfoButton: UIButton!
     
@@ -78,11 +76,6 @@ class TeamPageViewController: UIViewController {
         voteScheduleLabel.font = .cap2
         voteScheduleLabel.textColor = .basic2
         
-        memberEvalLabel.text = "팀원 중간평가"
-        memberEvalLabel.font = .sub2
-        memberEvalLabel.textColor = .basic2
-        
-        memberEvalButton.makeRound(radius: 10)
         
         projectInfoLabel.text = "프로젝트 정보보기"
         projectInfoLabel.font = .sub2
@@ -92,6 +85,8 @@ class TeamPageViewController: UIViewController {
     }
     
    
-    // MARK: - Navigation
+    // MARK: - IBAction
+    
+    
 
 }
