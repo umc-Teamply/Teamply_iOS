@@ -8,7 +8,8 @@
 import UIKit
 import SnapKit
 
-class MeetingScheduleViewController: UIViewController {
+class MeetingScheduleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
     // MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var possibleView: UIView!
@@ -16,24 +17,25 @@ class MeetingScheduleViewController: UIViewController {
     @IBOutlet weak var possibleLabel: UILabel!
     @IBOutlet weak var impossibleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    
     @IBOutlet weak var weekdayStackView: UIStackView!
-    @IBOutlet weak var mondayLabel: UILabel!
-    @IBOutlet weak var tuesdayLabel: UILabel!
-    @IBOutlet weak var wednesdayLabel: UILabel!
-    @IBOutlet weak var thursdayLabel: UILabel!
-    @IBOutlet weak var fridayLabel: UILabel!
-    @IBOutlet weak var saturdayLabel: UILabel!
-    @IBOutlet weak var sundayLabel: UILabel!
-    
     @IBOutlet weak var timeStackView: UIStackView!
+    @IBOutlet weak var scheduleCollectionView: UICollectionView!
+    
     // MARK: - Properties
+    let weekdayArray: [String] = ["월", "화", "수", "목", "금", "토", "일"]
+    var weekdayLabelArray: [UILabel] = []
     var timeLabelArray: [UILabel] = []
+    let timeCell = "TimeViewCell"
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         componentInit()
+        setWeekdayStackView()
+        setTimeStackView()
+        setCollectionView()
     }
+    
     // MARK: - Method
     func componentInit() {
         titleLabel.text = "내 회의 시간표 관리"
@@ -61,35 +63,31 @@ class MeetingScheduleViewController: UIViewController {
         impossibleView.layer.borderColor = UIColor.gray2?.cgColor
         impossibleView.layer.borderWidth = 1
         impossibleView.makeRound(radius: 3)
+    }
+    
+    func setWeekdayStackView() {
+        for w in weekdayArray {
+            let weekdayLabel: UILabel = {
+                let week = UILabel()
+                
+                week.text = w
+                week.textColor = .basic2
+                week.font = .body
+                week.textAlignment = .left
+                week.fs_width = 15
+                week.translatesAutoresizingMaskIntoConstraints = false
+                
+                return week
+            }()
+            weekdayLabelArray.append(weekdayLabel)
+        }
         
-        mondayLabel.text = "월"
-        mondayLabel.textColor = .basic2
-        mondayLabel.font = .body
-        
-        tuesdayLabel.text = "화"
-        tuesdayLabel.textColor = .basic2
-        tuesdayLabel.font = .body
-        
-        wednesdayLabel.text = "수"
-        wednesdayLabel.textColor = .basic2
-        wednesdayLabel.font = .body
-        
-        thursdayLabel.text = "목"
-        thursdayLabel.textColor = .basic2
-        thursdayLabel.font = .body
-        
-        fridayLabel.text = "금"
-        fridayLabel.textColor = .basic2
-        fridayLabel.font = .body
-        
-        saturdayLabel.text = "토"
-        saturdayLabel.textColor = .basic2
-        saturdayLabel.font = .body
-        
-        sundayLabel.text = "일"
-        sundayLabel.textColor = .basic2
-        sundayLabel.font = .body
-        
+        weekdayLabelArray.map {
+            weekdayStackView.addArrangedSubview($0)
+        }
+    }
+    
+    func setTimeStackView() {
         for i in 6...24 {
             let timeLabel: UILabel = {
                 let time = UILabel()
@@ -111,6 +109,37 @@ class MeetingScheduleViewController: UIViewController {
         }
     }
     
-    // MARK: - IBAction
+    func setCollectionView() {
+        scheduleCollectionView.delegate = self
+        scheduleCollectionView.dataSource = self
+        
+        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 1
+        flowLayout.minimumLineSpacing = 1
+        scheduleCollectionView.setCollectionViewLayout(flowLayout, animated: true)
+        
+        scheduleCollectionView.backgroundColor = .gray2
+        scheduleCollectionView.makeRound(radius: 10)
+        scheduleCollectionView.layer.borderColor = UIColor.gray2?.cgColor
+        scheduleCollectionView.layer.borderWidth = 1
+        scheduleCollectionView.register(TimeViewCell.self, forCellWithReuseIdentifier: timeCell)
+    }
 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        133
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: timeCell, for: indexPath) as! TimeViewCell
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: scheduleCollectionView.frame.width/8+4.5, height: scheduleCollectionView.frame.height/20+0.2)
+       }
+    
+    // MARK: - IBAction
 }
