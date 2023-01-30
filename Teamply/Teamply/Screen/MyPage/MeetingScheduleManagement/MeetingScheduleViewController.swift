@@ -17,6 +17,7 @@ class MeetingScheduleViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var possibleLabel: UILabel!
     @IBOutlet weak var impossibleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var toggleButton: UIButton!
     @IBOutlet weak var weekdayStackView: UIStackView!
     @IBOutlet weak var timeStackView: UIStackView!
     @IBOutlet weak var scheduleCollectionView: UICollectionView!
@@ -26,6 +27,7 @@ class MeetingScheduleViewController: UIViewController, UICollectionViewDelegate,
     var weekdayLabelArray: [UILabel] = []
     var timeLabelArray: [UILabel] = []
     let timeCell = "TimeViewCell"
+    var editable: Bool = false
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -63,6 +65,25 @@ class MeetingScheduleViewController: UIViewController, UICollectionViewDelegate,
         impossibleView.layer.borderColor = UIColor.gray2?.cgColor
         impossibleView.layer.borderWidth = 1
         impossibleView.makeRound(radius: 3)
+        
+        toggleButton.backgroundColor = .basic2
+        toggleButton.titleLabel!.font = .btn
+        toggleButton.titleLabel?.textColor = .basic1
+        toggleButton.tintColor = .basic1
+        toggleButton.makeRound(radius: 10)
+        if editable {
+            toggleButton.setTitle("선택완료", for: .normal)
+        } else {
+            toggleButton.setTitle("수정하기", for: .normal)
+        }
+    }
+    
+    func setButtonMode() {
+        if editable {
+            toggleButton.setTitle("선택완료", for: .normal)
+        } else {
+            toggleButton.setTitle("수정하기", for: .normal)
+        }
     }
     
     func setWeekdayStackView() {
@@ -141,5 +162,41 @@ class MeetingScheduleViewController: UIViewController, UICollectionViewDelegate,
         return CGSize(width: scheduleCollectionView.frame.width/8+4.5, height: scheduleCollectionView.frame.height/20+0.2)
        }
     
+    // 셀 선택 했을 때
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TimeViewCell else {
+            return true
+        }
+        if editable {
+            if cell.isSelected {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                cell.backgroundColor = .basic1
+                return false
+            } else {
+                cell.backgroundColor = .gray1
+                return true
+            }
+        }
+        return false
+    }
+    
     // MARK: - IBAction
+    
+    @IBAction func selectMode(_ sender: Any) {
+        if editable {
+            editable = false
+        } else {
+            editable = true
+        }
+        setButtonMode()
+    }
+    @IBAction func backToMypage(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    // MARK: - Gesture
+    @IBAction func timeCellDragGesture(_ sender: Any) {
+    }
+    
 }
+
