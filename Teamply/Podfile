@@ -11,6 +11,7 @@ target 'Teamply' do
   pod 'MaterialComponents/BottomSheet'
   pod 'PanModal'
   pod 'Moya'
+  pod 'Tabman'
 
   # Pods for Teamply
   # Workaround for Cocoapods issue #7606

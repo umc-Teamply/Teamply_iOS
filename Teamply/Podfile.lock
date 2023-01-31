@@ -34,8 +34,11 @@ PODS:
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
+  - Pageboy (4.0.2)
   - PanModal (1.2.7)
   - SnapKit (5.0.1)
+  - Tabman (3.0.1):
+    - Pageboy (~> 4.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -44,6 +47,7 @@ DEPENDENCIES:
   - Moya
   - PanModal
   - SnapKit (~> 5.0.0)
+  - Tabman
 
 SPEC REPOS:
   trunk:
@@ -51,17 +55,21 @@ SPEC REPOS:
     - FSCalendar
     - MaterialComponents
     - Moya
+    - Pageboy
     - PanModal
     - SnapKit
+    - Tabman
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  Pageboy: 34ff11e8d1041b81769d5bcde9b19a0cb7218bd9
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Tabman: a5880789298f81d3f2cdd6510b54ae637cfd8e09
 
-PODFILE CHECKSUM: ed8dff5d11b9c7ab1e9b0d5ec01217f23fed9bd2
+PODFILE CHECKSUM: 9a1f2d793344bd088a53d8d2a4d5f3afaa9575e7
 
 COCOAPODS: 1.11.3
