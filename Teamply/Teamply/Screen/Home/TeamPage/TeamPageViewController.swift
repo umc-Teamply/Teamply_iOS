@@ -30,13 +30,13 @@ class TeamPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setstyle()
+        setTeamPageStyle()
         periodBorder.layer.cornerRadius = 15
         periodBorder.layer.borderWidth = 1
         periodBorder.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     }
     
-    func setstyle() {
+    func setTeamPageStyle() {
         titleLabel.text = "브랜드경험 디자인"
         titleLabel.font = .head1
         titleLabel.textColor = .basic1
@@ -87,6 +87,32 @@ class TeamPageViewController: UIViewController {
     
    
     // MARK: - IBAction
+    
+    @IBAction func backhomeButton(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    @IBAction func user1Button(_ sender: Any) {
+        guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
+            codevc.modalPresentationStyle = .overCurrentContext
+        codevc.modalTransitionStyle = .crossDissolve
+            self.present(codevc, animated: true, completion: nil)
+        }
+    
+    @IBAction func user2Button(_ sender: Any) {
+        guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
+            codevc.modalPresentationStyle = .overCurrentContext
+        codevc.modalTransitionStyle = .crossDissolve
+            self.present(codevc, animated: true, completion: nil)
+    }
+    
+    @IBAction func user3Button(_ sender: Any) {
+        guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
+            codevc.modalPresentationStyle = .overCurrentContext
+        codevc.modalTransitionStyle = .crossDissolve
+            self.present(codevc, animated: true, completion: nil)
+    }
+
     
     
 
