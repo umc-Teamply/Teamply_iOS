@@ -156,4 +156,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         present(bottomSheet, animated: true, completion: nil)
     }
+    
+    @IBAction func tappedteamPlay(_ sender: Any) {
+        let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
+                guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return }
+
+                nextVC.modalPresentationStyle = .fullScreen
+                self.present(nextVC, animated: true, completion: nil)
+    }
+    
 }

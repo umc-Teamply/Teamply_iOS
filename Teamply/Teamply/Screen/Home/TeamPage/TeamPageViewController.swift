@@ -31,6 +31,9 @@ class TeamPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setstyle()
+        periodBorder.layer.cornerRadius = 15
+        periodBorder.layer.borderWidth = 1
+        periodBorder.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     }
     
     func setstyle() {
@@ -45,8 +48,6 @@ class TeamPageViewController: UIViewController {
         periodLabel.text = "기간"
         periodLabel.font = .cap3
         periodLabel.textColor = .basic1
-        
-        periodBorder.makeRound(radius: 15)
         
         dateLabel.text = "2022.10.18.화 ~"
         dateLabel.font = .cap3
