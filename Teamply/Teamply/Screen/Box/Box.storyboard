@@ -15,18 +15,86 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laM-5d-kyo">
+                                <rect key="frame" x="22" y="78" width="10" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="Atz-v1-2qA"/>
+                                    <constraint firstAttribute="width" constant="10" id="xNE-Qf-kHS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="back"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efd-be-gny">
+                                <rect key="frame" x="147" y="71" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwP-X4-Sab">
+                                <rect key="frame" x="0.0" y="113" width="393" height="656"/>
+                                <connections>
+                                    <segue destination="xef-4H-szv" kind="embed" id="lhL-jk-liE"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="mwP-X4-Sab" secondAttribute="bottom" id="4sa-jd-AIq"/>
+                            <constraint firstItem="laM-5d-kyo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="22" id="5mK-Lx-uvQ"/>
+                            <constraint firstItem="mwP-X4-Sab" firstAttribute="top" secondItem="efd-be-gny" secondAttribute="bottom" constant="21" id="B0J-hl-2Lr"/>
+                            <constraint firstItem="mwP-X4-Sab" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ItN-ak-WhA"/>
+                            <constraint firstItem="laM-5d-kyo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="ca2-tq-rcD"/>
+                            <constraint firstItem="efd-be-gny" firstAttribute="leading" secondItem="laM-5d-kyo" secondAttribute="trailing" constant="115" id="czx-Oo-mDa"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mwP-X4-Sab" secondAttribute="trailing" id="kuK-qk-cNc"/>
+                            <constraint firstItem="efd-be-gny" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="u6F-hh-xTq"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="box" selectedImage="box_selected" id="al1-9C-w9z"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="efd-be-gny" id="f6E-Zc-KqK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="49.618320610687022" y="-2.1126760563380285"/>
         </scene>
+        <!--Tab Man View Controller-->
+        <scene sceneID="mR2-Uc-nSf">
+            <objects>
+                <viewController id="xef-4H-szv" customClass="TabManViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xyp-Fh-YNk" colorLabel="IBBuiltInLabel-Red">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="656"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZz-bb-gVk">
+                                <rect key="frame" x="24" y="0.0" width="345" height="71"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="rAp-HQ-qp6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pZz-bb-gVk" secondAttribute="trailing" constant="24" id="AI0-Ei-r0T"/>
+                            <constraint firstItem="pZz-bb-gVk" firstAttribute="top" secondItem="Xyp-Fh-YNk" secondAttribute="top" id="Df1-f8-cBB"/>
+                            <constraint firstItem="pZz-bb-gVk" firstAttribute="leading" secondItem="Xyp-Fh-YNk" secondAttribute="leading" constant="24" id="Yko-VT-VkR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tabView" destination="pZz-bb-gVk" id="ReT-9H-IDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCt-Rf-U4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="-2"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="back" width="10" height="16"/>
         <image name="box" width="21" height="22"/>
         <image name="box_selected" width="21" height="20"/>
         <systemColor name="systemBackgroundColor">
