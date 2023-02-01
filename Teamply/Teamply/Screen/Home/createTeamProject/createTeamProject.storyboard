@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="2193.8461538461538" y="-87.440758293838854"/>
         </scene>
-        <!--Select Project Color View Controller-->
+        <!--Select Color View Controller-->
         <scene sceneID="4gV-1w-ZQ9">
             <objects>
-                <viewController storyboardIdentifier="selectColorVC" modalPresentationStyle="fullScreen" id="fEg-nU-Mrq" customClass="selectProjectColorViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectColorVC" modalPresentationStyle="fullScreen" id="fEg-nU-Mrq" customClass="selectColorViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWR-Vp-OFd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

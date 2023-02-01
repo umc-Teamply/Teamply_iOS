@@ -156,4 +156,16 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         present(bottomSheet, animated: true, completion: nil)
     }
+    
+    // MARK: - Gesture
+    @IBAction func scheduleViewTap(_ sender: Any) {
+        //스토리보드 이름
+        let scheduleVC = UIStoryboard.init(name: "schedule", bundle: nil)
+        //스토리보드 ID
+        guard let nextVC = scheduleVC.instantiateViewController(withIdentifier: "scheduleVC") as? scheduleViewController else { return }
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+    }
+    
 }

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Schedule View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="scheduleVC" id="Y6W-OH-hqX" customClass="scheduleViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbJ-si-vsJ">
+                                <rect key="frame" x="24" y="649" width="345" height="5"/>
+                                <color key="backgroundColor" name="gray0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="tBQ-Jd-sX4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wf9-yG-AAh" customClass="FSCalendar">
+                                <rect key="frame" x="28" y="101" width="337" height="525"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhW-3H-e0Y">
+                                <rect key="frame" x="129" y="75" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8g-fH-UVc">
+                                <rect key="frame" x="22" y="82" width="10" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="Abq-Bg-h54"/>
+                                    <constraint firstAttribute="height" constant="16" id="tkV-Ob-mJn"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                <connections>
+                                    <action selector="backToHome:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="coe-EV-29G"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOQ-ew-96Z">
+                                <rect key="frame" x="34" y="678" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-I5-E8h">
+                                <rect key="frame" x="34" y="715" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgh-Vk-Dd6">
+                                <rect key="frame" x="312" y="725" width="58" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="6oT-km-dMz"/>
+                                    <constraint firstAttribute="height" constant="58" id="mhe-dL-IIA"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="regist"/>
+                                <connections>
+                                    <action selector="registSchedule:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="atM-B1-cZI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zhW-3H-e0Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="129" id="4jh-8S-RuD"/>
+                            <constraint firstItem="zhW-3H-e0Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="9Na-sY-6Qp"/>
+                            <constraint firstItem="wf9-yG-AAh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="28" id="EUl-jv-lPZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="sgh-Vk-Dd6" secondAttribute="bottom" constant="35" id="Nx2-ga-dsd"/>
+                            <constraint firstItem="hOQ-ew-96Z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="P4x-TI-M2z"/>
+                            <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="590" id="PGS-aL-8UK"/>
+                            <constraint firstItem="XFU-I5-E8h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="34" id="PyL-l1-vqg"/>
+                            <constraint firstItem="wf9-yG-AAh" firstAttribute="top" secondItem="h8g-fH-UVc" secondAttribute="bottom" constant="3" id="RPr-Ce-6nr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wf9-yG-AAh" secondAttribute="trailing" constant="28" id="X4V-iR-xMy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TbJ-si-vsJ" secondAttribute="trailing" constant="24" id="ZHk-j8-aCe"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sgh-Vk-Dd6" secondAttribute="trailing" constant="23" id="cnC-fp-cNM"/>
+                            <constraint firstItem="XFU-I5-E8h" firstAttribute="top" secondItem="hOQ-ew-96Z" secondAttribute="bottom" constant="16" id="d8o-C6-zVO"/>
+                            <constraint firstItem="TbJ-si-vsJ" firstAttribute="top" secondItem="wf9-yG-AAh" secondAttribute="bottom" constant="23" id="dz5-L9-Yyp"/>
+                            <constraint firstItem="h8g-fH-UVc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="23" id="g9X-vh-sPr"/>
+                            <constraint firstItem="hOQ-ew-96Z" firstAttribute="top" secondItem="TbJ-si-vsJ" secondAttribute="bottom" constant="24" id="rea-hL-Vjy"/>
+                            <constraint firstItem="h8g-fH-UVc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="22" id="vsr-pt-XLf"/>
+                            <constraint firstItem="TbJ-si-vsJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="xPh-fq-gEc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarView" destination="wf9-yG-AAh" id="wad-bY-iXS"/>
+                        <outlet property="dateLabel" destination="hOQ-ew-96Z" id="tCO-7H-vYZ"/>
+                        <outlet property="schedulContentLabel" destination="XFU-I5-E8h" id="Qyt-uP-Vv3"/>
+                        <outlet property="userScheduleLabel" destination="zhW-3H-e0Y" id="Ve3-9B-lo6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60.305343511450381" y="-23.239436619718312"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="10" height="16"/>
+        <image name="regist" width="58" height="58"/>
+        <namedColor name="gray0">
+            <color red="0.96200001239776611" green="0.95599997043609619" blue="0.95599997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

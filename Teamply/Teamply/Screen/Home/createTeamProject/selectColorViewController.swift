@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class selectProjectColorViewController: UIViewController {
+class selectColorViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var selectButton: UIButton!
