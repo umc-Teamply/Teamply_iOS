@@ -161,9 +161,6 @@
                                                     <constraint firstAttribute="width" constant="164" id="lDR-wk-1bP"/>
                                                     <constraint firstItem="zsh-09-elH" firstAttribute="leading" secondItem="iC9-WB-Pe6" secondAttribute="leading" constant="21" id="tyM-bV-u9L"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="wUy-1e-EkS" appends="YES" id="BsJ-TW-Z5C"/>
-                                                </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-BW-Q6y">
                                                 <rect key="frame" x="319" y="481" width="47" height="38"/>
@@ -238,11 +235,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="wUy-1e-EkS">
-                    <connections>
-                        <action selector="tappedteamPlay:" destination="Y6W-OH-hqX" id="wRC-6b-wc1"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="680" y="-242.41706161137441"/>
         </scene>
