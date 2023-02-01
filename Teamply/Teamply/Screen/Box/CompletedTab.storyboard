@@ -69,22 +69,14 @@
                                                         <constraint firstItem="gYG-7b-ktZ" firstAttribute="centerX" secondItem="Dtw-L0-j6g" secondAttribute="centerX" id="wjY-UL-J6Z"/>
                                                     </constraints>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ax3-w3-C6H">
-                                                    <rect key="frame" x="20" y="54" width="353" height="241"/>
-                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Ax3-w3-C6H" secondAttribute="trailing" id="1Dt-2E-S6j"/>
-                                                <constraint firstItem="Ax3-w3-C6H" firstAttribute="leading" secondItem="jul-5Y-tpS" secondAttribute="leadingMargin" id="5al-Vk-VrE"/>
                                                 <constraint firstItem="Dtw-L0-j6g" firstAttribute="leading" secondItem="jul-5Y-tpS" secondAttribute="leading" id="FXq-03-Og4"/>
                                                 <constraint firstAttribute="trailing" secondItem="Dtw-L0-j6g" secondAttribute="trailing" id="f4c-4q-gsN"/>
-                                                <constraint firstItem="Ax3-w3-C6H" firstAttribute="bottom" secondItem="jul-5Y-tpS" secondAttribute="bottomMargin" id="oD6-cP-E9t"/>
-                                                <constraint firstItem="Ax3-w3-C6H" firstAttribute="top" secondItem="Dtw-L0-j6g" secondAttribute="bottom" id="vPj-b7-CdV"/>
                                                 <constraint firstItem="Dtw-L0-j6g" firstAttribute="top" secondItem="jul-5Y-tpS" secondAttribute="top" id="xWh-uY-mRP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="projectStackView" destination="Ax3-w3-C6H" id="aJH-L4-XD6"/>
                                             <outlet property="semesterLabel" destination="gYG-7b-ktZ" id="Grj-QC-PQH"/>
                                             <outlet property="semesterView" destination="Dtw-L0-j6g" id="H4W-jW-AWm"/>
                                         </connections>
@@ -102,12 +94,40 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="semesterProjectTableView" destination="shK-Gs-eJX" id="FDr-A3-EY3"/>
+                        <outlet property="semesterTableView" destination="shK-Gs-eJX" id="FDr-A3-EY3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="7Py-gk-J0s">
+            <objects>
+                <tableViewController id="wZH-lz-wT7" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="FJj-qk-Ppa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ipW-Np-ZZC">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ipW-Np-ZZC" id="Zaq-44-V6B">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wZH-lz-wT7" id="Hl1-HE-KBK"/>
+                            <outlet property="delegate" destination="wZH-lz-wT7" id="3yi-0o-6Ar"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pL-Ye-qca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856" y="4"/>
         </scene>
     </scenes>
     <resources>
