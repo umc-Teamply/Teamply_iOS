@@ -40,8 +40,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setViewInit()
         setTodayDate()
         weeklyCalendarInit()
+        
+        
     }
-
+    
+    
     // MARK: - Method
     func setTodayDate() {
         let formatter = DateFormatter()
@@ -101,7 +104,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         todayScheduleLabel.text = "오늘 일정"
         todayScheduleLabel.font = .sub1
-    
+        
         userTeamPlayLabel.text = "이프로님의 팀플"
         userTeamPlayLabel.font = .head1
         
@@ -144,7 +147,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         shapeGenerator.topLeftCorner = cornerTreatment
         shapeGenerator.topRightCorner = cornerTreatment
-
+        
         bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
         bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
         bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
@@ -164,4 +167,5 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
+    
 }
