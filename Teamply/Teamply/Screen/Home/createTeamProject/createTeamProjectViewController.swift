@@ -135,7 +135,11 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         nextVC.colorHandler = {color in
             self.projectColorView.backgroundColor = color
         }
-            
+        
+        let c = self.projectColorView.backgroundColor!
+        let idx = nextVC.colors.firstIndex(of: c)
+        nextVC.index = idx ?? 0
+        
         self.present(bottomSheet, animated: true, completion: nil)
     }
 }

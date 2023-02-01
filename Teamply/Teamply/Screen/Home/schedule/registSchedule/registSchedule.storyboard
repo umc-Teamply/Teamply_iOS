@@ -258,8 +258,10 @@
                                 <color key="backgroundColor" name="team3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="3KV-tF-Df2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="72q-Tq-4NR"/>
                                     <constraint firstAttribute="width" constant="48" id="8tg-7M-njx"/>
                                     <constraint firstItem="nvL-Pk-p9r" firstAttribute="centerY" secondItem="XjX-7Q-NN9" secondAttribute="centerY" id="XBu-yk-FjY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="axU-Vg-qqa"/>
                                     <constraint firstItem="nvL-Pk-p9r" firstAttribute="centerX" secondItem="XjX-7Q-NN9" secondAttribute="centerX" id="tpQ-9V-fpl"/>
                                 </constraints>
                             </view>
@@ -305,9 +307,11 @@
                                 </subviews>
                                 <color key="backgroundColor" name="team5"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="EBb-ho-IYw"/>
                                     <constraint firstItem="rdH-DN-fx5" firstAttribute="centerY" secondItem="fEW-Ws-p1D" secondAttribute="centerY" id="OXO-1h-fpK"/>
                                     <constraint firstItem="rdH-DN-fx5" firstAttribute="centerX" secondItem="fEW-Ws-p1D" secondAttribute="centerX" id="P7p-mG-Jo5"/>
                                     <constraint firstAttribute="height" constant="34" id="avY-EF-DLZ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="uBr-Mr-cof"/>
                                     <constraint firstAttribute="width" constant="48" id="v6A-Nd-gcG"/>
                                 </constraints>
                             </view>
@@ -331,8 +335,10 @@
                                 <constraints>
                                     <constraint firstItem="bUY-71-y28" firstAttribute="centerX" secondItem="3jp-R7-Qyj" secondAttribute="centerX" id="4QE-td-ncN"/>
                                     <constraint firstItem="bUY-71-y28" firstAttribute="centerY" secondItem="3jp-R7-Qyj" secondAttribute="centerY" id="6Je-xk-skL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="Elk-Zw-Ubv"/>
                                     <constraint firstAttribute="height" constant="34" id="PjH-eg-SOQ"/>
                                     <constraint firstAttribute="width" constant="48" id="bSv-cF-Lag"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="tBk-xn-aql"/>
                                 </constraints>
                             </view>
                         </subviews>
