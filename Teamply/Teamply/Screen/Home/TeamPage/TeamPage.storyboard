@@ -650,6 +650,20 @@
                             <constraint firstItem="hpd-NK-Fma" firstAttribute="bottom" secondItem="ewn-pi-aQi" secondAttribute="bottom" constant="281" id="vvp-YD-GqS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailedScheduleView0" destination="SS9-Jh-WAm" id="q56-u1-QWW"/>
+                        <outlet property="detailedScheduleView1" destination="GbS-Bt-LfY" id="Fd1-Zb-6ho"/>
+                        <outlet property="percentageLabel0" destination="1X4-QN-68W" id="8pk-L7-6Y5"/>
+                        <outlet property="percentageLabel1" destination="W8t-Pp-zO7" id="wlx-m3-5Ko"/>
+                        <outlet property="progressView0" destination="6qJ-12-EqT" id="kwb-l6-3aC"/>
+                        <outlet property="progressView1" destination="KZb-h0-Kbw" id="sRe-wg-cR0"/>
+                        <outlet property="schedulePeriod0" destination="9RS-eR-eQX" id="Noz-Yr-Rh5"/>
+                        <outlet property="schedulePeriod1" destination="rYd-8w-WZP" id="eMr-nf-FbY"/>
+                        <outlet property="weekScheduleLabel0" destination="3mz-jQ-QB8" id="Nid-yH-yJr"/>
+                        <outlet property="weekScheduleLabel1" destination="klx-XX-G2U" id="X7N-rm-2Wm"/>
+                        <outlet property="weekToDoLabel0" destination="ARw-DG-erk" id="fRM-OV-Yns"/>
+                        <outlet property="weekToDoLabel1" destination="ELS-Lw-6U5" id="M6R-hZ-OE3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8F-gS-yCN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
