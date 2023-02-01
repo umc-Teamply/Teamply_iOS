@@ -86,6 +86,10 @@ class registScheduleViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true)
     }
     
+    @IBAction func submitButton(_ sender: Any) {
+        self.view.window!.rootViewController?.dismiss(animated: true , completion: nil)
+    }
+    
     // MARK: - Gesture
     @IBAction func projectTap(_ sender: Any) {
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "selectProjectVC") as! selectProjectViewController

@@ -36,7 +36,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         var cell = tableView.dequeueReusableCell(withIdentifier: semesterCell, for: indexPath) as! SemesterProjectTableViewCell
         
         cell.semesterLabel.text = semesterList[indexPath.row]
-        cell.projectTableView.dequeueReusableCell(withIdentifier: projectCell, for: indexPath) as! ProjectTableViewCell
+        //cell.projectTableView.dequeueReusableCell(withIdentifier: projectCell, for: indexPath) as! ProjectTableViewCell
         return cell
         
     }
