@@ -82,6 +82,16 @@ class registScheduleViewController: UIViewController {
         timeField.text = timePicker.date.toString(format: "YYYY.MM.dd.E요일 / a HH:mm")
     }
     
+    @objc func textFieldShouldReturn(_ codeTextField: UITextField) -> Bool {
+        codeTextField.resignFirstResponder()
+        
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     // MARK: - IBAction
     @IBAction func backToSchedule(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
