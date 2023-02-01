@@ -21,8 +21,8 @@ class ProjectTableViewCell: UITableViewCell {
     
     func setProject() {
         for p in projectList{
+            var idx = 0
             for l in p {
-                var idx = 0
                 if idx == 0 {
                     titleLabel.text = l
                 } else if idx == 1 {

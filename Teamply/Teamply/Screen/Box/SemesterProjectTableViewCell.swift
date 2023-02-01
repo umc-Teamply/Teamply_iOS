@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SemesterProjectTableViewCell: UITableViewCell, UITableViewController, UITableViewDelegate, UITableViewDataSource {
+class SemesterProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var semesterLabel: UILabel!
     @IBOutlet weak var semesterView: UIView!
     @IBOutlet weak var projectTableView: UITableView!
