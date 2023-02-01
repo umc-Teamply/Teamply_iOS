@@ -53,10 +53,11 @@ class registScheduleViewController: UIViewController {
         saveButton.titleLabel?.font = .cap1
     }
     func timePickerInit() {
-        if let date = selectionDate {
-            timeField.text = date
-            timeField.sizeToFit()
-        }
+//        if let date = selectionDate {
+//            timeField.text = date
+//            timeField.sizeToFit()
+//        }
+        timeField.text = "날짜 및 시간 선택"
         timePicker.date = Date(timeIntervalSinceNow: interval!)
         timeField.font = .sub2
         timeField.textColor = .gray2
@@ -78,12 +79,26 @@ class registScheduleViewController: UIViewController {
     @objc private func datePickerValueDidChange(_ timePicker: UIDatePicker){
         timeField.font = .sub2
         timeField.textColor = .basic2
-        timeField.text = timePicker.date.toString(format: "YYYY.MM.DD.E요일 / a HH:mm")
+        timeField.text = timePicker.date.toString(format: "YYYY.MM.dd.E요일 / a HH:mm")
+    }
+    
+    @objc func textFieldShouldReturn(_ codeTextField: UITextField) -> Bool {
+        codeTextField.resignFirstResponder()
+        
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // MARK: - IBAction
     @IBAction func backToSchedule(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    @IBAction func submitButton(_ sender: Any) {
+        self.view.window!.rootViewController?.dismiss(animated: true , completion: nil)
     }
     
     // MARK: - Gesture
