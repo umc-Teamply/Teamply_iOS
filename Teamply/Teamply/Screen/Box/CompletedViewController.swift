@@ -7,23 +7,32 @@
 
 import UIKit
 
-class CompletedViewController: UIViewController {
-
+class CompletedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    // MARK: - IBOutlet
+    @IBOutlet weak var semesterProjectTableView: UITableView!
+    
+    // MARK: - Properties
+    let semesterList: [String] = ["2022년 1학기", "2021년 2학기"]
+    // MARK: - LifeCycle
+    let semesterCell = "SemesterCell"
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        semesterProjectTableView.delegate = self
+        semesterProjectTableView.dataSource = self
+     
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Method
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        semesterList.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: semesterCell, for: indexPath) as! SemesterProjectTableViewCell
+        cell.semesterLabel.text = semesterList[indexPath.row]
+        return cell
+        
+    }
+  
 
 }
