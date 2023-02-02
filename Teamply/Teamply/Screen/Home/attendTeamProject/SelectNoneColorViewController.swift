@@ -29,7 +29,7 @@ class SelectNoneColorViewController: UIViewController {
     
     // MARK: - Properties
     var index: Int = 0
-    let colors: [UIColor?] = [.team2, .team3, .team5, .team6]
+    let colors: [UIColor?] = [.team2, .team3, .team5, .team6] //이미 있는 프로젝트 색
     let checkImage: UIImageView = {
         let check = UIImageView()
         
@@ -43,8 +43,8 @@ class SelectNoneColorViewController: UIViewController {
         
         comonentInit()
         borderInit()
-        unavailableColorInit()
-        setViewUnavailable()
+        availableColorInit()
+        setViewAvailable()
         colorViewInit()
 
     }
@@ -116,39 +116,39 @@ class SelectNoneColorViewController: UIViewController {
             default:
                 break
             }
-            colorView.backgroundColor = c
+            colorView.backgroundColor = .gray0
             colorView.makeRound(radius: 5)
-            colorView.isUserInteractionEnabled = true
+            colorView.isUserInteractionEnabled = false
         }
     }
     
-    func unavailableColorInit() {
-        color1View.backgroundColor = .gray0
+    func availableColorInit() {
+        color1View.backgroundColor = .team1
         color1View.makeRound(radius: 5)
         
-        color2View.backgroundColor = .gray0
+        color2View.backgroundColor = .team2
         color2View.makeRound(radius: 5)
         
-        color3View.backgroundColor = .gray0
+        color3View.backgroundColor = .team3
         color3View.makeRound(radius: 5)
         
-        color4View.backgroundColor = .gray0
+        color4View.backgroundColor = .team4
         color4View.makeRound(radius: 5)
         
-        color5View.backgroundColor = .gray0
+        color5View.backgroundColor = .team5
         color5View.makeRound(radius: 5)
         
-        color6View.backgroundColor = .gray0
+        color6View.backgroundColor = .team6
         color6View.makeRound(radius: 5)
     }
     
-    func setViewUnavailable() {
-        color1View.isUserInteractionEnabled = false
-        color2View.isUserInteractionEnabled = false
-        color3View.isUserInteractionEnabled = false
-        color4View.isUserInteractionEnabled = false
-        color5View.isUserInteractionEnabled = false
-        color6View.isUserInteractionEnabled = false
+    func setViewAvailable() {
+        color1View.isUserInteractionEnabled = true
+        color2View.isUserInteractionEnabled = true
+        color3View.isUserInteractionEnabled = true
+        color4View.isUserInteractionEnabled = true
+        color5View.isUserInteractionEnabled = true
+        color6View.isUserInteractionEnabled = true
     }
     
     func setBorderView(idx: Int) {
