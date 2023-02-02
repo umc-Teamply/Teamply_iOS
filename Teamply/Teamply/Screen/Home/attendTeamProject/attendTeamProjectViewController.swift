@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
     // MARK: - IBOutlet
@@ -26,7 +27,7 @@ class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
         setComponentInit()
         setInputFieldInit()
     }
-
+    
     // MARK: - Method
     func setComponentInit() {
         titleLabel.text = "팀 프로젝트 참가하기"
@@ -80,9 +81,27 @@ class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
         messageLabel.topAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 6).isActive = true
     }
     
+    func makeBottomSheet(){
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "SelectNoneColorVC") as! SelectNoneColorViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: nextVC)
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)
+        
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+        
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 200
+        bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        self.present(bottomSheet, animated: true, completion: nil)
+    }
+    
     func textFieldDidEndEditing(_ contentField: UITextField) {
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(textField:)),
-                for: UIControl.Event.editingChanged)
+                                for: UIControl.Event.editingChanged)
     }
     
     @objc func textFieldDidChange(textField: UITextField){
@@ -108,11 +127,7 @@ class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func submitInviteCode(_ sender: Any) {
         if isExistCode() {
-            self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-                let homeVC = HomeViewController()
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController?.present(homeVC, animated: true)
-            })
+            makeBottomSheet()
         }
         else { setNotExistCodeView() }
     }
