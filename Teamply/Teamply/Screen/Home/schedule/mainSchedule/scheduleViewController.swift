@@ -23,7 +23,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var endDate: String?
     var sendDate: String?
     var sendIntervar: Double = 0.0
-    
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,9 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     // MARK: - Method
     func dateInit() {
-        startDate = today.toString(format: "YYYY.MM.DD")
-        endDate = today.toString(format: "YYYY.MM.DD")
-        sendDate = today.toString(format: "YYYY.MM.DD.E요일 ")
+        startDate = today.toString(format: "YYYY.MM.dd")
+        endDate = today.toString(format: "YYYY.MM.dd")
+        sendDate = today.toString(format: "YYYY.MM.dd.E요일 ")
     }
     
     func titleInit() {
@@ -104,6 +104,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendarView.appearance.titleSelectionColor = .basic2
         calendarView.appearance.selectionColor = .gray0
     }
+
     
     // 날짜 선택 했을 때 호출되는 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -116,10 +117,10 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             dateLabel.text = "오늘 일정"
         }
         else {
-            dateLabel.text = date.toString(format: "YYYY년 MM월 DD일 E요일 일정")
+            dateLabel.text = date.toString(format: "YYYY년 MM월 dd일 E요일 일정")
         }
-        sendDate = date.toString(format: "YYYY.MM.DD.E요일 ")
-        endDate = date.toString(format: "YYYY.MM.DD")
+        sendDate = date.toString(format: "YYYY.MM.dd.E요일 ")
+        endDate = date.toString(format: "YYYY.MM.dd")
         
         dateLabel.textColor = .basic2
         dateLabel.font = .sub1
