@@ -25,26 +25,39 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             ]
         ]
     // MARK: - LifeCycle
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        semesterTableView.delegate = self
+        semesterTableView.dataSource = self
+        setFooter()
+    }
     
     // MARK: - Method
+    func setFooter() {
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 5))
+        footer.backgroundColor = .gray0
+        semesterTableView.tableFooterView = footer
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         semesterList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: semesterCell, for: indexPath) as! SemesterProjectTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: semesterCell, for: indexPath) as! SemesterProjectTableViewCell
         
         cell.semesterLabel.text = semesterList[indexPath.row]
-        cell.projectTableView.dequeueReusableCell(withIdentifier: projectCell, for: indexPath) as! ProjectTableViewCell
+        
+        cell.projectLists = projectLists[indexPath.row]
+        cell.setProjectStackView()
+        
         return cell
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        semesterTableView.delegate = self
-        semesterTableView.dataSource = self
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        5.0
     }
+
 
 }

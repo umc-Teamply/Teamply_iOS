@@ -8,27 +8,37 @@
 import UIKit
 import SnapKit
 
-class SemesterProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
+class SemesterProjectTableViewCell: UITableViewCell {
     @IBOutlet weak var semesterLabel: UILabel!
     @IBOutlet weak var semesterView: UIView!
-    @IBOutlet weak var projectTableView: UITableView!
+    @IBOutlet weak var projectStackView: UIStackView!
     
-    let projectCell = "ProjectCell"
-    let projectLists: [[[String]]] =
-        [
-            [
-                ["현대 디자인의 이해", "현대 디자인 조사 및 발표", "2022.10.15"],
-                ["부모와 가정의 이해", "다양한 가정의 모습 탐구", "2022.09.12"]
-            ],[
-                ["기초 GUI 디자인", "어플리케이션 클론", "2022.04.04"]
-            ]
-        ]
-    
+    var projectLists: [[String]]!
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .sub1
+        label.textColor = .basic2
+        return label
+    }()
+    var subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .cap2
+        label.textColor = .basic2
+        return label
+    }()
+    var termLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .cap3
+        label.textColor = .basic2
+        return label
+    }()
     override func awakeFromNib() {
         super.awakeFromNib()
-        projectTableView.delegate = self
-        projectTableView.dataSource = self
         setSemesterView()
+        //setProjectStackView()
     }
 
     func setSemesterView() {
@@ -37,7 +47,6 @@ class SemesterProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
     }
     
     func setSemesterLabel() {
-        
         semesterLabel.translatesAutoresizingMaskIntoConstraints = false
         semesterLabel.textColor = .gray3
         semesterLabel.font = .cap3
@@ -45,22 +54,75 @@ class SemesterProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         semesterLabel.makeRound(radius: 15)
     }
     
+    func setProjectStackView() {
+        
+        for p in projectLists {
+            setProjectViewLayout(p: p)
+        }
+    }
+    
+    func setProjectViewLayout(p: [String]){
+        let project: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .basic1
+            view.heightAnchor.constraint(equalToConstant: 114).isActive = true
+            view.leadingAnchor.constraint(equalTo: projectStackView.leadingAnchor)
+            view.trailingAnchor.constraint(equalTo: projectStackView.trailingAnchor)
+            view.topAnchor.constraint(equalTo: projectStackView.topAnchor)
+            return view
+        }()
+        projectStackView.addArrangedSubview(project)
+        
+        var idx = 0
+        var top: CGFloat = 0
+        var font: UIFont = .sub1
+        for l in p {
+            switch idx {
+            case 0:
+                top = 15
+                idx += 1
+                font = .sub1
+                break
+            case 1:
+                top = 43
+                idx += 1
+                font = .cap2
+                break
+            case 2:
+                top = 74
+                font = .cap3
+                break
+            default:
+                break
+            }
+            addProjectLabel(view: project, text: l, top: top, font: font)
+        }
+        
+    }
+    
+    func addProjectLabel(view: UIView, text: String, top: CGFloat, font: UIFont) {
+        let component: UILabel = {
+            let label = UILabel()
+            
+            label.text = text
+            label.textColor = .basic2
+            label.font = font
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        view.addSubview(component)
+        
+        NSLayoutConstraint.activate([
+            component.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            component.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            component.topAnchor.constraint(equalTo: view.topAnchor, constant: top)
+        ])
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        projectLists.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: projectCell, for: indexPath) as! ProjectTableViewCell
-        
-        cell.projectList = self.projectLists[indexPath.row]
-        
-        return cell
-    }
-    
 
 }
