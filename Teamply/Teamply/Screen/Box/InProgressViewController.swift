@@ -13,7 +13,11 @@ class InProgressViewController: UIViewController {
     @IBOutlet weak var projectStackView: UIStackView!
     
     // MARK: - Method
-    let projectComponent: [[String]] = [["공간 프로젝트","졸업 전시","2022.9.19"],["브랜드 경험 디자인","공모전","2020.9.22"]]
+    let projectComponent: [[String]] = [["공간 프로젝트","졸업 전시","2022.9.19"],
+                                        ["브랜드 경험 디자인","공모전","2020.9.22"],
+                                        ["현대 디자인의 이해", "현대 디자인 조사 및 발표", "2022.10.15"],
+                                        ["부모와 가정의 이해", "다양한 가정의 모습 탐구", "2022.09.12"],
+                                        ["기초 GUI 디자인", "어플리케이션 클론", "2022.04.04"]]
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
