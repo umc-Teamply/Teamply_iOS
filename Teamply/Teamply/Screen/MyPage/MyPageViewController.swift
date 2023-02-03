@@ -69,12 +69,21 @@ class MyPageViewController: UIViewController {
     // MARK: - IBAction
     
     // MARK: - Gesture
+    @IBAction func myInformationTap(_ sender: Any) {
+        let myInformationVC = UIStoryboard.init(name: "MyInformation", bundle: nil)
+        guard let nextVC = myInformationVC.instantiateViewController(withIdentifier: "MyInformationVC")
+                as? MyInformationViewController else { return }
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+    }
     
     @IBAction func meetingScheduleTap(_ sender: Any) {
         //스토리보드 이름
         let meetingScheduleVC = UIStoryboard.init(name: "MeetingSchedule", bundle: nil)
         //스토리보드 ID
-        guard let nextVC = meetingScheduleVC.instantiateViewController(withIdentifier: "MeetingScheduleVC") as? MeetingScheduleViewController else { return }
+        guard let nextVC = meetingScheduleVC.instantiateViewController(withIdentifier: "MeetingScheduleVC")
+                as? MeetingScheduleViewController else { return }
         
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)

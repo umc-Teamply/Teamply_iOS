@@ -95,11 +95,15 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="tE3-jX-mtD" firstAttribute="top" secondItem="OUc-bk-5cF" secondAttribute="top" constant="19" id="0vf-gB-Vng"/>
                                     <constraint firstAttribute="height" constant="58" id="CrH-Hh-ezT"/>
                                     <constraint firstItem="tE3-jX-mtD" firstAttribute="leading" secondItem="OUc-bk-5cF" secondAttribute="leading" constant="24" id="d0x-i8-Wt8"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fL2-FJ-ehb" appends="YES" id="rBY-on-YdA"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znm-4C-FbF">
                                 <rect key="frame" x="0.0" y="275" width="393" height="3"/>
@@ -221,6 +225,11 @@
                 <tapGestureRecognizer id="ckf-5l-ddy">
                     <connections>
                         <action selector="meetingScheduleTap:" destination="Y6W-OH-hqX" id="PmK-F8-NpO"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fL2-FJ-ehb">
+                    <connections>
+                        <action selector="myInformationTap:" destination="Y6W-OH-hqX" id="1u3-ae-GMi"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
