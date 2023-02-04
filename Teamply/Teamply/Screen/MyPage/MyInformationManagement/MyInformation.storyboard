@@ -122,10 +122,10 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="c43-gh-Kb0">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TendencyCell" id="c43-gh-Kb0" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qAU-8w-QIB">
+                                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qAU-8w-QIB" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </collectionViewCellContentView>
@@ -295,6 +295,7 @@
                         <outlet property="participationValueLabel" destination="8Ml-SN-FuD" id="EAC-K1-yVb"/>
                         <outlet property="participationView" destination="9y3-SU-BJQ" id="5xx-D4-OMx"/>
                         <outlet property="profileChangeButton" destination="KWA-D7-aZb" id="66f-lv-y8r"/>
+                        <outlet property="tendencyCollectionView" destination="2Mr-89-wGG" id="x9e-Mc-Fgt"/>
                         <outlet property="tendencyLabel" destination="slK-Do-v6g" id="F6F-8a-5Ql"/>
                         <outlet property="tendencyView" destination="vbp-Ii-Y9j" id="0xN-O8-aPp"/>
                         <outlet property="titleLabel" destination="d4q-kF-dh7" id="cv9-TY-MFg"/>

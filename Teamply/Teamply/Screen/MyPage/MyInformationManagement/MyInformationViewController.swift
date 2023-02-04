@@ -7,14 +7,13 @@
 
 import UIKit
 
-class MyInformationViewController: UIViewController {
-    
+class MyInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tendencyLabel: UILabel!
     @IBOutlet weak var tendencyView: UIView!
     @IBOutlet weak var participationLabel: UILabel!
-    @IBOutlet weak var addTendencyButton: UIButton!
+    //@IBOutlet weak var addTendencyButton: UIButton!
     @IBOutlet weak var integrityTitleLabel: UILabel!
     @IBOutlet weak var integrityValueLabel: UILabel!
     @IBOutlet weak var integrityView: UIView!
@@ -25,6 +24,11 @@ class MyInformationViewController: UIViewController {
     @IBOutlet weak var contributionValueLabel: UILabel!
     @IBOutlet weak var contributionView: UIView!
     @IBOutlet weak var profileChangeButton: UIButton!
+    @IBOutlet weak var tendencyCollectionView: UICollectionView!
+    
+    let tendencyCell = "TendencyCell"
+    
+    let myTendencyList:[String] = ["ESFJ", "시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +58,12 @@ class MyInformationViewController: UIViewController {
         profileChangeButton.tintColor = .gray3
         profileChangeButton.titleLabel?.font = .body
         
-        addTendencyButton.setTitle("추가하기", for: .normal)
-        addTendencyButton.tintColor = .gray3
-        addTendencyButton.titleLabel?.font = .cap3
-        addTendencyButton.layer.borderColor = UIColor.gray3?.cgColor
-        addTendencyButton.layer.borderWidth = 1
-        addTendencyButton.makeRound(radius: 5)
+//        addTendencyButton.setTitle("추가하기", for: .normal)
+//        addTendencyButton.tintColor = .gray3
+//        addTendencyButton.titleLabel?.font = .cap3
+//        addTendencyButton.layer.borderColor = UIColor.gray3?.cgColor
+//        addTendencyButton.layer.borderWidth = 1
+//        addTendencyButton.makeRound(radius: 5)
         
         integrityView.makeRound(radius: 14)
         integrityTitleLabel.text = "누적 성실도"
@@ -76,6 +80,17 @@ class MyInformationViewController: UIViewController {
         contributionTitleLabel.font = .cap3
         contributionTitleLabel.textColor = .basic2
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        myTendencyList.count+1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: tendencyCell, for: indexPath) as! TendencyCollectionViewCell
+        
+        return cell
+    }
     
 }
