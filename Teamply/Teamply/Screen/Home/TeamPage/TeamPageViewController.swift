@@ -115,7 +115,8 @@ class TeamPageViewController: UIViewController {
 
     
     @IBAction func tappedAddSchedule(_ sender: Any) {
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "detailedScheduleVC") as? detailedScheduleViewController else { return }
+        let addDetailedScheduleVC = UIStoryboard.init(name: "addDetailedSchedule", bundle: nil)
+        guard let nextVC = addDetailedScheduleVC.instantiateViewController(withIdentifier: "addDetailedScheduleVC") as? addDetailedScheduleViewController else { return }
 
                        nextVC.modalPresentationStyle = .fullScreen
                        self.present(nextVC, animated: true, completion: nil)
