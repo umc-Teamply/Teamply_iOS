@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MyInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tendencyLabel: UILabel!
@@ -28,7 +28,7 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     
     let tendencyCell = "TendencyCell"
     
-    let myTendencyList:[String] = ["ESFJ", "시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요"]
+    let myTendencyList:[String] = ["시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요","ESFJ"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +91,8 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         flowLayout.minimumInteritemSpacing = 15
         flowLayout.minimumLineSpacing = 9
         flowLayout.sectionInset = .init(top: 19, left: 24, bottom: 39, right: 24)
-        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 54)
+        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 53)
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         tendencyCollectionView.setCollectionViewLayout(flowLayout, animated: true)
         tendencyCollectionView.register(TendencyCollectionViewCell.self, forCellWithReuseIdentifier: tendencyCell)
         
@@ -103,15 +104,22 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tendencyCell, for: indexPath) as! TendencyCollectionViewCell
         
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: tendencyCell, for: indexPath) as! TendencyCollectionViewCell
+        cell.tendencyLabel.text = myTendencyList[indexPath.row]
+        //cell.tendencyLabel.sizeToFit()
+        cell.setTendencyTag()
+        cell.setDeleteButton()
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 12, height: 28)
+        let item = myTendencyList[indexPath.row]
+        let cellWidth = item.size(withAttributes: [.font: UIFont.cap3]).width + 46
+        print(cellWidth)
+        
+        return CGSize(width: cellWidth, height: 28)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
