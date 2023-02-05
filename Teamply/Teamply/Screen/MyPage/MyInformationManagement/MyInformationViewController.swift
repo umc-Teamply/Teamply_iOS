@@ -32,7 +32,9 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUserInfo()
         componentInit()
+        setCollectionView()
     }
     
     func setUserInfo() {
@@ -46,9 +48,9 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         titleLabel.font = .head1
         titleLabel.textColor = .basic2
         
-        tendencyLabel.text = "나의 성향"
-        tendencyLabel.font = .sub1
-        tendencyLabel.textColor = .basic2
+        //        tendencyLabel.text = "나의 성향"
+        //        tendencyLabel.font = .sub1
+        //        tendencyLabel.textColor = .basic2
         
         participationLabel.text = "프로젝트 참여도"
         participationLabel.font = .sub1
@@ -58,12 +60,12 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         profileChangeButton.tintColor = .gray3
         profileChangeButton.titleLabel?.font = .body
         
-//        addTendencyButton.setTitle("추가하기", for: .normal)
-//        addTendencyButton.tintColor = .gray3
-//        addTendencyButton.titleLabel?.font = .cap3
-//        addTendencyButton.layer.borderColor = UIColor.gray3?.cgColor
-//        addTendencyButton.layer.borderWidth = 1
-//        addTendencyButton.makeRound(radius: 5)
+        //        addTendencyButton.setTitle("추가하기", for: .normal)
+        //        addTendencyButton.tintColor = .gray3
+        //        addTendencyButton.titleLabel?.font = .cap3
+        //        addTendencyButton.layer.borderColor = UIColor.gray3?.cgColor
+        //        addTendencyButton.layer.borderWidth = 1
+        //        addTendencyButton.makeRound(radius: 5)
         
         integrityView.makeRound(radius: 14)
         integrityTitleLabel.text = "누적 성실도"
@@ -81,8 +83,23 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         contributionTitleLabel.textColor = .basic2
     }
     
+    func setCollectionView() {
+        tendencyCollectionView.delegate = self
+        tendencyCollectionView.dataSource = self
+        
+        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 15
+        flowLayout.minimumLineSpacing = 9
+        flowLayout.sectionInset = .init(top: 19, left: 24, bottom: 39, right: 24)
+        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 54)
+        tendencyCollectionView.setCollectionViewLayout(flowLayout, animated: true)
+        tendencyCollectionView.register(TendencyCollectionViewCell.self, forCellWithReuseIdentifier: tendencyCell)
+        
+        tendencyCollectionView.register(TendencyHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TendencyHeader")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        myTendencyList.count+1
+        myTendencyList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,4 +110,20 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 12, height: 28)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TendencyHeader", for: indexPath) as! TendencyHeader
+            header.titleLabel.text = "나의 성향"
+            
+            return header
+        } else {
+            return UICollectionReusableView()
+        }
+    }
 }

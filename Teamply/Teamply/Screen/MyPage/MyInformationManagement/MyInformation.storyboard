@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="110" width="393" height="708"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xEI-u4-AdC">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="686"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="604"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kV-uD-mQy">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="190"/>
@@ -103,49 +103,48 @@
                                                     <constraint firstAttribute="height" constant="112" id="ajq-21-bb7"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbp-Ii-Y9j">
-                                                <rect key="frame" x="0.0" y="312" width="393" height="182"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slK-Do-v6g">
-                                                        <rect key="frame" x="24.000000000000004" y="30" width="41.333333333333343" height="20.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Mr-89-wGG">
-                                                        <rect key="frame" x="24" y="69.333333333333314" width="345" height="73.666666666666686"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TgQ-rl-PW2">
-                                                            <size key="itemSize" width="128" height="128"/>
-                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        </collectionViewFlowLayout>
-                                                        <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TendencyCell" id="c43-gh-Kb0" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qAU-8w-QIB" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </collectionViewCellContentView>
-                                                            </collectionViewCell>
-                                                        </cells>
-                                                    </collectionView>
-                                                </subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Mr-89-wGG">
+                                                <rect key="frame" x="0.0" y="312" width="393" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="182" id="Meg-1o-AMq"/>
-                                                    <constraint firstItem="slK-Do-v6g" firstAttribute="top" secondItem="vbp-Ii-Y9j" secondAttribute="top" constant="30" id="Q6k-7I-301"/>
-                                                    <constraint firstItem="slK-Do-v6g" firstAttribute="leading" secondItem="vbp-Ii-Y9j" secondAttribute="leading" constant="24" id="VPO-na-qGm"/>
-                                                    <constraint firstItem="2Mr-89-wGG" firstAttribute="leading" secondItem="vbp-Ii-Y9j" secondAttribute="leading" constant="24" id="chJ-cw-QRs"/>
-                                                    <constraint firstItem="2Mr-89-wGG" firstAttribute="top" secondItem="slK-Do-v6g" secondAttribute="bottom" constant="19" id="oXf-aq-vQv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="2Mr-89-wGG" secondAttribute="trailing" constant="24" id="odI-KQ-qxX"/>
-                                                    <constraint firstAttribute="bottom" secondItem="2Mr-89-wGG" secondAttribute="bottom" constant="39" id="s2M-PO-4Q0"/>
+                                                    <constraint firstAttribute="height" constant="100" id="stE-bj-RCb"/>
                                                 </constraints>
-                                            </view>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TgQ-rl-PW2">
+                                                    <size key="itemSize" width="116" height="100"/>
+                                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TendencyCell" id="c43-gh-Kb0" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="50" width="116" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qAU-8w-QIB" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="116" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXn-XX-bIq">
+                                                                    <rect key="frame" x="28" y="22" width="42" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="116" height="100"/>
+                                                        <connections>
+                                                            <outlet property="tendencyLabel" destination="GXn-XX-bIq" id="rsz-26-uM1"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TendencyHeader" id="HKK-87-uAS" customClass="TedencyHeader">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionReusableView>
+                                            </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fi3-EY-8zH">
-                                                <rect key="frame" x="0.0" y="499" width="393" height="187"/>
+                                                <rect key="frame" x="0.0" y="417" width="393" height="187"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyf-6B-JZD">
                                                         <rect key="frame" x="25.000000000000004" y="30" width="41.333333333333343" height="23"/>
@@ -296,8 +295,6 @@
                         <outlet property="participationView" destination="9y3-SU-BJQ" id="5xx-D4-OMx"/>
                         <outlet property="profileChangeButton" destination="KWA-D7-aZb" id="66f-lv-y8r"/>
                         <outlet property="tendencyCollectionView" destination="2Mr-89-wGG" id="x9e-Mc-Fgt"/>
-                        <outlet property="tendencyLabel" destination="slK-Do-v6g" id="F6F-8a-5Ql"/>
-                        <outlet property="tendencyView" destination="vbp-Ii-Y9j" id="0xN-O8-aPp"/>
                         <outlet property="titleLabel" destination="d4q-kF-dh7" id="cv9-TY-MFg"/>
                         <outlet property="userNameLabel" destination="WAs-9q-paB" id="bHs-h5-5zo"/>
                     </connections>
