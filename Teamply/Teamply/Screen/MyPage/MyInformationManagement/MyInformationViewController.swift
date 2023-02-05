@@ -94,7 +94,7 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         tendencyCollectionView.delegate = self
         tendencyCollectionView.dataSource = self
         
-        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let flowLayout = LeftAlignedCollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 15
         flowLayout.minimumLineSpacing = 9
         flowLayout.sectionInset = .init(top: 19, left: 24, bottom: 39, right: 24)
@@ -142,6 +142,7 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
             
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TendencyHeader", for: indexPath) as! TendencyHeader
             header.titleLabel.text = "나의 성향"
+            header.titleLabel.textAlignment = .left
             
             return header
         } else {

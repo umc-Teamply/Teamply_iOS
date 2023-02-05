@@ -25,7 +25,7 @@ class TendencyHeader: UICollectionReusableView {
         func setupUI(){
             self.addSubview(titleLabel)
             NSLayoutConstraint.activate([
-                titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24) ,
+                titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24) ,
                 titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 30)
             ])
         }

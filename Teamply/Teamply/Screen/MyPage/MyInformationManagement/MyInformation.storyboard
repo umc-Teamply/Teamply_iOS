@@ -109,7 +109,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="irP-GB-kJd"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TgQ-rl-PW2">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TgQ-rl-PW2" customClass="LeftAlignedCollectionViewFlowLayout" customModule="Teamply" customModuleProvider="target">
                                                     <size key="itemSize" width="153" height="55"/>
                                                     <size key="headerReferenceSize" width="50" height="50"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
