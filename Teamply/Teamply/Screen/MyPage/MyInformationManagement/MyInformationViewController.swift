@@ -37,6 +37,13 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         setCollectionView()
     }
     
+    func isLastCell(idx: Int) -> Bool {
+        if idx == myTendencyList.count{
+            return true
+        }
+        return false
+    }
+    
     func setUserInfo() {
         userNameLabel.text = "이프로"
         userNameLabel.font = .sub1
@@ -100,26 +107,33 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        myTendencyList.count
+        myTendencyList.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tendencyCell, for: indexPath) as! TendencyCollectionViewCell
-        
-        cell.tendencyLabel.text = myTendencyList[indexPath.row]
-        //cell.tendencyLabel.sizeToFit()
-        cell.setTendencyTag()
-        cell.setDeleteButton()
-        
+        if isLastCell(idx: indexPath.row) {
+            cell.setAddButton()
+        } else {
+            cell.tendencyLabel.text = myTendencyList[indexPath.row]
+            //cell.tendencyLabel.sizeToFit()
+            cell.setTendencyTag()
+            cell.setDeleteButton()
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = myTendencyList[indexPath.row]
-        let cellWidth = item.size(withAttributes: [.font: UIFont.cap3]).width + 46
-        print(cellWidth)
         
-        return CGSize(width: cellWidth, height: 28)
+        if isLastCell(idx: indexPath.row){
+            return CGSize(width: 71, height: 28)
+        }
+        else {
+            let item = myTendencyList[indexPath.row]
+            let cellWidth = item.size(withAttributes: [.font: UIFont.cap3]).width + 46
+            
+            return CGSize(width: cellWidth, height: 28)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

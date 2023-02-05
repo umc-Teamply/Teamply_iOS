@@ -36,10 +36,8 @@ class TendencyCollectionViewCell: UICollectionViewCell {
     lazy var addButton: UIButton = {
         let button = UIButton()
         button.setTitle("추가하기", for: .normal)
-        button.tintColor = .gray3
+        button.setTitleColor(.gray3, for: .normal)
         button.titleLabel!.font = .cap3
-        //button.widthAnchor.constraint(equalToConstant: 10).isActive = true
-        //button.heightAnchor.constraint(equalToConstant: 10).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         return button
@@ -78,6 +76,15 @@ class TendencyCollectionViewCell: UICollectionViewCell {
     }
     
     func setAddButton() {
+        self.contentView.addSubview(addButton)
         
+        contentView.layer.borderColor = UIColor.gray3?.cgColor
+        contentView.layer.borderWidth = 1
+        contentView.makeRound(radius: 5)
+        
+        NSLayoutConstraint.activate([
+            addButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            addButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
     }
 }
