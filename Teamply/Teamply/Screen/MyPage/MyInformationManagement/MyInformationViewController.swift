@@ -22,16 +22,24 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var contributionView: UIView!
     @IBOutlet weak var profileChangeButton: UIButton!
     @IBOutlet weak var tendencyCollectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     let tendencyCell = "TendencyCell"
     
-    let myTendencyList:[String] = ["시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요","ESFJ"]
+    let myTendencyList:[String] = ["시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요", "책임감이 강해요", "ESFJ"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUserInfo()
         componentInit()
         setCollectionView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = tendencyCollectionView.collectionViewLayout.collectionViewContentSize.height
+        collectionViewHeight.constant = height
+        self.view.layoutIfNeeded()
     }
     
     func isLastCell(idx: Int) -> Bool {
@@ -81,8 +89,8 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         tendencyCollectionView.dataSource = self
         
         let flowLayout = LeftAlignedCollectionViewFlowLayout()
-        flowLayout.minimumInteritemSpacing = 15
-        flowLayout.minimumLineSpacing = 9
+        flowLayout.minimumInteritemSpacing = 9
+        flowLayout.minimumLineSpacing = 15
         flowLayout.sectionInset = .init(top: 19, left: 24, bottom: 39, right: 24)
         flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 53)
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize

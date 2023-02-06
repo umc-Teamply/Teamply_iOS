@@ -107,7 +107,7 @@
                                                 <rect key="frame" x="0.0" y="312" width="393" height="150"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="irP-GB-kJd"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="150" id="2Bf-1m-juU"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TgQ-rl-PW2" customClass="LeftAlignedCollectionViewFlowLayout" customModule="Teamply" customModuleProvider="target">
                                                     <size key="itemSize" width="153" height="55"/>
@@ -235,6 +235,12 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" name="gray0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="2Mr-89-wGG" secondAttribute="trailing" id="3gO-ks-Bcl"/>
+                                            <constraint firstItem="2Mr-89-wGG" firstAttribute="leading" secondItem="xEI-u4-AdC" secondAttribute="leading" id="44j-4O-Q12"/>
+                                            <constraint firstItem="fi3-EY-8zH" firstAttribute="top" secondItem="2Mr-89-wGG" secondAttribute="bottom" constant="5" id="AYg-md-9FE"/>
+                                            <constraint firstItem="2Mr-89-wGG" firstAttribute="top" secondItem="0Wj-I3-NZ5" secondAttribute="bottom" constant="5" id="rjn-tc-dYB"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -271,6 +277,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionViewHeight" destination="2Bf-1m-juU" id="uel-QT-kmO"/>
                         <outlet property="contributionTitleLabel" destination="Uw0-FB-8dL" id="OJX-4E-cOR"/>
                         <outlet property="contributionValueLabel" destination="7jv-k7-VFC" id="f2E-2E-iog"/>
                         <outlet property="contributionView" destination="qE1-Hc-7Im" id="M1l-az-nHD"/>
