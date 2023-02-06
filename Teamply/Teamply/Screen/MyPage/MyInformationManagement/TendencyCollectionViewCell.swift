@@ -8,8 +8,6 @@
 import UIKit
 
 class TendencyCollectionViewCell: UICollectionViewCell {
-    //@IBOutlet weak var tendencyLabel: UILabel!
-    
     lazy var tendencyLabel:UILabel = {
         let label = UILabel()
         label.font = .cap3

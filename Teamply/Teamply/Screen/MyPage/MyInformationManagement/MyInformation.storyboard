@@ -122,23 +122,11 @@
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qAU-8w-QIB" customClass="TendencyCollectionViewCell" customModule="Teamply" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="153" height="55"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXn-XX-bIq">
-                                                                    <rect key="frame" x="28" y="22" width="42" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="153" height="55"/>
-                                                        <connections>
-                                                            <outlet property="tendencyLabel" destination="GXn-XX-bIq" id="rsz-26-uM1"/>
-                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
-                                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TendencyHeader" id="HKK-87-uAS" customClass="TedencyHeader">
+                                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TendencyHeader" id="HKK-87-uAS" customClass="TedencyHeader">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </collectionReusableView>

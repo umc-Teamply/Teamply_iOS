@@ -10,10 +10,7 @@ import UIKit
 class MyInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var tendencyLabel: UILabel!
-    @IBOutlet weak var tendencyView: UIView!
     @IBOutlet weak var participationLabel: UILabel!
-    //@IBOutlet weak var addTendencyButton: UIButton!
     @IBOutlet weak var integrityTitleLabel: UILabel!
     @IBOutlet weak var integrityValueLabel: UILabel!
     @IBOutlet weak var integrityView: UIView!
@@ -55,10 +52,6 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         titleLabel.font = .head1
         titleLabel.textColor = .basic2
         
-        //        tendencyLabel.text = "나의 성향"
-        //        tendencyLabel.font = .sub1
-        //        tendencyLabel.textColor = .basic2
-        
         participationLabel.text = "프로젝트 참여도"
         participationLabel.font = .sub1
         participationLabel.textColor = .basic2
@@ -66,13 +59,6 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         profileChangeButton.setTitle("프로필 변경", for: .normal)
         profileChangeButton.tintColor = .gray3
         profileChangeButton.titleLabel?.font = .body
-        
-        //        addTendencyButton.setTitle("추가하기", for: .normal)
-        //        addTendencyButton.tintColor = .gray3
-        //        addTendencyButton.titleLabel?.font = .cap3
-        //        addTendencyButton.layer.borderColor = UIColor.gray3?.cgColor
-        //        addTendencyButton.layer.borderWidth = 1
-        //        addTendencyButton.makeRound(radius: 5)
         
         integrityView.makeRound(radius: 14)
         integrityTitleLabel.text = "누적 성실도"
@@ -116,7 +102,6 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
             cell.setAddButton()
         } else {
             cell.tendencyLabel.text = myTendencyList[indexPath.row]
-            //cell.tendencyLabel.sizeToFit()
             cell.setTendencyTag()
             cell.setDeleteButton()
         }
