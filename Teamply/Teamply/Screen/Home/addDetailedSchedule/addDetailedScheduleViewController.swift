@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class addDetailedScheduleViewController: UIViewController {
   
@@ -53,9 +54,26 @@ class addDetailedScheduleViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
+    @IBAction func tappedParticipantButton(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "selectParticipantVC") as! selectParticipantViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: vc)
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 20)
+        
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+        
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .extended)
+        bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
+        bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 275
+        bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
+        
+        present(bottomSheet, animated: true, completion: nil)
+    }
+    
 }
-
-//left padding
+//왼쪽 여ㅂ
 extension UITextField {
     func addLeftPadding() {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
