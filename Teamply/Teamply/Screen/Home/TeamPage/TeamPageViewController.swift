@@ -10,6 +10,7 @@ import UIKit
 class TeamPageViewController: UIViewController {
     
     // MARK: - IBOulet
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var user0Label: UILabel!
     @IBOutlet weak var periodLabel: UILabel!

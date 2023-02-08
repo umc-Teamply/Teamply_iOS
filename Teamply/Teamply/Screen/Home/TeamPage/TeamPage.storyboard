@@ -27,7 +27,7 @@
                                             <constraint firstAttribute="height" constant="16" id="QHi-FS-h2K"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="backWhite"/>
                                         <connections>
                                             <action selector="backhomeButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jZy-GU-4zc"/>
                                         </connections>
@@ -768,7 +768,7 @@
     <resources>
         <image name="add_circle" width="68" height="68"/>
         <image name="add_friend" width="40" height="40"/>
-        <image name="back" width="10" height="16"/>
+        <image name="backWhite" width="11" height="16"/>
         <image name="close" width="15" height="14"/>
         <image name="go" width="8" height="13"/>
         <image name="profile" width="42" height="42"/>
