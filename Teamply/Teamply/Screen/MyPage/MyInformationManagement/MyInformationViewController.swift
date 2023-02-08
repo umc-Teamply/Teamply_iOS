@@ -26,7 +26,7 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     
     let tendencyCell = "TendencyCell"
     
-    let myTendencyList:[String] = ["시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요", "책임감이 강해요", "ESFJ"]
+    var myTendencyList:[String] = ["시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요", "책임감이 강해요", "ESFJ"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +112,10 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
             cell.tendencyLabel.text = myTendencyList[indexPath.row]
             cell.setTendencyTag()
             cell.setDeleteButton()
+            
+            cell.deleteButton.superview?.tag = indexPath.section
+            cell.deleteButton.tag = indexPath.row
+            cell.deleteButton.addTarget(self, action: #selector(self.deleteTendencyAction), for: .touchUpInside)
         }
         return cell
     }
@@ -140,6 +144,15 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
             return header
         } else {
             return UICollectionReusableView()
+        }
+    }
+    
+    @objc func deleteTendencyAction(sender: UIButton!) {
+        let cell: UICollectionViewCell? = (sender.superview?.superview as? UICollectionViewCell)
+        if let indexpath: IndexPath = self.tendencyCollectionView?.indexPath(for: cell!) {
+            
+            self.myTendencyList.remove(at: indexpath.row)
+            self.tendencyCollectionView.deleteItems(at: [indexpath])
         }
     }
 }

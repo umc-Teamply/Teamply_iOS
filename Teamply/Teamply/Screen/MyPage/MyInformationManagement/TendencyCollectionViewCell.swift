@@ -25,6 +25,7 @@ class TendencyCollectionViewCell: UICollectionViewCell {
         button.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         button.widthAnchor.constraint(equalToConstant: 10).isActive = true
         button.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        //button.addTarget(self, action: #selector(deleteTendencyAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         
@@ -55,12 +56,14 @@ class TendencyCollectionViewCell: UICollectionViewCell {
         contentView.makeRound(radius: 5)
         contentView.layer.borderColor = UIColor.gray4?.cgColor
         contentView.layer.borderWidth = 1
+        contentView.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         self.contentView.addSubview(tendencyLabel)
         
         NSLayoutConstraint.activate([
             tendencyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 13),
-            tendencyLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            tendencyLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            tendencyLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5)
         ])
     }
     
@@ -85,4 +88,6 @@ class TendencyCollectionViewCell: UICollectionViewCell {
             addButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
+    
+    
 }
