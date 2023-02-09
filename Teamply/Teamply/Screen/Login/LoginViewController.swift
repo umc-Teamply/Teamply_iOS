@@ -13,10 +13,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logo1IMG: UIImageView!
     
     
-    @IBOutlet weak var memberLoginButton: UIButton!
+    @IBOutlet weak var IDLoginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     
-    @IBOutlet weak var memberLoginLabel: UILabel!
+    @IBOutlet weak var IDLoginLabel: UILabel!
     @IBOutlet weak var createAccountLabel: UILabel!
     
     override func viewDidLoad() {
@@ -29,17 +29,17 @@ class LoginViewController: UIViewController {
     }
     
     func componentStyle() {
-        memberLoginButton.makeRound(radius: 15)
-        memberLoginButton.backgroundColor = .basic1
-        memberLoginButton.layer.borderWidth = 1
-        memberLoginButton.layer.borderColor = UIColor(named: "team1")?.cgColor
+        IDLoginButton.makeRound(radius: 15)
+        IDLoginButton.backgroundColor = .basic1
+        IDLoginButton.layer.borderWidth = 1
+        IDLoginButton.layer.borderColor = UIColor(named: "team1")?.cgColor
         
         createAccountButton.makeRound(radius: 15)
         createAccountButton.backgroundColor = .team1
         
-        memberLoginLabel.text = "아이디가 있어요!"
-        memberLoginLabel.font = .sub2
-        memberLoginLabel.textColor = .team1
+        IDLoginLabel.text = "아이디가 있어요!"
+        IDLoginLabel.font = .sub2
+        IDLoginLabel.textColor = .team1
         
         createAccountLabel.text = "팀플리 회원가입 하기"
         createAccountLabel.font = .sub2
@@ -54,6 +54,16 @@ class LoginViewController: UIViewController {
                         
                         self.present(MemberLoginViewController!, animated: true, completion: nil)
                 
+    }
+    
+    
+    @IBAction func tapIDlogin(_ sender: Any) {
+        let IDLoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "IDLoginVC")
+                      
+        IDLoginViewController?.modalPresentationStyle = .fullScreen
+        IDLoginViewController?.modalTransitionStyle = .crossDissolve
+                        
+                        self.present(IDLoginViewController!, animated: true, completion: nil)
     }
     
     

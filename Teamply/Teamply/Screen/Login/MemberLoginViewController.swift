@@ -40,12 +40,19 @@ class MemberLoginViewController: UIViewController {
     @IBOutlet weak var detail1Button: UIButton!
     @IBOutlet weak var detail2Button: UIButton!
     
+    @IBOutlet weak var TermsofUseButton: UIImageView!
+    @IBOutlet weak var personalInfoButton: UIImageView!
+    @IBOutlet weak var snsAgreeButton: UIImageView!
+    
     @IBOutlet weak var joinButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         componentStyle()
-
+        
+        TermsofUseButton.image = UIImage(named: "check_circle")
+        personalInfoButton.image = UIImage(named: "check_circle")
+        snsAgreeButton.image = UIImage(named: "check_circle")
         
     }
     
@@ -174,6 +181,23 @@ class MemberLoginViewController: UIViewController {
     }
     
     @IBAction func tapCheckCodeButton(_ sender: Any) {
+    }
+    
+    @IBAction func tapTermsofUseButton(_ sender: Any) {
+        TermsofUseButton.image = UIImage(named: "green_check_circle")
+    }
+    
+    @IBAction func tapPersonalInfoButton(_ sender: Any) {
+        personalInfoButton.image = UIImage(named: "green_check_circle")
+    }
+    
+    @IBAction func tapsnsAgreeButton(_ sender: Any) {
+        snsAgreeButton.image = UIImage(named: "green_check_circle")
+    }
+    
+    
+    @IBAction func tapjoinButton(_ sender: Any) {
+        joinButton.backgroundColor = .team1
     }
     
 }
