@@ -35,6 +35,10 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         setCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let height = tendencyCollectionView.collectionViewLayout.collectionViewContentSize.height
@@ -163,6 +167,13 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
                 as? AddTendencyViewController else { return }
         
         nextVC.modalPresentationStyle = .overFullScreen
+        
+        let itemLocation = myTendencyList.count
+        let insertionIndexPath = IndexPath(item: itemLocation, section: 0)
+        nextVC.tendencyHandler = {tendency in
+            self.myTendencyList.append(tendency)
+            self.tendencyCollectionView.insertItems(at: [insertionIndexPath])
+        }
         
         self.present(nextVC, animated: true, completion: nil)
     }

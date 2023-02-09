@@ -12,6 +12,8 @@ class AddTendencyViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var tendencyTextField: UITextField!
     
+    var tendencyHandler: ((String) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +52,7 @@ class AddTendencyViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        tendencyHandler?(self.tendencyTextField.text!)
         self.presentingViewController?.dismiss(animated: true)
     }
 }
