@@ -159,7 +159,7 @@
                                                     <action selector="addTeamProjectButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9iD-8z-gha"/>
                                                 </connections>
                                             </button>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6xl-qr-6yP">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6xl-qr-6yP">
                                                 <rect key="frame" x="0.0" y="521" width="390" height="149"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -230,6 +230,7 @@
                     <navigationItem key="navigationItem" id="nUg-1O-puh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="collectionViewHeight" destination="1Ol-Op-jGE" id="Ag0-mB-tw2"/>
                         <outlet property="projectCollectionView" destination="6xl-qr-6yP" id="Pcp-Lc-ijZ"/>
                         <outlet property="scheduleView" destination="Koa-na-bwM" id="Ed3-Ww-v4G"/>
                         <outlet property="todayDateLabel" destination="z5r-oD-G0x" id="kku-he-5XU"/>

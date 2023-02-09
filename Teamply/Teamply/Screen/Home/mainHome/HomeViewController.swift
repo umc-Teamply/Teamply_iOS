@@ -29,9 +29,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var projectCollectionView: UICollectionView!
     
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     let projectCell = "ProjectCell"
-    let projectList: [String] = []
+    let projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
+    let contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
+    let colorList = ["team1", "team2", "team3"]
+    let headCountList = [3, 4, 2]
+    let termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setCollectionViewInit()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = projectCollectionView.collectionViewLayout.collectionViewContentSize.height
+        collectionViewHeight.constant = height
+        self.view.layoutIfNeeded()
+    }
     
     // MARK: - Method
     func setTodayDate() {
@@ -207,9 +218,26 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectCell, for: indexPath) as! ProjectCollectionViewCell
         
-        cell.setEmptyProject()
+        if projectList.isEmpty {
+            cell.projectColor = .gray1!
+            cell.titleLabel.text = "팀프로젝트를\n등록해보세요"
+            cell.setEmptyProject()
+        } else {
+            cell.projectColor = UIColor(named: colorList[indexPath.row])!
+            cell.titleLabel.text = projectList[indexPath.row]
+            cell.contentLabel.text = contentList[indexPath.row]
+            cell.headCount = headCountList[indexPath.row]
+            cell.termLabel.text = termList[indexPath.row]
+            cell.setProjects()
+        }
+        cell.setProjectInit()
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 161, height: 149)
+        
+    }
+
 }
