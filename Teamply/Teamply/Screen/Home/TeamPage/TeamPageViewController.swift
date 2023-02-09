@@ -10,6 +10,7 @@ import UIKit
 class TeamPageViewController: UIViewController {
     
     // MARK: - IBOulet
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var user0Label: UILabel!
     @IBOutlet weak var periodLabel: UILabel!
@@ -114,6 +115,13 @@ class TeamPageViewController: UIViewController {
     }
 
     
+    @IBAction func tappedAddSchedule(_ sender: Any) {
+        let addDetailedScheduleVC = UIStoryboard.init(name: "addDetailedSchedule", bundle: nil)
+        guard let nextVC = addDetailedScheduleVC.instantiateViewController(withIdentifier: "addDetailedScheduleVC") as? addDetailedScheduleViewController else { return }
+
+                       nextVC.modalPresentationStyle = .fullScreen
+                       self.present(nextVC, animated: true, completion: nil)
+    }
     
 
 }

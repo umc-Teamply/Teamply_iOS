@@ -165,6 +165,9 @@
                                                     <constraint firstAttribute="width" constant="164" id="lDR-wk-1bP"/>
                                                     <constraint firstItem="zsh-09-elH" firstAttribute="leading" secondItem="iC9-WB-Pe6" secondAttribute="leading" constant="21" id="tyM-bV-u9L"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="FE3-Ug-dzX" appends="YES" id="aZT-QX-BKU"/>
+                                                </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-BW-Q6y">
                                                 <rect key="frame" x="319" y="481" width="47" height="38"/>
@@ -242,6 +245,11 @@
                 <tapGestureRecognizer id="Ev5-qR-Fkx">
                     <connections>
                         <action selector="scheduleViewTap:" destination="Y6W-OH-hqX" id="Xeh-vh-lcT"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="FE3-Ug-dzX">
+                    <connections>
+                        <action selector="tappedteamPlay:" destination="Y6W-OH-hqX" id="074-bG-9rQ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
