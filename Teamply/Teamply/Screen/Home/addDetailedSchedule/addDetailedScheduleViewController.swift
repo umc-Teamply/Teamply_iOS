@@ -18,9 +18,20 @@ class addDetailedScheduleViewController: UIViewController {
     @IBOutlet weak var participantLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
     
+    private lazy var datePicker: DatePicker = {
+        let picker = DatePicker()
+        picker.setup()
+        picker.didSelectDates = { [weak self] (startDate, endDate) in
+            let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
+            self?.periodTextField.text = text
+        }
+        return picker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setaddDetailedScheduleStyle()
+        periodTextField.inputView = datePicker.inputView
     }
 
     func setaddDetailedScheduleStyle(){

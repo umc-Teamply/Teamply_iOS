@@ -130,25 +130,37 @@
                                 <rect key="frame" x="45" y="78" width="63" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="user0"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="clickuser0Button:" destination="fQ1-rz-uui" eventType="touchUpInside" id="z9H-0B-EMR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-xn-0qY">
                                 <rect key="frame" x="124" y="78" width="63" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="user2"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="clickuser2Button:" destination="fQ1-rz-uui" eventType="touchUpInside" id="qKP-xS-0qH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmK-4j-sio">
                                 <rect key="frame" x="203" y="78" width="63" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="user1"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="clickuser1Button:" destination="fQ1-rz-uui" eventType="touchUpInside" id="7m9-v6-cdt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGf-Hs-lDY">
                                 <rect key="frame" x="282" y="78" width="63" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="user3"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="clickuser3Button:" destination="fQ1-rz-uui" eventType="touchUpInside" id="diy-Mv-zvz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB9-wH-2eh">
                                 <rect key="frame" x="58" y="148.33333333333331" width="36" height="19"/>
@@ -200,9 +212,13 @@
                         <outlet property="selectButton" destination="TL8-Zv-La1" id="D4A-n5-k42"/>
                         <outlet property="selectLabel" destination="QBF-V5-Nzr" id="1u6-f9-Mcy"/>
                         <outlet property="titleLabel" destination="H29-I9-aVW" id="Uas-SG-gbS"/>
+                        <outlet property="user0Button" destination="ec4-qY-1LY" id="DzM-h0-ybH"/>
                         <outlet property="user0Label" destination="xB9-wH-2eh" id="nxB-B8-HwR"/>
+                        <outlet property="user1Button" destination="KmK-4j-sio" id="mxQ-pj-Ls8"/>
                         <outlet property="user1Label" destination="YVO-KP-JTx" id="XS7-cY-QGi"/>
+                        <outlet property="user2Button" destination="r9G-xn-0qY" id="nqL-iU-lHv"/>
                         <outlet property="user2Label" destination="I2q-vD-s6n" id="TUe-gd-rX0"/>
+                        <outlet property="user3Button" destination="YGf-Hs-lDY" id="YTV-DK-9ZB"/>
                         <outlet property="user3Label" destination="DNQ-TU-zmK" id="iNT-WO-YF5"/>
                     </connections>
                 </viewController>
@@ -214,10 +230,6 @@
     <resources>
         <image name="backWhite" width="11" height="16"/>
         <image name="plus" width="13" height="13"/>
-        <image name="user0" width="64" height="63"/>
-        <image name="user1" width="64" height="63"/>
-        <image name="user2" width="64" height="63"/>
-        <image name="user3" width="64" height="63"/>
         <namedColor name="basic2">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
