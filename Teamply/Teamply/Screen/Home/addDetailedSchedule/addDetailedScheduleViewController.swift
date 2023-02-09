@@ -18,6 +18,7 @@ class addDetailedScheduleViewController: UIViewController {
     @IBOutlet weak var participantLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
     
+    
     private lazy var datePicker: DatePicker = {
         let picker = DatePicker()
         picker.setup()
@@ -30,8 +31,10 @@ class addDetailedScheduleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setaddDetailedScheduleStyle()
         periodTextField.inputView = datePicker.inputView
+
     }
 
     func setaddDetailedScheduleStyle(){
@@ -59,9 +62,11 @@ class addDetailedScheduleViewController: UIViewController {
         ToDoTextField.makeRound(radius: 10)
         participantButton.makeRound(radius: 10)
         plusButton.makeRound(radius: 10)
+        
     }
     
-    
+
+
     @IBAction func backButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
@@ -81,7 +86,10 @@ class addDetailedScheduleViewController: UIViewController {
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
         
         present(bottomSheet, animated: true, completion: nil)
+        
+        participantLabel.textColor = .clear
     }
+
     
 }
 //왼쪽 여ㅂ
@@ -92,5 +100,3 @@ extension UITextField {
         self.leftViewMode = ViewMode.always
     }
 }
-
-
