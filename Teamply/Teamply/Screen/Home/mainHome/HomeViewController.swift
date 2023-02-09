@@ -18,17 +18,20 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var todayDateLabel: UILabel!
     @IBOutlet weak var userTeamPlayLabel: UILabel!
     @IBOutlet weak var todayPlanContentLabel: UILabel!
-    @IBOutlet weak var teamPlayTitleLabel: UILabel!
+    //@IBOutlet weak var teamPlayTitleLabel: UILabel!
     @IBOutlet weak var todayScheduleLabel: UILabel!
     @IBOutlet weak var todayScheduleContentLabel: UILabel!
     
     @IBOutlet weak var scheduleView: UIView!
-    @IBOutlet weak var teamPlayView: UIView!
+    //@IBOutlet weak var teamPlayView: UIView!
     @IBOutlet weak var todayScheduleView: UIView!
     @IBOutlet weak var todayPlanView: UIView!
+    @IBOutlet weak var projectCollectionView: UICollectionView!
     
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
     
+    let projectCell = "ProjectCell"
+    let projectList: [String] = []
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +39,12 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setTitleInit()
         setTodayPlayContent()
         setTodayScheduleContent()
-        setTeamPlay()
+        //setTeamPlay()
         setViewInit()
         setTodayDate()
         weeklyCalendarInit()
         
-        
+        setCollectionViewInit()
     }
     
     
@@ -124,18 +127,33 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         todayPlanContentLabel.textColor = .gray3
     }
     
-    func setTeamPlay() {
-        teamPlayTitleLabel.text = "팀프로젝트를\n등록해보세요"
-        teamPlayTitleLabel.font = .sub1
-        teamPlayTitleLabel.textColor = .gray3
-    }
+//    func setTeamPlay() {
+//        teamPlayTitleLabel.text = "팀프로젝트를\n등록해보세요"
+//        teamPlayTitleLabel.font = .sub1
+//        teamPlayTitleLabel.textColor = .gray3
+//    }
     
     func setViewInit() {
         scheduleView.makeRound(radius: 10)
         scheduleView.makeShadow(UIColor.gray2!, 1, CGSize(width: 0, height: 11), 16)
         todayPlanView.makeRound(radius: 10)
         todayPlanView.makeShadow(UIColor.gray2!, 1, CGSize(width: 0, height: 11), 16)
-        teamPlayView.makeRound(radius: 10)
+        //teamPlayView.makeRound(radius: 10)
+    }
+    
+    func setCollectionViewInit() {
+        projectCollectionView.delegate = self
+        projectCollectionView.dataSource = self
+        
+        let flowLayout = LeftAlignedCollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 17
+        flowLayout.minimumLineSpacing = 17
+        flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        projectCollectionView.setCollectionViewLayout(flowLayout, animated: true)
+        
+        projectCollectionView.register(ProjectCollectionViewCell.self, forCellWithReuseIdentifier: projectCell)
+        
     }
     
     // MARK: - IBAction
@@ -170,10 +188,28 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     @IBAction func tappedteamPlay(_ sender: Any) {
         let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
-                        guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return }
-
-                        nextVC.modalPresentationStyle = .fullScreen
-                        self.present(nextVC, animated: true, completion: nil)
+        guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return }
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
     }
+    
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if projectList.isEmpty {
+            return 1
+        }
+        return projectList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectCell, for: indexPath) as! ProjectCollectionViewCell
+        
+        cell.setEmptyProject()
+        return cell
+    }
+    
     
 }
