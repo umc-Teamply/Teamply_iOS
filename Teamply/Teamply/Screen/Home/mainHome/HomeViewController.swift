@@ -237,7 +237,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 161, height: 149)
-        
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
+        guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return false}
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+        
+        return false
+    }
 }
