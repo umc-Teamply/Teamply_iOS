@@ -117,6 +117,7 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
             cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(self.deleteTendencyAction), for: .touchUpInside)
         }
+        cell.addButton.addTarget(self, action: #selector(self.addTendencyAction), for: .touchUpInside)
         return cell
     }
     
@@ -154,5 +155,15 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
             self.myTendencyList.remove(at: indexpath.row)
             self.tendencyCollectionView.deleteItems(at: [indexpath])
         }
+    }
+    
+    @objc func addTendencyAction() {
+        let addTendencyVC = UIStoryboard.init(name: "AddTendency", bundle: nil)
+        guard let nextVC = addTendencyVC.instantiateViewController(withIdentifier: "AddTendencyVC")
+                as? AddTendencyViewController else { return }
+        
+        nextVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(nextVC, animated: true, completion: nil)
     }
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Tendency View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AddTendencyVC" id="Y6W-OH-hqX" customClass="AddTendencyViewController" customModule="Teamply" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-3d-6D7">
+                                <rect key="frame" x="24" y="53" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="cancleAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LMq-5j-ugA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5S-wg-hyg">
+                                <rect key="frame" x="294" y="53" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="saveAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bze-cK-Maz"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ch-YX-5bd">
+                                <rect key="frame" x="44" y="425" width="305" height="2"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="D2C-50-RZT"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1aO-YK-Mga">
+                                <rect key="frame" x="44" y="394.33333333333331" width="305" height="18.666666666666686"/>
+                                <color key="tintColor" name="basic1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1aO-YK-Mga" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="16g-zO-0IB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1ch-YX-5bd" secondAttribute="trailing" constant="44" id="8Ot-1b-UIK"/>
+                            <constraint firstItem="1aO-YK-Mga" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="CDq-xR-ob7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Q5S-wg-hyg" secondAttribute="trailing" constant="24" id="JK1-9c-Vkf"/>
+                            <constraint firstItem="1ch-YX-5bd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="S0U-J5-aem"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1aO-YK-Mga" secondAttribute="trailing" constant="44" id="ZjP-3N-qKL"/>
+                            <constraint firstItem="Q5S-wg-hyg" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="53" id="aA1-dU-S2m"/>
+                            <constraint firstItem="1ch-YX-5bd" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="mqp-RA-BPm"/>
+                            <constraint firstItem="Atw-3d-6D7" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="53" id="nI1-JC-j12"/>
+                            <constraint firstItem="Atw-3d-6D7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="qrz-Kb-8AO"/>
+                            <constraint firstItem="1ch-YX-5bd" firstAttribute="top" secondItem="1aO-YK-Mga" secondAttribute="bottom" constant="12" id="xMO-tP-cOg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancleButton" destination="Atw-3d-6D7" id="hmJ-yr-Q5t"/>
+                        <outlet property="saveButton" destination="Q5S-wg-hyg" id="81H-qt-DFn"/>
+                        <outlet property="tendencyTextField" destination="1aO-YK-Mga" id="3ta-KC-Pm1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="basic1">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

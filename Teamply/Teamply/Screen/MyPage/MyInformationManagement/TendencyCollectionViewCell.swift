@@ -25,7 +25,6 @@ class TendencyCollectionViewCell: UICollectionViewCell {
         button.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         button.widthAnchor.constraint(equalToConstant: 10).isActive = true
         button.heightAnchor.constraint(equalToConstant: 10).isActive = true
-        //button.addTarget(self, action: #selector(deleteTendencyAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         
@@ -39,6 +38,7 @@ class TendencyCollectionViewCell: UICollectionViewCell {
         button.titleLabel!.font = .cap3
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
+        //button.addTarget(self, action: #selector(addTendencyAction), for: .touchUpInside)
         return button
     }()
     
