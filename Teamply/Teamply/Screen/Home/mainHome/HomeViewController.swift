@@ -34,7 +34,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let projectCell = "ProjectCell"
     let projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
     let contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
-    let colorList = ["team1", "team2", "team3"]
+    let colorList = ["team1", "team2", "team3","team2"]
     let headCountList = [3, 4, 2]
     let termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
     // MARK: - LifeCycle
@@ -54,7 +54,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let height = projectCollectionView.collectionViewLayout.collectionViewContentSize.height
+        var height: CGFloat = 0.0
+        if projectList.count%2 == 0 {
+            height = CGFloat(projectList.count/2*160)
+        } else {
+            height = CGFloat((projectList.count/2+1)*160) + 5
+        }
+        //projectCollectionView.collectionViewLayout.collectionViewContentSize.height
         collectionViewHeight.constant = height
         self.view.layoutIfNeeded()
     }
