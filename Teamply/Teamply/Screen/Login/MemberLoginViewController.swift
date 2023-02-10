@@ -217,13 +217,9 @@ extension MemberLoginViewController {
         guard var email = emailTextField.text else { return }
         guard var pwd = pwTextField.text else { return }
         
-        name.append("'")
-        email.append("'")
-        pwd.append("'")
-
-        name = "'"+name
-        email = "'"+email
-        pwd = "'"+pwd
+        name = name.addSingleQuote(s: name)
+        email = email.addSingleQuote(s: email)
+        pwd = pwd.addSingleQuote(s: pwd)
         
         let signupRequest: SignUpRequest = SignUpRequest(name: name, email: email, pw: pwd, accessConsent: 1, serviceConsent: 1)
         
@@ -233,6 +229,7 @@ extension MemberLoginViewController {
                 print(error)
             } else {
                 let result = result?.message
+                print(result!)
             }
             
         }
