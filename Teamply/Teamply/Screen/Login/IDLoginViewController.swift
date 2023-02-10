@@ -89,7 +89,33 @@ class IDLoginViewController: UIViewController {
     }
     
     @IBAction func tapLoginButton(_ sender: Any) {
+        login()
         
     }
     
+}
+
+extension IDLoginViewController {
+    func login() {
+        guard var email = emailTextField.text else { return }
+        guard var pwd = pwTextField.text else { return }
+        
+        email.append("'")
+        pwd.append("'")
+
+        email = "'"+email
+        pwd = "'"+pwd
+        
+        let loginRequest: LogInRequest = LogInRequest(email: email, pw: pwd)
+        
+        LogInAPI.shared.logIn(param: loginRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                let accessToken = result?.data?.accessToken
+                let refreshToken = result?.data?.refreshToken
+            }
+            
+        }
+    }
 }

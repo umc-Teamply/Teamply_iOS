@@ -225,7 +225,6 @@ extension MemberLoginViewController {
         email = "'"+email
         pwd = "'"+pwd
         
-        print(name)
         let signupRequest: SignUpRequest = SignUpRequest(name: name, email: email, pw: pwd, accessConsent: 1, serviceConsent: 1)
         
         
