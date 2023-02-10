@@ -28,6 +28,11 @@ class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
         setInputFieldInit()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("attendTeamProjectVC"), object: nil, userInfo: nil)
+    }
+    
     // MARK: - Method
     func setComponentInit() {
         titleLabel.text = "팀 프로젝트 참가하기"
