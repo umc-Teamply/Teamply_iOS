@@ -29,14 +29,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    // MARK: Properties
     let projectCell = "ProjectCell"
     var projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
     var contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
     var colorList = ["team1", "team2", "team3","team2"]
     var headCountList = [3, 4, 2]
     var termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
-    
-    var isAddProject = false
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -58,7 +57,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             name: NSNotification.Name("attendTeamProjectVC"),
             object: nil
         )
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -74,7 +72,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.view.layoutIfNeeded()
     }
     
-
+    // MARK: - @objc
       @objc func didDismissDetailNotification(_ notification: Notification) {
           DispatchQueue.main.async {
               self.projectCollectionView.reloadData()
@@ -129,7 +127,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         for w in weekdayLabel {
             if w.text == weekday {
                 w.textColor = .basic2
-                //w.font = .sub2
             }
         }
     }
@@ -197,8 +194,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         bottomSheet.setShapeGenerator(shapeGenerator, for: .closed)
         bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 180
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
-        
-        isAddProject = true
         
         present(bottomSheet, animated: true, completion: nil)
     }

@@ -8,6 +8,7 @@
 import UIKit
 
 class ProjectCollectionViewCell: UICollectionViewCell {
+    // MARK: - Properties
     lazy var titleLabel:UILabel = {
         let label = UILabel()
         label.font = .sub2
