@@ -30,11 +30,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     let projectCell = "ProjectCell"
-    let projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
-    let contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
-    let colorList = ["team1", "team2", "team3","team2"]
-    let headCountList = [3, 4, 2]
-    let termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
+    var projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
+    var contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
+    var colorList = ["team1", "team2", "team3","team2"]
+    var headCountList = [3, 4, 2]
+    var termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
+    
+    var isAddProject = false
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -48,6 +50,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         weeklyCalendarInit()
         
         setCollectionViewInit()
+        
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didDismissDetailNotification(_:)),
+            name: NSNotification.Name("attendTeamProjectVC"),
+            object: nil
+        )
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,6 +73,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         collectionViewHeight.constant = height
         self.view.layoutIfNeeded()
     }
+    
+
+      @objc func didDismissDetailNotification(_ notification: Notification) {
+          DispatchQueue.main.async {
+              self.projectCollectionView.reloadData()
+          }
+      }
     
     // MARK: - Method
     func setTodayDate() {
@@ -180,6 +198,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 180
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
         
+        isAddProject = true
+        
         present(bottomSheet, animated: true, completion: nil)
     }
     
@@ -228,6 +248,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return true }
         
         nextVC.modalPresentationStyle = .fullScreen
+        
         self.present(nextVC, animated: true, completion: nil)
         
         return false
