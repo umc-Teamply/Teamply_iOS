@@ -198,6 +198,8 @@ class MemberLoginViewController: UIViewController {
     
     @IBAction func tapjoinButton(_ sender: Any) {
         joinButton.backgroundColor = .team1
+        signup()
+        self.presentingViewController?.dismiss(animated: true)
     }
     
 }
@@ -209,3 +211,32 @@ extension UITextField {
     }
 }
 
+extension MemberLoginViewController {
+    func signup() {
+        guard var name = nameTextField.text else { return }
+        guard var email = emailTextField.text else { return }
+        guard var pwd = pwTextField.text else { return }
+        
+        name.append("'")
+        email.append("'")
+        pwd.append("'")
+
+        name = "'"+name
+        email = "'"+email
+        pwd = "'"+pwd
+        
+        print(name)
+        let signupRequest: SignUpRequest = SignUpRequest(name: name, email: email, pw: pwd, accessConsent: 1, serviceConsent: 1)
+        
+        
+        SignUpAPI.shared.signUp(param: signupRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                let result = result?.message
+            }
+            
+        }
+    }
+    
+}

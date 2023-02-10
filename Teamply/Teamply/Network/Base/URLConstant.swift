@@ -13,6 +13,6 @@ struct URLConstant {
     
     static let baseURL = "http://ec2-3-36-54-148.ap-northeast-2.compute.amazonaws.com"
     
-    
+    static let signUp = "/user/signup"
 
 }
