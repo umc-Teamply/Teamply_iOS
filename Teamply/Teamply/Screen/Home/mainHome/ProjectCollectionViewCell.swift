@@ -37,18 +37,20 @@ class ProjectCollectionViewCell: UICollectionViewCell {
     
     lazy var divisionView:UIView = {
         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .basic1
-        //view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
         return view
     }()
     
-    lazy var memberView:UIStackView = {
-        let view = UIStackView()
-        view.contentMode = .scaleToFill
-        view.spacing = 7
-        view.axis = .horizontal
+    lazy var memberView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.contentMode = .scaleToFill
+        stackView.spacing = 7
         
-        return view
+        return stackView
     }()
     
     var projectColor:UIColor = .gray1!
@@ -85,8 +87,6 @@ class ProjectCollectionViewCell: UICollectionViewCell {
     func setProjects() {
         self.contentView.addSubview(titleLabel)
         
-        //titleLabel.textColor = .basic1
-        
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
@@ -101,8 +101,8 @@ class ProjectCollectionViewCell: UICollectionViewCell {
             contentLabel.heightAnchor.constraint(equalToConstant: 16)
         ])
 
-        self.contentView.addSubview(memberView)
-        let width = headCount*20 + (headCount-1)*7
+        self.contentView.addSubview(self.memberView)
+        let width = headCount*27
 
         NSLayoutConstraint.activate([
             memberView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -131,9 +131,8 @@ class ProjectCollectionViewCell: UICollectionViewCell {
         divisionView.backgroundColor = .basic1
         NSLayoutConstraint.activate([
             divisionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 11),
-            divisionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 11),
-            divisionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -41.5),
-            divisionView.heightAnchor.constraint(equalToConstant: 1)
+            divisionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -11),
+            divisionView.topAnchor.constraint(equalTo: memberView.bottomAnchor, constant: 13)
         ])
 
         contentView.addSubview(termLabel)

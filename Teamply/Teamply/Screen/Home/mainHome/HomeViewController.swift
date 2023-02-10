@@ -18,12 +18,10 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var todayDateLabel: UILabel!
     @IBOutlet weak var userTeamPlayLabel: UILabel!
     @IBOutlet weak var todayPlanContentLabel: UILabel!
-    //@IBOutlet weak var teamPlayTitleLabel: UILabel!
     @IBOutlet weak var todayScheduleLabel: UILabel!
     @IBOutlet weak var todayScheduleContentLabel: UILabel!
     
     @IBOutlet weak var scheduleView: UIView!
-    //@IBOutlet weak var teamPlayView: UIView!
     @IBOutlet weak var todayScheduleView: UIView!
     @IBOutlet weak var todayPlanView: UIView!
     @IBOutlet weak var projectCollectionView: UICollectionView!
@@ -37,6 +35,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let colorList = ["team1", "team2", "team3","team2"]
     let headCountList = [3, 4, 2]
     let termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setTitleInit()
         setTodayPlayContent()
         setTodayScheduleContent()
-        //setTeamPlay()
         setViewInit()
         setTodayDate()
         weeklyCalendarInit()
@@ -60,7 +58,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         } else {
             height = CGFloat((projectList.count/2+1)*160) + 5
         }
-        //projectCollectionView.collectionViewLayout.collectionViewContentSize.height
+       
         collectionViewHeight.constant = height
         self.view.layoutIfNeeded()
     }
@@ -144,18 +142,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         todayPlanContentLabel.textColor = .gray3
     }
     
-//    func setTeamPlay() {
-//        teamPlayTitleLabel.text = "팀프로젝트를\n등록해보세요"
-//        teamPlayTitleLabel.font = .sub1
-//        teamPlayTitleLabel.textColor = .gray3
-//    }
-    
     func setViewInit() {
         scheduleView.makeRound(radius: 10)
         scheduleView.makeShadow(UIColor.gray2!, 1, CGSize(width: 0, height: 11), 16)
         todayPlanView.makeRound(radius: 10)
         todayPlanView.makeShadow(UIColor.gray2!, 1, CGSize(width: 0, height: 11), 16)
-        //teamPlayView.makeRound(radius: 10)
     }
     
     func setCollectionViewInit() {
@@ -203,14 +194,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         self.present(nextVC, animated: true, completion: nil)
     }
     
-    @IBAction func tappedteamPlay(_ sender: Any) {
-        let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
-        guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return }
-        
-        nextVC.modalPresentationStyle = .fullScreen
-        self.present(nextVC, animated: true, completion: nil)
-    }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -240,14 +223,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 161, height: 149)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
-        guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return false}
+        guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return true }
         
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
