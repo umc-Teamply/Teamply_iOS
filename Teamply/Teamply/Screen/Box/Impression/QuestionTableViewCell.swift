@@ -47,18 +47,22 @@ class QuestionTableViewCell: UITableViewCell {
     }
     
     func filledAnswer() {
-        resizingTextView()
+        //resizingTextView()
         answerTextView.backgroundColor = .basic1
         answerTextView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 5)
     }
     
     func resizingTextView() {
         let size = CGSize(width: answerTextView.frame.width, height: .infinity)
-        let estimatedSize = answerTextView.sizeThatFits(size)
-        
+
         answerTextView.reloadInputViews()
         answerTextView.setNeedsUpdateConstraints()
     }
+    
+    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+            return true
+        }
 }
 
 extension QuestionTableViewCell: UITextViewDelegate {
@@ -69,6 +73,8 @@ extension QuestionTableViewCell: UITextViewDelegate {
         }
         answerTextView.backgroundColor = .basic1
         answerTextView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 5)
+        answerTextView.reloadInputViews()
+        answerTextView.setNeedsUpdateConstraints()
     }
     
     //수정 끝

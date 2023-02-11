@@ -23,6 +23,12 @@ class ImpressionViewController: UIViewController {
         labelInit()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+     
+          self.view.endEditing(true)
+     
+    }
+    
     func labelInit() {
         projectNameLabel.font = .sub1
         projectNameLabel.textColor = .basic2
@@ -33,6 +39,10 @@ class ImpressionViewController: UIViewController {
         questionTableView.delegate = self
         questionTableView.dataSource = self
         questionTableView.separatorStyle = .none
+    }
+    
+    @IBAction func backToBox(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
     }
     
 }
