@@ -11,7 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    // 이부분에서 시작 스토리보드 설정한 뒤 구현하면 편하게 테스트 가능!
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        // name에 원하는 스토리보드이름 넣기
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }
