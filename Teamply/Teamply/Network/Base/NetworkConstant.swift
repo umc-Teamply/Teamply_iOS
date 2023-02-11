@@ -11,7 +11,9 @@ struct NetworkConstant {
     
     static let noTokenHeader = ["Content-Type": "application/json"]
     static let hasTokenHeader = ["Content-Type": "application/json",
-                                 "Authorization": NetworkConstant.accessToken]
+                                 "Authorization": NetworkConstant.accessToken,
+                                 "Refresh": NetworkConstant.refreshToken]
     
     static var accessToken = ""
+    static var refreshToken = ""
 }
