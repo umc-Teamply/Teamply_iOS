@@ -14,7 +14,7 @@ class ImpressionViewController: UIViewController {
     
     let questionList = ["어떤것이 가장 기억에 남나요?", "이 프로젝트를 통해 어떤 것이 성장했나요?", "이 프로젝트를 하면서 아쉬운 점이 있었나요?"]
     
-    let answerList: [String] = ["안녕", "나는", "야호야"]
+    let answerList: [String] = []
     let questionCell = "QuestionCell"
     
     override func viewDidLoad() {
@@ -22,12 +22,7 @@ class ImpressionViewController: UIViewController {
         tableViewInit()
         labelInit()
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-     
-          self.view.endEditing(true)
-     
-    }
+
     
     func labelInit() {
         projectNameLabel.font = .sub1
@@ -66,6 +61,7 @@ extension ImpressionViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 3 {
             cell.emptyAnswer()
         }
+        cell.preView = self.view
         return cell
     }
     

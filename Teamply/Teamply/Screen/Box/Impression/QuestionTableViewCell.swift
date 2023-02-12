@@ -16,12 +16,16 @@ class QuestionTableViewCell: UITableViewCell {
     @IBOutlet weak var answerTextView: UITextView!
     
     weak var delegate: TableViewCellDelegate?
+    var preView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         textViewInit()
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         self.preView.endEditing(true)
+   }
     
     func labelInit() {
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +33,7 @@ class QuestionTableViewCell: UITableViewCell {
         questionLabel.textColor = .basic2
         questionLabel.heightAnchor.constraint(equalToConstant: 23).isActive = true
     }
-
+    
     func textViewInit() {
         answerTextView.delegate = self
         answerTextView.sizeToFit()
@@ -43,7 +47,6 @@ class QuestionTableViewCell: UITableViewCell {
     }
     func emptyAnswer() {
         answerTextView.backgroundColor = .gray0
-        answerTextView.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
     
     func filledAnswer() {
@@ -54,31 +57,34 @@ class QuestionTableViewCell: UITableViewCell {
     
     func resizingTextView() {
         let size = CGSize(width: answerTextView.frame.width, height: .infinity)
-
+        answerTextView.sizeThatFits(size)
         answerTextView.reloadInputViews()
         answerTextView.setNeedsUpdateConstraints()
     }
-    
-    func textViewShouldReturn(_ textView: UITextView) -> Bool {
-        textView.resignFirstResponder()
-            return true
-        }
+
 }
 
 extension QuestionTableViewCell: UITextViewDelegate {
     //수정 시작
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if answerTextView.text.isEmpty{
+            answerTextView.backgroundColor = .basic1
+            answerTextView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 5)
+            resizingTextView()
+        }
+        answerTextView.isScrollEnabled = true
+        answerTextView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        answerTextView.textContainerInset = .init(top: 24, left: 24, bottom: 24, right: 24)
+        answerTextView.scrollIndicatorInsets = .init(top: 24, left: 24, bottom: 24, right: 24)
         if let delegate = delegate {
             delegate.updateTextViewHeight(self, textView)
         }
-        answerTextView.backgroundColor = .basic1
-        answerTextView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 5)
-        answerTextView.reloadInputViews()
-        answerTextView.setNeedsUpdateConstraints()
     }
     
     //수정 끝
     func textViewDidEndEditing(_ textView: UITextView) {
+        answerTextView.isScrollEnabled = false
         resizingTextView()
     }
+
 }
