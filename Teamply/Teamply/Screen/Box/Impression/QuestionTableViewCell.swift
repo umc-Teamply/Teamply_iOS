@@ -24,8 +24,9 @@ class QuestionTableViewCell: UITableViewCell {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-         self.preView.endEditing(true)
-   }
+        self.preView.endEditing(true)
+        self.answerTextView.resignFirstResponder()
+    }
     
     func labelInit() {
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,15 +68,15 @@ class QuestionTableViewCell: UITableViewCell {
 extension QuestionTableViewCell: UITextViewDelegate {
     //수정 시작
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if answerTextView.text.isEmpty{
-            answerTextView.backgroundColor = .basic1
-            answerTextView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 5)
+        if textView.text.isEmpty{
+            textView.backgroundColor = .basic1
+            textView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 5)
             resizingTextView()
         }
-        answerTextView.isScrollEnabled = true
-        answerTextView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-        answerTextView.textContainerInset = .init(top: 24, left: 24, bottom: 24, right: 24)
-        answerTextView.scrollIndicatorInsets = .init(top: 24, left: 24, bottom: 24, right: 24)
+        textView.isScrollEnabled = true
+        textView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        textView.textContainerInset = .init(top: 24, left: 24, bottom: 24, right: 24)
+        textView.scrollIndicatorInsets = .init(top: 24, left: 24, bottom: 24, right: 24)
         if let delegate = delegate {
             delegate.updateTextViewHeight(self, textView)
         }
@@ -83,7 +84,7 @@ extension QuestionTableViewCell: UITextViewDelegate {
     
     //수정 끝
     func textViewDidEndEditing(_ textView: UITextView) {
-        answerTextView.isScrollEnabled = false
+        textView.isScrollEnabled = false
         resizingTextView()
     }
 

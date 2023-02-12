@@ -11,6 +11,7 @@ class ImpressionViewController: UIViewController {
     
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var questionTableView: UITableView!
+    @IBOutlet weak var saveButton: UIButton!
     
     let questionList = ["어떤것이 가장 기억에 남나요?", "이 프로젝트를 통해 어떤 것이 성장했나요?", "이 프로젝트를 하면서 아쉬운 점이 있었나요?"]
     
@@ -21,6 +22,7 @@ class ImpressionViewController: UIViewController {
         super.viewDidLoad()
         tableViewInit()
         labelInit()
+        buttonInit()
     }
 
     
@@ -28,6 +30,14 @@ class ImpressionViewController: UIViewController {
         projectNameLabel.font = .sub1
         projectNameLabel.textColor = .basic2
         projectNameLabel.text = "팀플리"
+    }
+    
+    func buttonInit(){
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.setTitle("저장", for: .normal)
+        saveButton.setTitleColor(.basic2, for: .normal)
+        saveButton.tintColor = .basic2
+        saveButton.titleLabel?.font = .cap1
     }
     
     func tableViewInit() {
@@ -40,6 +50,9 @@ class ImpressionViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true)
     }
     
+    @IBAction func saveImpression(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
 }
 
 extension ImpressionViewController: UITableViewDelegate, UITableViewDataSource {
@@ -68,6 +81,7 @@ extension ImpressionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     
 }
 
