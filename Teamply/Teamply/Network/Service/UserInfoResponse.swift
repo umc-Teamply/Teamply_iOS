@@ -8,20 +8,24 @@
 import Foundation
 
 struct UserInfoResponse: Codable {
-    let userName: String
+    let result: [Info]
 }
 
-struct UserProjectResponse: Codable {
-    let projectId, headCount: Int
-    let title, content: String
-    let startAt, endAt: String
+// MARK: - Result
+struct Info: Codable {
+    let userID: Int
+    let userName, userEmail, userPw: String
+    let accessConsent, serviceConsent, createIP, updateIP: Int
+    let activate, isResigned: Int
+    let createAt, updateAt: String
 
     enum CodingKeys: String, CodingKey {
-        case projectId = "proj_id"
-        case title = "proj_name"
-        case headCount = "proj_headcount"
-        case startAt = "proj_startAt"
-        case endAt = "proj_endAt"
-        case content = "proj_contents"
+        case userID = "user_id"
+        case userName = "user_name"
+        case userEmail = "user_email"
+        case userPw = "user_pw"
+        case accessConsent, serviceConsent, createIP, updateIP, activate
+        case isResigned = "is_resigned"
+        case createAt, updateAt
     }
 }

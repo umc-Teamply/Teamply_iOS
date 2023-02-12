@@ -28,28 +28,25 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
+
+
     // MARK: Properties
     let projectCell = "ProjectCell"
-    var projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
-    var contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
-    var colorList = ["team1", "team2", "team3","team2"]
-    var headCountList = [3, 4, 2]
-    var termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
+    var projectInfo: [ProjectInfo]!
+    var userName: String!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInfo()
+        getUserProjectInfo()
         
-        setTitleInit()
         setTodayPlayContent()
         setTodayScheduleContent()
+        
         setViewInit()
         setTodayDate()
         weeklyCalendarInit()
-        
-        setCollectionViewInit()
-        
         
         NotificationCenter.default.addObserver(
             self,
@@ -62,10 +59,11 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var height: CGFloat = 0.0
-        if projectList.count%2 == 0 {
-            height = CGFloat(projectList.count/2*160)
+        
+        if projectInfo.count%2 == 0 {
+            height = CGFloat(projectInfo.count/2*160)
         } else {
-            height = CGFloat((projectList.count/2+1)*160) + 5
+            height = CGFloat((projectInfo.count/2+1)*160) + 5
         }
        
         collectionViewHeight.constant = height
@@ -132,13 +130,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     
     func setTitleInit() {
-        userScheduleLabel.text = "이프로님의 일정"
+        userScheduleLabel.text = userName+"님의 일정"
         userScheduleLabel.font = .head1
         
         todayScheduleLabel.text = "오늘 일정"
         todayScheduleLabel.font = .sub1
         
-        userTeamPlayLabel.text = "이프로님의 팀플"
+        userTeamPlayLabel.text = userName+"님의 팀플"
         userTeamPlayLabel.font = .head1
         
         todayPlanLabel.text = "오늘 계획"
@@ -213,25 +211,29 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if projectList.isEmpty {
+        if projectInfo.isEmpty {
             return 1
         }
-        return projectList.count
+        return projectInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectCell, for: indexPath) as! ProjectCollectionViewCell
         
-        if projectList.isEmpty {
+        if projectInfo.isEmpty {
             cell.projectColor = .gray1!
             cell.titleLabel.text = "팀프로젝트를\n등록해보세요"
             cell.setEmptyProject()
         } else {
-            cell.projectColor = UIColor(named: colorList[indexPath.row])!
-            cell.titleLabel.text = projectList[indexPath.row]
-            cell.contentLabel.text = contentList[indexPath.row]
-            cell.headCount = headCountList[indexPath.row]
-            cell.termLabel.text = termList[indexPath.row]
+            let projectInfo = projectInfo[indexPath.row]
+            
+            //cell.projectColor = UIColor(named: projectInfo.color)!
+            cell.titleLabel.text = projectInfo.title
+            cell.contentLabel.text = projectInfo.contents
+            cell.headCount = projectInfo.headcount
+            let start = projectInfo.startAt
+            let end = projectInfo.endAt
+            cell.termLabel.text = start+"-"+end
             cell.setProjects()
         }
         cell.setProjectInit()
@@ -249,3 +251,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return false
     }
 }
+
+extension HomeViewController {
+    func getUserInfo() {
+        HomeAPI.shared.getUserInfo { [weak self] userInfoData in
+            guard let infoData = userInfoData else { return }
+            let info = infoData.data?.result[0]
+            let name = info?.userName
+            self?.userName = name
+            self?.setTitleInit()
+        }
+    }
+
+}
+
