@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
     // MARK: Properties
     let projectCell = "ProjectCell"
-    var projectInfo: [ProjectInfo]!
+    var projectInfo: [ProjectInfo] = []
     var userName: String!
     
     // MARK: - LifeCycle
@@ -43,7 +43,6 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         setTodayPlayContent()
         setTodayScheduleContent()
-        
         setViewInit()
         setTodayDate()
         weeklyCalendarInit()
@@ -60,10 +59,15 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         super.viewDidLayoutSubviews()
         var height: CGFloat = 0.0
         
-        if projectInfo.count%2 == 0 {
-            height = CGFloat(projectInfo.count/2*160)
-        } else {
-            height = CGFloat((projectInfo.count/2+1)*160) + 5
+        var projectCount = projectInfo.count
+        
+        switch projectCount {
+        case 3...4:
+            height = 320
+        case 5...6:
+            height = 480
+        default:
+            height = 160
         }
        
         collectionViewHeight.constant = height
@@ -262,6 +266,14 @@ extension HomeViewController {
             self?.setTitleInit()
         }
     }
-
+    
+    func getUserProjectInfo() {
+        HomeAPI.shared.getUserProjectInfo { [weak self] infoData in
+            guard let infoData = infoData else { return }
+            let info = infoData.data?.result
+            self?.projectInfo = info!
+            self?.setCollectionViewInit()
+        }
+    }
 }
 
