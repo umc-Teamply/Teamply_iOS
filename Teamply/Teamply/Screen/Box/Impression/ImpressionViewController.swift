@@ -74,6 +74,7 @@ extension ImpressionViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 3 {
             cell.emptyAnswer()
         }
+        cell.tableView = self.questionTableView
         cell.preView = self.view
         return cell
     }
@@ -86,7 +87,7 @@ extension ImpressionViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ImpressionViewController: TableViewCellDelegate {
-    func updateTextViewHeight(_ cell: QuestionTableViewCell, _ textView: UITextView) {
+    func updateTextViewHeight(_ cell: UITableViewCell, _ textView: UITextView) {
         let size = textView.bounds.size
         
         let newSize = questionTableView.sizeThatFits(CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude))

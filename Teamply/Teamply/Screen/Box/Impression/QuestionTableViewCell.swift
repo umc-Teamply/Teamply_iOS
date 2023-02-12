@@ -7,14 +7,15 @@
 
 import UIKit
 
-protocol TableViewCellDelegate:class {
-    func updateTextViewHeight(_ cell:QuestionTableViewCell,_ textView:UITextView)
+protocol TableViewCellDelegate: class {
+    func updateTextViewHeight(_ cell: UITableViewCell,_ textView:UITextView)
 }
 
 class QuestionTableViewCell: UITableViewCell {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTextView: UITextView!
     
+    var tableView: UITableView!
     weak var delegate: TableViewCellDelegate?
     var preView: UIView!
     
@@ -66,6 +67,12 @@ class QuestionTableViewCell: UITableViewCell {
 }
 
 extension QuestionTableViewCell: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if let delegate = delegate {
+            delegate.updateTextViewHeight(self, textView)
+        }
+    }
+    
     //수정 시작
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text.isEmpty{
@@ -87,5 +94,4 @@ extension QuestionTableViewCell: UITextViewDelegate {
         textView.isScrollEnabled = false
         resizingTextView()
     }
-
 }
