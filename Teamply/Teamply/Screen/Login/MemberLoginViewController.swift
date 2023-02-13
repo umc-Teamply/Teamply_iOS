@@ -126,12 +126,14 @@ class MemberLoginViewController: UIViewController {
         pwTextField.font = .sub2
         pwTextField.textColor = .basic2
         pwTextField.addleftPadding()
+        pwTextField.isSecureTextEntry = true
         
         pwAgainTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호 재입력", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2!, NSAttributedString.Key.font: UIFont.sub2])
         pwAgainTextField.keyboardType = .default
         pwAgainTextField.font = .sub2
         pwAgainTextField.textColor = .basic2
         pwAgainTextField.addleftPadding()
+        pwAgainTextField.isSecureTextEntry = true
         
         emailTextField.addleftPadding()
         

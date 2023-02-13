@@ -54,6 +54,7 @@ class IDLoginViewController: UIViewController {
         pwTextField.font = .sub2
         pwTextField.textColor = .basic2
         pwTextField.addleftPadding()
+        pwTextField.isSecureTextEntry = true
         
         loginButton.backgroundColor = .basic1
         loginButton.layer.borderWidth = 1
