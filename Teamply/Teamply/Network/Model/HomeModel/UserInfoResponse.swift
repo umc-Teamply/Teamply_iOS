@@ -2,7 +2,7 @@
 //  UserInfoResponse.swift
 //  Teamply
 //
-//  Created by 아라 on 2023/02/12.
+//  Created by 아라 on 2023/02/11.
 //
 
 import Foundation
@@ -28,4 +28,5 @@ struct Info: Codable {
         case isResigned = "is_resigned"
         case createAt, updateAt
     }
+
 }

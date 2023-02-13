@@ -56,6 +56,8 @@ class InProgressViewController: UIViewController {
                 view.leadingAnchor.constraint(equalTo: projectStackView.leadingAnchor)
                 view.trailingAnchor.constraint(equalTo: projectStackView.trailingAnchor)
                 view.topAnchor.constraint(equalTo: projectStackView.topAnchor)
+                view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.projectTapGesture)))
+                
                 return view
             }()
             projectStackView.addArrangedSubview(project)
@@ -103,6 +105,15 @@ class InProgressViewController: UIViewController {
         projectStackView.addArrangedSubview(division)
     }
    
+    @objc func projectTapGesture(_ sender: UITapGestureRecognizer){
+        let impressionVC = UIStoryboard.init(name: "Impression", bundle: nil)
+        guard let nextVC = impressionVC.instantiateViewController(withIdentifier: "ImpressionVC") as? ImpressionViewController else { return }
+        
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+        
+    }
+    
     func setProjectComponent(view: UIView, text: String, top: CGFloat, font: UIFont) {
         let component: UILabel = {
             let label = UILabel()
