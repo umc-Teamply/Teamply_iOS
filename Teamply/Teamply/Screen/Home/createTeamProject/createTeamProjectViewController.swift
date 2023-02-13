@@ -22,8 +22,15 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentFieldView: UIView!
     
     // MARK: - Properties
-    let datePicker = UIDatePicker()
-    var startDate: Date?
+    private lazy var datePicker: DatePicker = {
+        let picker = DatePicker()
+        picker.setup()
+        picker.didSelectDates = { [weak self] (startDate, endDate) in
+            let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
+            self?.dateTextField.text = text
+        }
+        return picker
+    }()
     var paramColor: UIColor?
     
     // MARK: - LifeCycle
@@ -31,7 +38,6 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         viewInit()
         textFieldInit()
-        
         self.contentTextField.delegate = self
     }
     
@@ -69,8 +75,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         headcountTextField.textColor = .basic2
         
         dateTextField.attributedPlaceholder = NSAttributedString(string: "프로젝트 기간", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2!, NSAttributedString.Key.font: UIFont.sub2])
-        configureDatePicker()
-        
+        dateTextField.inputView = datePicker.inputView
         dateTextField.font = .sub2
         dateTextField.textColor = .basic2
         
@@ -79,23 +84,6 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         contentTextField.font = .sub2
         contentTextField.textColor = .basic2
     }
-    
-    func configureDatePicker(){
-        self.datePicker.datePickerMode = .date
-        self.datePicker.preferredDatePickerStyle = .wheels
-        self.datePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
-        
-        self.dateTextField.inputView = self.datePicker
-    }
-    
-    @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd.E"
-        formatter.locale = Locale(identifier: "ko_KR")
-        self.startDate = datePicker.date
-        self.dateTextField.text = formatter.string(from: datePicker.date)
-    }
-    
     
     @objc func textFieldShouldReturn(_ codeTextField: UITextField) -> Bool {
         contentTextField.resignFirstResponder()
@@ -108,6 +96,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func submitTeamProjectData(_ sender: Any) {
+        postCreateProject()
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
             let homeVC = HomeViewController()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -141,5 +130,60 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         nextVC.index = idx ?? 0
         
         self.present(bottomSheet, animated: true, completion: nil)
+    }
+}
+
+extension createTeamProjectViewController {
+    func postCreateProject() {
+        guard var title = titleTextField.text else { return }
+        guard var contents = contentTextField.text else { return }
+        guard let headcount = Int(headcountTextField.text!) else { return }
+        guard let color = projectColorView.backgroundColor else { return }
+        guard let period = dateTextField.text else { return }
+        
+        var colorName = color.accessibilityName
+        
+        switch colorName {
+        case "red orange":
+            colorName = "team1"
+        case "orange":
+            colorName = "team2"
+        case "blue green":
+            colorName = "team3"
+        case "cyan":
+            colorName = "team4"
+        case "blue":
+            colorName = "team5"
+        case "magenta":
+            colorName = "team6"
+        default:
+            colorName = "gray2"
+        }
+        
+        let endIndex = period.index(period.startIndex, offsetBy: 11)
+        let startRange = ...endIndex
+        var startDate = String(period[startRange])
+        
+        let startIndex = period.index(period.startIndex, offsetBy: 15)
+        let endRange = startIndex...
+        var endDate = String(period[endRange])
+        
+        title = title.addSingleQuote(s: title)
+        contents = contents.addSingleQuote(s: contents)
+        colorName = colorName.addSingleQuote(s: colorName)
+        startDate = startDate.addSingleQuote(s: startDate)
+        endDate = endDate.addSingleQuote(s: endDate)
+
+        let createProjectRequest: CreateProjectRequest = CreateProjectRequest(title: title, headcount: headcount, startAt: startDate, endAt: endDate, contents: contents, color: colorName)
+        
+        AddProjectAPI.shared.createProject(param: createProjectRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                let projectId = result?.data?.projectId
+                print(projectId)
+            }
+            
+        }
     }
 }
