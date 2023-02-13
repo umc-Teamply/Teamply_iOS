@@ -22,8 +22,15 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentFieldView: UIView!
     
     // MARK: - Properties
-    let datePicker = UIDatePicker()
-    var startDate: Date?
+    private lazy var datePicker: DatePicker = {
+        let picker = DatePicker()
+        picker.setup()
+        picker.didSelectDates = { [weak self] (startDate, endDate) in
+            let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
+            self?.dateTextField.text = text
+        }
+        return picker
+    }()
     var paramColor: UIColor?
     
     // MARK: - LifeCycle
@@ -69,8 +76,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         headcountTextField.textColor = .basic2
         
         dateTextField.attributedPlaceholder = NSAttributedString(string: "프로젝트 기간", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2!, NSAttributedString.Key.font: UIFont.sub2])
-        configureDatePicker()
-        
+        dateTextField.inputView = datePicker.inputView
         dateTextField.font = .sub2
         dateTextField.textColor = .basic2
         
@@ -79,23 +85,6 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         contentTextField.font = .sub2
         contentTextField.textColor = .basic2
     }
-    
-    func configureDatePicker(){
-        self.datePicker.datePickerMode = .date
-        self.datePicker.preferredDatePickerStyle = .wheels
-        self.datePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
-        
-        self.dateTextField.inputView = self.datePicker
-    }
-    
-    @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd.E"
-        formatter.locale = Locale(identifier: "ko_KR")
-        self.startDate = datePicker.date
-        self.dateTextField.text = formatter.string(from: datePicker.date)
-    }
-    
     
     @objc func textFieldShouldReturn(_ codeTextField: UITextField) -> Bool {
         contentTextField.resignFirstResponder()
