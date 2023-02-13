@@ -38,7 +38,6 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         viewInit()
         textFieldInit()
-        
         self.contentTextField.delegate = self
     }
     
@@ -97,6 +96,7 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func submitTeamProjectData(_ sender: Any) {
+        postCreateProject()
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
             let homeVC = HomeViewController()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -130,5 +130,60 @@ class createTeamProjectViewController: UIViewController, UITextFieldDelegate {
         nextVC.index = idx ?? 0
         
         self.present(bottomSheet, animated: true, completion: nil)
+    }
+}
+
+extension createTeamProjectViewController {
+    func postCreateProject() {
+        guard var title = titleTextField.text else { return }
+        guard var contents = contentTextField.text else { return }
+        guard let headcount = Int(headcountTextField.text!) else { return }
+        guard let color = projectColorView.backgroundColor else { return }
+        guard let period = dateTextField.text else { return }
+        
+        var colorName = color.accessibilityName
+        
+        switch colorName {
+        case "red orange":
+            colorName = "team1"
+        case "orange":
+            colorName = "team2"
+        case "blue green":
+            colorName = "team3"
+        case "cyan":
+            colorName = "team4"
+        case "blue":
+            colorName = "team5"
+        case "magenta":
+            colorName = "team6"
+        default:
+            colorName = "gray2"
+        }
+        
+        let endIndex = period.index(period.startIndex, offsetBy: 11)
+        let startRange = ...endIndex
+        var startDate = String(period[startRange])
+        
+        let startIndex = period.index(period.startIndex, offsetBy: 15)
+        let endRange = startIndex...
+        var endDate = String(period[endRange])
+        
+        title = title.addSingleQuote(s: title)
+        contents = contents.addSingleQuote(s: contents)
+        colorName = colorName.addSingleQuote(s: colorName)
+        startDate = startDate.addSingleQuote(s: startDate)
+        endDate = endDate.addSingleQuote(s: endDate)
+
+        let createProjectRequest: CreateProjectRequest = CreateProjectRequest(title: title, headcount: headcount, startAt: startDate, endAt: endDate, contents: contents, color: colorName)
+        
+        AddProjectAPI.shared.createProject(param: createProjectRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                let projectId = result?.data?.projectId
+                print(projectId)
+            }
+            
+        }
     }
 }
