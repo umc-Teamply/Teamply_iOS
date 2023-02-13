@@ -15,7 +15,10 @@ struct URLConstant {
     
     static let signUp = "/user/signup"          //회원가입
     static let login = "/user/login"            //로그인
+    
     static let userInto = "/user/my/account"    //개인 정보
     static let userProject = "/project/my"      //개인 프로젝트
+    
+    static let createProject = "/project"       //프로젝트 생성
 
 }
