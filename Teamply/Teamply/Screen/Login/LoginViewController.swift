@@ -16,9 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var IDLoginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     
-    @IBOutlet weak var IDLoginLabel: UILabel!
-    @IBOutlet weak var createAccountLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,18 +30,16 @@ class LoginViewController: UIViewController {
         IDLoginButton.backgroundColor = .basic1
         IDLoginButton.layer.borderWidth = 1
         IDLoginButton.layer.borderColor = UIColor(named: "team1")?.cgColor
+        IDLoginButton.setTitle("아이디가 있어요!", for: .normal)
+        IDLoginButton.setTitleColor(.team1, for: .normal)
+        IDLoginButton.titleLabel?.font = .sub2
         
         createAccountButton.makeRound(radius: 15)
         createAccountButton.backgroundColor = .team1
-        
-        IDLoginLabel.text = "아이디가 있어요!"
-        IDLoginLabel.font = .sub2
-        IDLoginLabel.textColor = .team1
-        
-        createAccountLabel.text = "팀플리 회원가입 하기"
-        createAccountLabel.font = .sub2
-        createAccountLabel.textColor = .basic1
-        
+        createAccountButton.setTitle("팀플리 회원가입 하기", for: .normal)
+        createAccountButton.setTitleColor(.basic1, for: .normal)
+        createAccountButton.titleLabel?.font = .sub2
+                
     }
     @IBAction func tapmemberLogin(_ sender: Any) {
         let MemberLoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemberLoginVC")

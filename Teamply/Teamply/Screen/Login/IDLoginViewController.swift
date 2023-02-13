@@ -11,11 +11,8 @@ class IDLoginViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var loginLabel: UILabel!
     
-    @IBOutlet weak var naverLoginLabel: UILabel!
-    @IBOutlet weak var googleLoginLabel: UILabel!
-    
+   
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
     
@@ -40,19 +37,6 @@ class IDLoginViewController: UIViewController {
         emailLabel.font = .sub2
         emailLabel.textColor = .basic2
         
-        loginLabel.text = "로그인"
-        loginLabel.font = .sub2
-        loginLabel.textColor = .team1
-        
-        naverLoginLabel.text = "네이버로 로그인하기"
-        naverLoginLabel.font = .sub2
-        naverLoginLabel.textColor = .basic1
-        
-        googleLoginLabel.text = "구글로 로그인하기"
-        googleLoginLabel.font = .sub2
-        googleLoginLabel.textColor = .basic1
-        
-        
         emailTextField.makeRound(radius: 15)
         pwTextField.makeRound(radius: 15)
         loginButton.makeRound(radius: 15)
@@ -74,12 +58,20 @@ class IDLoginViewController: UIViewController {
         loginButton.backgroundColor = .basic1
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(named: "team1")?.cgColor
-     
+        loginButton.setTitle("로그인", for: .normal)
+        loginButton.setTitleColor(.team1, for: .normal)
+        loginButton.titleLabel?.font = .sub2
         
         naverLoginButton.backgroundColor = UIColor(red: 0.353, green: 0.769, blue: 0.4, alpha: 1)
+        naverLoginButton.setTitle("네이버로 로그인하기", for: .normal)
+        naverLoginButton.setTitleColor(.basic1, for: .normal)
+        naverLoginButton.titleLabel?.font = .sub2
        
         
         googleLoginButton.backgroundColor = UIColor(red: 0.325, green: 0.514, blue: 0.925, alpha: 1)
+        googleLoginButton.setTitle("구글로 로그인하기", for: .normal)
+        googleLoginButton.setTitleColor(.basic1, for: .normal)
+        googleLoginButton.titleLabel?.font = .sub2
         
         
     }

@@ -13,8 +13,6 @@ class MemberLoginViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pwLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var sendCodeLabel: UILabel!
-    @IBOutlet weak var checkCodeLabel: UILabel!
     
     @IBOutlet weak var agreeLabel: UILabel!
     @IBOutlet weak var TermsofUseLabel: UILabel!
@@ -22,11 +20,6 @@ class MemberLoginViewController: UIViewController {
     @IBOutlet weak var personalInfoLabel: UILabel!
     @IBOutlet weak var haveTo1Label: UILabel!
     @IBOutlet weak var snsAgreeLabel: UILabel!
-    @IBOutlet weak var joinLabel: UILabel!
-    
-    @IBOutlet weak var detail0Label: UILabel!
-    @IBOutlet weak var detail1Label: UILabel!
-    @IBOutlet weak var detail2Label: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
@@ -73,21 +66,19 @@ class MemberLoginViewController: UIViewController {
         emailLabel.font = .sub2
         emailLabel.textColor = .basic2
         
-        sendCodeLabel.text = "인증번호 전송"
-        sendCodeLabel.font = .sub2
-        sendCodeLabel.textColor = .basic2
-        
         sendCodeButton.backgroundColor = .basic1
         sendCodeButton.layer.borderWidth = 1
         sendCodeButton.layer.borderColor = UIColor(named: "basic2")?.cgColor
+        sendCodeButton.setTitle("인증번호 전송", for: .normal)
+        sendCodeButton.setTitleColor(.basic2, for: .normal)
+        sendCodeButton.titleLabel?.font = .sub2
         
-        checkCodeLabel.text = "인증번호 확인"
-        checkCodeLabel.font = .sub2
-        checkCodeLabel.textColor = .basic2
- 
         checkCodeButton.backgroundColor = .basic1
         checkCodeButton.layer.borderWidth = 1
         checkCodeButton.layer.borderColor = UIColor(named: "basic2")?.cgColor
+        checkCodeButton.setTitle("인증번호 확인", for: .normal)
+        checkCodeButton.setTitleColor(.basic2, for: .normal)
+        checkCodeButton.titleLabel?.font = .sub2
         
         agreeLabel.text = "약관 동의"
         agreeLabel.font = .sub2
@@ -113,23 +104,8 @@ class MemberLoginViewController: UIViewController {
         snsAgreeLabel.font = .body
         snsAgreeLabel.textColor = .basic2
         
-        detail0Label.text = "자세히 보기"
-        detail0Label.font = .cap3
-        detail0Label.textColor = .gray3
         
-        detail1Label.text = "자세히 보기"
-        detail1Label.font = .cap3
-        detail1Label.textColor = .gray3
-        
-        detail2Label.text = "자세히 보기"
-        detail2Label.font = .cap3
-        detail2Label.textColor = .gray3
-        
-        
-        joinLabel.text = "가입하기"
-        joinLabel.font = .body
-        joinLabel.textColor = .basic1
-        
+   
         nameTextField.makeRound(radius: 15)
         pwTextField.makeRound(radius: 15)
         pwAgainTextField.makeRound(radius: 15)
@@ -165,13 +141,25 @@ class MemberLoginViewController: UIViewController {
         codeTextField.textColor = .basic2
         codeTextField.addleftPadding()
         
-        detail0Button.backgroundColor = .clear
+        detail0Button.tintColor = .basic1
+        detail0Button.setTitle("자세히 보기", for: .normal)
+        detail0Button.setTitleColor(.gray3, for: .normal)
+        detail0Button.titleLabel?.font = .cap3
        
         detail1Button.backgroundColor = .clear
+        detail1Button.setTitle("자세히 보기", for: .normal)
+        detail1Button.setTitleColor(.gray3, for: .normal)
+        detail1Button.titleLabel?.font = .cap3
        
         detail2Button.backgroundColor = .clear
+        detail2Button.setTitle("자세히 보기", for: .normal)
+        detail2Button.setTitleColor(.gray3, for: .normal)
+        detail2Button.titleLabel?.font = .cap3
         
         joinButton.backgroundColor = .gray2
+        joinButton.setTitle("가입하기", for: .normal)
+        joinButton.setTitleColor(.basic1, for: .normal)
+        joinButton.titleLabel?.font = .body
         
     }
     @IBAction func backButton(_ sender: Any) {
