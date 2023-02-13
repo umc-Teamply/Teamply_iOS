@@ -198,6 +198,7 @@ class MemberLoginViewController: UIViewController {
     
     @IBAction func tapjoinButton(_ sender: Any) {
         joinButton.backgroundColor = .team1
+        
     }
     
 }
