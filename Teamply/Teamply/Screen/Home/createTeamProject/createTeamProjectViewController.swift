@@ -183,7 +183,7 @@ extension createTeamProjectViewController {
                 let projectId = result?.data?.projectId
                 print(projectId)
             }
-            
+            NotificationCenter.default.post(name: NSNotification.Name("DismissCreateView"), object: nil, userInfo: nil)
         }
     }
 }

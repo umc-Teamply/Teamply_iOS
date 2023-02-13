@@ -34,6 +34,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     let projectCell = "ProjectCell"
     var projectInfo: [ProjectInfo] = []
     var userName: String!
+    var firstLoadFlag = true
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -49,10 +50,20 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.didDismissDetailNotification(_:)),
-            name: NSNotification.Name("attendTeamProjectVC"),
+            selector: #selector(self.didDismissCreateNotification(_:)),
+            name: NSNotification.Name("DismissCreateView"),
             object: nil
         )
+    }
+    
+    // MARK: - @objc
+    @objc func didDismissCreateNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.getUserProjectInfo()
+            self.viewDidLayoutSubviews()
+            self.setCollectionViewInit()
+            self.projectCollectionView.reloadData()
+        }
     }
     
     override func viewDidLayoutSubviews() {
