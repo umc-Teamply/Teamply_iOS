@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreateProject: Codable {
+struct CreateProjectRequest: Codable {
     let title: String
     let headcount: Int
     let startAt, endAt, contents, color: String
