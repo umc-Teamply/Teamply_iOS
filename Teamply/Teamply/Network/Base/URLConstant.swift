@@ -13,12 +13,17 @@ struct URLConstant {
     
     static let baseURL = "http://ec2-3-36-54-148.ap-northeast-2.compute.amazonaws.com"
     
-    static let signUp = "/user/signup"          //회원가입
-    static let login = "/user/login"            //로그인
+    //회원가입
+    static let signUp = "/user/signup"
+    //로그인
+    static let login = "/user/login"
     
-    static let userInto = "/user/my/account"    //개인 정보
-    static let userProject = "/project/my"      //개인 프로젝트
-    
-    static let createProject = "/project"       //프로젝트 생성
-
+    //개인 정보
+    static let userInto = "/user/my/account"
+    //개인 프로젝트
+    static let userProject = "/project/my"
+    //프로젝트 생성
+    static let createProject = "/project"
+    //프로젝트 일정 리스트
+    static let projectSchedule = "/schedule/project/"
 }
