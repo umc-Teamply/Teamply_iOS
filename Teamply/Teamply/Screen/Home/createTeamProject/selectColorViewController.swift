@@ -251,7 +251,7 @@ extension selectColorViewController {
         AddProjectAPI.shared.getcolorInfo { [weak self] infoData in
             guard let infoData = infoData else { return }
             let info = infoData.data?.result
-            self?.colorData = info!
+            let colorData = info
             self?.StringToUIColor()
             print(info!)
         }

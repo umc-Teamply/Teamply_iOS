@@ -12,18 +12,18 @@ struct UserProjectResponse: Codable {
 }
 
 struct ProjectInfo: Codable {
-    let projId: Int
-    let title: String
+    let projectId: Int
+    let title, contents: String
     let headcount: Int
-    let startAt, endAt, contents: String
+    let startDate, endDate, color: String
     
     enum CodingKeys: String, CodingKey {
-        case projId = "proj_id"
+        case projectId = "proj_id"
         case title = "proj_name"
-        case headcount = "proj_headcount"
-        case startAt = "proj_startAt"
-        case endAt = "proj_endAt"
+        case headcount = "proj_realcount"
+        case startDate = "startAt"
+        case endDate = "endAt"
         case contents = "proj_contents"
-        //case color = "proj_color"
+        case color
     }
 }
