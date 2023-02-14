@@ -29,6 +29,8 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var projectInfoLabel: UILabel!
     @IBOutlet weak var projectInfoButton: UIButton!
     
+    var projectId: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTeamPageStyle()
