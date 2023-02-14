@@ -246,8 +246,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.titleLabel.text = projectInfo.title
             cell.contentLabel.text = projectInfo.contents
             cell.headCount = projectInfo.headcount
-            let start = projectInfo.startAt
-            let end = projectInfo.endAt
+            let start = projectInfo.startDate
+            let end = projectInfo.endDate
             cell.termLabel.text = start+"-"+end
             cell.setProjects()
         }
