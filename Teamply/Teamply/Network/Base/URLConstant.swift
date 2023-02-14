@@ -20,6 +20,6 @@ struct URLConstant {
     static let userProject = "/project/my"                          //개인 프로젝트
     
     static let createProject = "/project"                           //프로젝트 생성
-    static let completedProject = "/project/my/finish/comments"     //완료된 팀 프로젝트
+    static let completedProject = "/project/my/finish"              //완료된 팀 프로젝트
 
 }
