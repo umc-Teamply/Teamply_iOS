@@ -8,12 +8,6 @@
 import Foundation
 
 struct ColorInfoResponse: Codable {
-    let isSuccess: Bool
-    let code: Int
-    let data: Result
-}
-
-struct Result: Codable {
     let result: [Color]
 }
 
