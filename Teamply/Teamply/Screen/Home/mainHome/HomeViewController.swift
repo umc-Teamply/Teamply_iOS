@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
     // MARK: Properties
     let projectCell = "ProjectCell"
-    var projectInfo: [ProjectInfo] = []
+    var projectData: [ProjectInfo] = []
     var userName: String!
     var firstLoadFlag = true
     
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         super.viewDidLayoutSubviews()
         var height: CGFloat = 0.0
         
-        var projectCount = projectInfo.count
+        var projectCount = projectData.count
         
         switch projectCount {
         case 3...4:
@@ -226,26 +226,28 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if projectInfo.isEmpty {
+        if projectData.isEmpty {
             return 1
         }
-        return projectInfo.count
+        return projectData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectCell, for: indexPath) as! ProjectCollectionViewCell
         
-        if projectInfo.isEmpty {
+        if projectData.isEmpty {
             cell.projectColor = .gray1!
             cell.titleLabel.text = "팀프로젝트를\n등록해보세요"
             cell.setEmptyProject()
         } else {
-            let projectInfo = projectInfo[indexPath.row]
+            let projectInfo = projectData[indexPath.row]
             
-            //cell.projectColor = UIColor(named: projectInfo.color)!
+            cell.projectColor = UIColor(named: projectInfo.color)!
             cell.titleLabel.text = projectInfo.title
             cell.contentLabel.text = projectInfo.contents
             cell.headCount = projectInfo.headcount
+            cell.projectId = projectInfo.projectId
+            print(projectInfo.projectId)
             let start = projectInfo.startDate
             let end = projectInfo.endDate
             cell.termLabel.text = start+"-"+end
@@ -256,6 +258,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        var projectId = projectData[indexPath.row].projectId
+        print(projectId)
+
         let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
         guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return true }
         
@@ -282,7 +287,7 @@ extension HomeViewController {
         HomeAPI.shared.getUserProjectInfo { [weak self] infoData in
             guard let infoData = infoData else { return }
             let info = infoData.data?.result
-            self?.projectInfo = info!
+            self?.projectData = info!
             self?.setCollectionViewInit()
         }
     }
