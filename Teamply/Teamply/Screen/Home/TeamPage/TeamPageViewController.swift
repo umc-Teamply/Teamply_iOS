@@ -32,6 +32,7 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     
     var projectId: Int!
+    var headcount: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
