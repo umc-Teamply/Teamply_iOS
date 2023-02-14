@@ -12,7 +12,7 @@ class TeamPageViewController: UIViewController {
     // MARK: - IBOulet
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var user0Label: UILabel!
+    //@IBOutlet weak var user0Label: UILabel!
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var periodBorder: UIView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -30,27 +30,60 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var projectInfoButton: UIButton!
     
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var memberStackview: UIStackView!
     
     var projectId: Int!
     var headcount: Int!
+    var projectColor: String!
+    var scheduleData: [String] = ["d"]
+    var memberImages = "defaultProfile"
+    var addMemberImage = "add_friend"
+    
+    var memberView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        //view.backgroundColor = headerView.backgroundColor
+        view.heightAnchor.constraint(equalToConstant: 62).isActive = true
+        return view
+    }()
+    
+    var memberImage: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        //view.image = UIImage(named: memberImages)
+        return view
+    }()
+    
+    var memberName: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .cap3
+        label.textColor = .basic1
+        label.textAlignment = .center
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTeamPageStyle()
+        setMemberStackView()
         periodBorder.layer.cornerRadius = 15
         periodBorder.layer.borderWidth = 1
         periodBorder.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     }
     
     func setTeamPageStyle() {
+        headerView.backgroundColor = UIColor(named: projectColor)
         titleLabel.text = "브랜드경험 디자인"
         titleLabel.font = .head1
         titleLabel.textColor = .basic1
-        
-        user0Label.text = "이프로"
-        user0Label.font = .cap3
-        user0Label.textColor = .basic1
-        
+
+//        user0Label.text = "이프로"
+//        user0Label.font = .cap3
+//        user0Label.textColor = .basic1
+
         periodLabel.text = "기간"
         periodLabel.font = .cap3
         periodLabel.textColor = .basic1
@@ -91,14 +124,46 @@ class TeamPageViewController: UIViewController {
         projectInfoButton.makeRound(radius: 10)
     }
     
-   
+    func setMemberStackView() {
+        setMemberView()
+        memberStackview.addArrangedSubview(memberView)
+    }
+    
+    func setMemberView() {
+        for _ in 0...scheduleData.count{
+            memberView.backgroundColor = headerView.backgroundColor
+            memberImage.image = UIImage(named: memberImages)
+            memberView.addSubview(memberImage)
+            memberView.addSubview(memberName)
+            
+            NSLayoutConstraint.activate([
+                memberImage.leadingAnchor.constraint(equalTo: memberView.leadingAnchor),
+                memberImage.trailingAnchor.constraint(equalTo: memberView.trailingAnchor),
+                memberImage.topAnchor.constraint(equalTo: memberView.topAnchor)
+            ])
+            
+            NSLayoutConstraint.activate([
+                memberName.centerXAnchor.constraint(equalTo: memberView.centerXAnchor),
+                memberName.bottomAnchor.constraint(equalTo: memberView.bottomAnchor)
+            ])
+        }
+        let unInviteCount = headcount-scheduleData.count
+        
+        for _ in 0...unInviteCount {
+            memberView.backgroundColor = headerView.backgroundColor
+            memberImage.image = UIImage(named: addMemberImage)
+            memberView.addSubview(memberImage)
+        }
+    }
+    
+    
     // MARK: - IBAction
     
     @IBAction func backhomeButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
     
-    @IBAction func user1Button(_ sender: Any) {
+    @objc func memberAddButton(_ sender: Any) {
         guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
             codevc.modalPresentationStyle = .overCurrentContext
         codevc.modalTransitionStyle = .crossDissolve

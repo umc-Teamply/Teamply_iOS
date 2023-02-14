@@ -267,7 +267,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         nextVC.modalPresentationStyle = .fullScreen
         nextVC.projectId = projectId
-        nextVC.headerView.backgroundColor = UIColor(named: projectColor)
+        nextVC.projectColor = projectColor
         nextVC.headcount = headcount
         self.present(nextVC, animated: true, completion: nil)
         
