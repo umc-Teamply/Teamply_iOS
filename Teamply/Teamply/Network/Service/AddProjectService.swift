@@ -9,7 +9,6 @@ import Moya
 
 enum AddProjectService {
     case postCreateProject(param: CreateProjectRequest)
-    
     case getColorInfo
 }
 
@@ -27,7 +26,8 @@ extension AddProjectService: BaseTargetType {
         switch self {
         case .getColorInfo:
             return .get
-        default: return .post
+        case .postCreateProject(_):
+            return .post
         }
     }
     

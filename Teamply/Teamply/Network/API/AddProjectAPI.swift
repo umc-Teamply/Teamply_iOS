@@ -17,7 +17,7 @@ final class AddProjectAPI {
     public private(set) var createResult: GeneralResponse<CreateProjectResponse>?
     
     // MARK: - Get
-    func getColorInfo(completion: @escaping ((GeneralResponse<ColorInfoResponse>?) -> ())) {
+    func getcolorInfo(completion: @escaping ((GeneralResponse<ColorInfoResponse>?) -> ())) {
         colorInfoProvider.request(.getColorInfo) { result in
             switch result {
             case .success(let response):
@@ -38,7 +38,6 @@ final class AddProjectAPI {
     }
     
     // MARK: - Post
-    
     func createProject(param: CreateProjectRequest, completion: @escaping ((GeneralResponse<CreateProjectResponse>?, Error?) -> ())) {
         createProjectProvider.request(.postCreateProject(param: param)) { [weak self] response in
             switch response {

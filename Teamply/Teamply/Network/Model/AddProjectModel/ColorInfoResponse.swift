@@ -8,9 +8,5 @@
 import Foundation
 
 struct ColorInfoResponse: Codable {
-    let result: [Color]
-}
-
-struct Color: Codable {
-    let color: String
+    let result: [String]
 }

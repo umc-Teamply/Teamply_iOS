@@ -28,7 +28,8 @@ class selectColorViewController: UIViewController {
     @IBOutlet weak var colorStactView: UIStackView!
     
     // MARK: - Properties
-    let colors: [UIColor] = [.gray2!, .team1!, .team2!, .team3!, .team4!, .team5!, .team6!]
+    var colors: [UIColor] = []
+    var colorData: [String] = []
     var index = 0
     var colorHandler: ((UIColor) -> ())?
     let checkImage: UIImageView = {
@@ -42,9 +43,12 @@ class selectColorViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getColorInfo()
         setInit()
-        viewInit()
         borderInit()
+        availableColorInit()
+        setViewAvailable()
+        colorViewInit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,14 +71,7 @@ class selectColorViewController: UIViewController {
         selectButton.makeRound(radius: 10)
     }
     
-    func viewInit() {
-        team1ColorView.backgroundColor = .team1
-        team2ColorView.backgroundColor = .team2
-        team3ColorView.backgroundColor = .team3
-        team4ColorView.backgroundColor = .team4
-        team5ColorView.backgroundColor = .team5
-        team6ColorView.backgroundColor = .team6
-        
+    func borderInit() {
         border1View.backgroundColor = .basic1
         border2View.backgroundColor = .basic1
         border3View.backgroundColor = .basic1
@@ -82,22 +79,6 @@ class selectColorViewController: UIViewController {
         border5View.backgroundColor = .basic1
         border6View.backgroundColor = .basic1
         
-        team1ColorView.makeRound(radius: 5)
-        team2ColorView.makeRound(radius: 5)
-        team3ColorView.makeRound(radius: 5)
-        team4ColorView.makeRound(radius: 5)
-        team5ColorView.makeRound(radius: 5)
-        team6ColorView.makeRound(radius: 5)
-        
-        team1ColorView.isUserInteractionEnabled = true
-        team2ColorView.isUserInteractionEnabled = true
-        team3ColorView.isUserInteractionEnabled = true
-        team4ColorView.isUserInteractionEnabled = true
-        team5ColorView.isUserInteractionEnabled = true
-        team6ColorView.isUserInteractionEnabled = true
-    }
-    
-    func borderInit() {
         border1View.makeRound(radius: 5)
         border2View.makeRound(radius: 5)
         border3View.makeRound(radius: 5)
@@ -118,6 +99,66 @@ class selectColorViewController: UIViewController {
         border4View.layer.borderColor = UIColor.basic1?.cgColor
         border5View.layer.borderColor = UIColor.basic1?.cgColor
         border6View.layer.borderColor = UIColor.basic1?.cgColor
+    }
+    
+    func colorViewInit() {
+        var colorView: UIView!
+        for c in colors {
+            switch c {
+            case .team1! :
+                colorView = team1ColorView
+                break
+            case .team2! :
+                colorView = team2ColorView
+                break
+            case .team3! :
+                colorView = team3ColorView
+                break
+            case .team4! :
+                colorView = team4ColorView
+                break
+            case .team5! :
+                colorView = team5ColorView
+                break
+            case .team6! :
+                colorView = team6ColorView
+                break
+            default:
+                break
+            }
+            colorView.backgroundColor = .gray0
+            colorView.makeRound(radius: 5)
+            colorView.isUserInteractionEnabled = false
+        }
+    }
+    
+    func availableColorInit() {
+        team1ColorView.backgroundColor = .team1
+        team1ColorView.makeRound(radius: 5)
+        
+        team2ColorView.backgroundColor = .team2
+        team2ColorView.makeRound(radius: 5)
+        
+        team3ColorView.backgroundColor = .team3
+        team3ColorView.makeRound(radius: 5)
+        
+        team4ColorView.backgroundColor = .team4
+        team4ColorView.makeRound(radius: 5)
+        
+        team5ColorView.backgroundColor = .team5
+        team5ColorView.makeRound(radius: 5)
+        
+        team6ColorView.backgroundColor = .team6
+        team6ColorView.makeRound(radius: 5)
+    }
+    
+    func setViewAvailable() {
+        team1ColorView.isUserInteractionEnabled = true
+        team2ColorView.isUserInteractionEnabled = true
+        team3ColorView.isUserInteractionEnabled = true
+        team4ColorView.isUserInteractionEnabled = true
+        team5ColorView.isUserInteractionEnabled = true
+        team6ColorView.isUserInteractionEnabled = true
     }
     
     func setBorderView(idx: Int) {
@@ -152,7 +193,6 @@ class selectColorViewController: UIViewController {
             borderView = border6View
             break
         default:
-            borderInit()
             break
         }
         borderView.layer.borderColor = colorView.backgroundColor?.cgColor
@@ -165,6 +205,12 @@ class selectColorViewController: UIViewController {
             checkImage.widthAnchor.constraint(equalToConstant: 19.38),
             checkImage.heightAnchor.constraint(equalToConstant: 12.92),
         ])
+    }
+    
+    func StringToUIColor() {
+        for c in colorData {
+            colors.append(UIColor(named: c)!)
+        }
     }
     
     // MARK: - IBAction
@@ -197,5 +243,17 @@ class selectColorViewController: UIViewController {
     @IBAction func team6ColorTap(_ sender: UITapGestureRecognizer) {
         index = 6
         setBorderView(idx: index)
+    }
+}
+
+extension selectColorViewController {
+    func getColorInfo() {
+        AddProjectAPI.shared.getcolorInfo { [weak self] infoData in
+            guard let infoData = infoData else { return }
+            let info = infoData.data?.result
+            self?.colorData = info!
+            self?.StringToUIColor()
+            print(info!)
+        }
     }
 }
