@@ -29,6 +29,8 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var projectInfoLabel: UILabel!
     @IBOutlet weak var projectInfoButton: UIButton!
     
+    @IBOutlet weak var headerView: UIView!
+    
     var projectId: Int!
     
     override func viewDidLoad() {

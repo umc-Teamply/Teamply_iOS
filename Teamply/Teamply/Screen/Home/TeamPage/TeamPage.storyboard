@@ -347,6 +347,7 @@
                         <outlet property="addScheduleLabel" destination="N9E-y8-JLp" id="sY2-eV-YiR"/>
                         <outlet property="dateLabel" destination="zv4-KZ-rQe" id="ofy-Dd-zRK"/>
                         <outlet property="detailScheduleLabel" destination="0jR-rX-3NF" id="1BS-NA-4u5"/>
+                        <outlet property="headerView" destination="id4-OK-Kt8" id="HCG-zy-mjX"/>
                         <outlet property="meetingScheduleButton" destination="M96-dU-Zxe" id="lHP-nC-Lp2"/>
                         <outlet property="meetingScheduleLabel" destination="HG9-W6-OFY" id="lbG-by-aSY"/>
                         <outlet property="periodBorder" destination="U7a-CL-alu" id="oUC-He-eYs"/>

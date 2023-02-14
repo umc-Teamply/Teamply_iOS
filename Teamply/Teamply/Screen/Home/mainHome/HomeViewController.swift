@@ -259,12 +259,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         var projectId = projectData[indexPath.row].projectId
-        
+        var projectColor = projectData[indexPath.row].color
         let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
         guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return true }
         
         nextVC.modalPresentationStyle = .fullScreen
         nextVC.projectId = projectId
+        nextVC.headerView.backgroundColor = UIColor(named: projectColor)
         self.present(nextVC, animated: true, completion: nil)
         
         return false
