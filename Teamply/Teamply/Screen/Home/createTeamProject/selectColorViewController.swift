@@ -61,7 +61,6 @@ class selectColorViewController: UIViewController {
         titleLabel.font = .cap1
         titleLabel.textColor = .basic2
     
-        
         selectButton.setTitle("선택 완료", for: .normal)
         selectButton.setTitleColor(.basic1, for: .normal)
         selectButton.backgroundColor = .basic2
