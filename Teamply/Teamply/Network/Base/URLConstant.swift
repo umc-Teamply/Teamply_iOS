@@ -21,4 +21,5 @@ struct URLConstant {
     static let userColorInfo = "/project/my/color"      //개인 프로젝트 색상 정보
     
     static let createProject = "/project"               //프로젝트 생성
+    static let attendProject = "/project/admission"
 }
