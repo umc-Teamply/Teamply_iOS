@@ -37,7 +37,7 @@ class TeamPageViewController: UIViewController {
     var projectColor: String!
     var projectTitle: String!
     var date: String!
-    var scheduleData: [ProjectScheduleResponseEelement]!
+    var scheduleData: [Schedule]!
     var memberImages = "defaultProfile"
     var addMemberImage = "add_friend"
     
@@ -142,6 +142,7 @@ class TeamPageViewController: UIViewController {
         setUnInviteMember()
     }
     
+    
     func setMemberView() {
         print(scheduleData.count)
         memberView.backgroundColor = headerView.backgroundColor
@@ -220,11 +221,9 @@ extension TeamPageViewController {
                 print(error)
             } else {
                 guard let scheduleData = result?.data else { return }
-                self.scheduleData = scheduleData
-                if scheduleData.isEmpty {
+                self.scheduleData = scheduleData.result
+                if scheduleData.result.isEmpty {
                     self.emptySchedule()
-                } else {
-                    print(scheduleData)
                 }
                 self.setMemberStackView()
             }
