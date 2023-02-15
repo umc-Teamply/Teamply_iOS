@@ -7,18 +7,19 @@
 
 import Foundation
 
-struct ProjectScheduleResponseEelement: Codable {
-    let scheduleId, projectId: Int
-    let title, contents, startDate, endDate: String
-
-    enum CodingKeys: String, CodingKey {
-        case scheduleId = "sch_id"
-        case projectId = "proj_id"
-        case title = "sch_title"
-        case contents = "sch_contents"
-        case startDate = "startAt"
-        case endDate = "endAt"
-    }
+struct ProjectScheduleResponse: Codable {
+    let result: [Schedule]
 }
 
-typealias ProjectScheduleResponse = [ProjectScheduleResponseEelement]
+struct Schedule: Codable {
+    let schID, projID: Int
+    let schTitle, schContents, startAt, endAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case schID = "sch_id"
+        case projID = "proj_id"
+        case schTitle = "sch_title"
+        case schContents = "sch_contents"
+        case startAt, endAt
+    }
+}
