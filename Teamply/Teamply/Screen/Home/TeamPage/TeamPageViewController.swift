@@ -35,6 +35,8 @@ class TeamPageViewController: UIViewController {
     var projectId: Int!
     var headcount: Int!
     var projectColor: String!
+    var projectTitle: String!
+    var date: String!
     var scheduleData: [ProjectScheduleResponseEelement]!
     var memberImages = "defaultProfile"
     var addMemberImage = "add_friend"
@@ -77,7 +79,7 @@ class TeamPageViewController: UIViewController {
     
     func setTeamPageStyle() {
         headerView.backgroundColor = UIColor(named: projectColor)
-        //titleLabel.text = "브랜드경험 디자인"
+        titleLabel.text = projectTitle
         titleLabel.font = .head1
         titleLabel.textColor = .basic1
 
@@ -92,7 +94,7 @@ class TeamPageViewController: UIViewController {
         periodLabel.layer.borderWidth = 1
         periodLabel.makeRound(radius: 12)
         
-        //dateLabel.text = "2022.10.18.화 ~"
+        dateLabel.text = date
         dateLabel.font = .cap3
         dateLabel.textColor = .basic1
         

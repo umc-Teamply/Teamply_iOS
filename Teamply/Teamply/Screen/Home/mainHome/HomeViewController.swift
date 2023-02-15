@@ -247,7 +247,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.contentLabel.text = projectInfo.contents
             cell.headCount = projectInfo.headcount
             cell.projectId = projectInfo.projectId
-            print(projectInfo.projectId)
+            
             let start = projectInfo.startDate
             let end = projectInfo.endDate
             cell.termLabel.text = start+"-"+end
@@ -258,10 +258,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        var projectId = projectData[indexPath.row].projectId
-        var projectColor = projectData[indexPath.row].color
-        var headcount = projectData[indexPath.row].headcount
-        
+        let data = projectData[indexPath.row]
+        var projectId = data.projectId
+        var projectColor = data.color
+        var headcount = data.headcount
+        let projectTitle = data.title
+        var startDate = data.startDate
+        var endDate = data.endDate
+        let period = startDate+"-"+endDate
         let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
         guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return true }
         
@@ -269,6 +273,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         nextVC.projectId = projectId
         nextVC.projectColor = projectColor
         nextVC.headcount = headcount
+        nextVC.projectTitle = projectTitle
+        nextVC.date = period
         self.present(nextVC, animated: true, completion: nil)
         
         return false
