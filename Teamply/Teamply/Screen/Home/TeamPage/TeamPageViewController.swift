@@ -35,7 +35,7 @@ class TeamPageViewController: UIViewController {
     var projectId: Int!
     var headcount: Int!
     var projectColor: String!
-    var scheduleData: [String] = ["d"]
+    var scheduleData: [ProjectScheduleResponseEelement]!
     var memberImages = "defaultProfile"
     var addMemberImage = "add_friend"
     
@@ -67,16 +67,17 @@ class TeamPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getProjectScheduleData()
         setTeamPageStyle()
-        setMemberStackView()
-        periodBorder.layer.cornerRadius = 15
-        periodBorder.layer.borderWidth = 1
-        periodBorder.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        //setMemberStackView()
+//        periodBorder.layer.cornerRadius = 15
+//        periodBorder.layer.borderWidth = 1
+//        periodBorder.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
     }
     
     func setTeamPageStyle() {
         headerView.backgroundColor = UIColor(named: projectColor)
-        titleLabel.text = "브랜드경험 디자인"
+        //titleLabel.text = "브랜드경험 디자인"
         titleLabel.font = .head1
         titleLabel.textColor = .basic1
 
@@ -87,8 +88,11 @@ class TeamPageViewController: UIViewController {
         periodLabel.text = "기간"
         periodLabel.font = .cap3
         periodLabel.textColor = .basic1
+        periodLabel.layer.borderColor = UIColor.basic1?.cgColor
+        periodLabel.layer.borderWidth = 1
+        periodLabel.makeRound(radius: 12)
         
-        dateLabel.text = "2022.10.18.화 ~"
+        //dateLabel.text = "2022.10.18.화 ~"
         dateLabel.font = .cap3
         dateLabel.textColor = .basic1
         
@@ -96,7 +100,7 @@ class TeamPageViewController: UIViewController {
         detailScheduleLabel.font = .sub1
         detailScheduleLabel.textColor = .basic2
         
-        addScheduleLabel.text = "+ 일정을 등록해보세요"
+        //addScheduleLabel.text = "+ 일정을 등록해보세요"
         addScheduleLabel.font = .sub2
         addScheduleLabel.textColor = .gray2
         
@@ -124,39 +128,50 @@ class TeamPageViewController: UIViewController {
         projectInfoButton.makeRound(radius: 10)
     }
     
+    func emptySchedule() {
+        addScheduleLabel.text = "+ 일정을 등록해보세요"
+    }
+    
     func setMemberStackView() {
-        setMemberView()
-        memberStackview.addArrangedSubview(memberView)
+        for _ in 0...scheduleData.count {
+            setMemberView()
+            memberStackview.addArrangedSubview(memberView)
+        }
+        setUnInviteMember()
     }
     
     func setMemberView() {
-        for _ in 0...scheduleData.count{
-            memberView.backgroundColor = headerView.backgroundColor
-            memberImage.image = UIImage(named: memberImages)
-            memberView.addSubview(memberImage)
-            memberView.addSubview(memberName)
-            
-            NSLayoutConstraint.activate([
-                memberImage.leadingAnchor.constraint(equalTo: memberView.leadingAnchor),
-                memberImage.trailingAnchor.constraint(equalTo: memberView.trailingAnchor),
-                memberImage.topAnchor.constraint(equalTo: memberView.topAnchor)
-            ])
-            
-            NSLayoutConstraint.activate([
-                memberName.centerXAnchor.constraint(equalTo: memberView.centerXAnchor),
-                memberName.bottomAnchor.constraint(equalTo: memberView.bottomAnchor)
-            ])
-        }
-        let unInviteCount = headcount-scheduleData.count
+        print(scheduleData.count)
+        memberView.backgroundColor = headerView.backgroundColor
+        memberImage.image = UIImage(named: memberImages)
+        memberView.addSubview(memberImage)
+        memberView.addSubview(memberName)
         
-        for _ in 0...unInviteCount {
-            memberView.backgroundColor = headerView.backgroundColor
-            memberImage.image = UIImage(named: addMemberImage)
-            memberView.addSubview(memberImage)
-        }
+        NSLayoutConstraint.activate([
+            memberImage.leadingAnchor.constraint(equalTo: memberView.leadingAnchor),
+            memberImage.trailingAnchor.constraint(equalTo: memberView.trailingAnchor),
+            memberImage.topAnchor.constraint(equalTo: memberView.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            memberName.centerXAnchor.constraint(equalTo: memberView.centerXAnchor),
+            memberName.bottomAnchor.constraint(equalTo: memberView.bottomAnchor)
+        ])
     }
     
-    
+    func setUnInviteMember() {
+        let unInviteCount = headcount-scheduleData.count
+        
+        if unInviteCount > 0 {
+            for _ in 0...unInviteCount {
+                memberView.backgroundColor = headerView.backgroundColor
+                memberImage.image = UIImage(named: addMemberImage)
+                memberView.addSubview(memberImage)
+                
+                memberStackview.addArrangedSubview(memberView)
+            }
+        }
+    }
     // MARK: - IBAction
     
     @IBAction func backhomeButton(_ sender: Any) {
@@ -194,4 +209,24 @@ class TeamPageViewController: UIViewController {
     }
     
 
+}
+
+extension TeamPageViewController {
+    func getProjectScheduleData() {
+        TeamPageAPI.shared.getProjectScheduleList(param: projectId) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                guard let scheduleData = result?.data else { return }
+                self.scheduleData = scheduleData
+                if scheduleData.isEmpty {
+                    self.emptySchedule()
+                } else {
+                    print(scheduleData)
+                }
+                self.setMemberStackView()
+            }
+            
+        }
+    }
 }

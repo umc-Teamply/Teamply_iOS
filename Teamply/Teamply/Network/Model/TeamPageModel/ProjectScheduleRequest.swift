@@ -8,9 +8,9 @@
 import Foundation
 
 struct ProjectScheduleRequest: Codable {
-    let projectId: Int
-    
+    let projectID: Int
+
     enum CodingKeys: String, CodingKey {
-        case projectId = "projId"
+        case projectID = "projId"
     }
 }

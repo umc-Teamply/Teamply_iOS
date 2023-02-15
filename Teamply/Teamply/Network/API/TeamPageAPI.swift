@@ -17,7 +17,8 @@ final class TeamPageAPI {
     
     // MARK: - Get
     
-    func getProjectScheduleList(param: ProjectScheduleRequest, completion: @escaping ((GeneralResponse<ProjectScheduleResponse>?, Error?) -> ())) {
+    func getProjectScheduleList(param: Int, completion: @escaping ((GeneralResponse<ProjectScheduleResponse>?, Error?) -> ())) {
+        
         projectScheduleProvider.request(.getProjectSchedule(param: param)) { [weak self] response in
             switch response {
             case .success(let result):

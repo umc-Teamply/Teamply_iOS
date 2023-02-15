@@ -8,7 +8,7 @@
 import Moya
 
 enum TeamPageService {
-    case getProjectSchedule(param: ProjectScheduleRequest)
+    case getProjectSchedule(param: Int)
 }
 
 extension TeamPageService: BaseTargetType {
@@ -27,7 +27,7 @@ extension TeamPageService: BaseTargetType {
     
     var task: Task {
         switch self {
-        case .getProjectSchedule(_):
+        case .getProjectSchedule:
             return .requestPlain
         }
     }
