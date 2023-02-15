@@ -30,8 +30,10 @@ class selectColorViewController: UIViewController {
     // MARK: - Properties
     var colors: [UIColor] = []
     var colorData: [String] = []
+    var projectInfo: [ProjectInfo] = []
     var index = 0
     var colorHandler: ((UIColor) -> ())?
+    var selectColor: UIColor!
     let checkImage: UIImageView = {
         let check = UIImageView()
         
@@ -45,10 +47,6 @@ class selectColorViewController: UIViewController {
         super.viewDidLoad()
         getColorInfo()
         setInit()
-        borderInit()
-        availableColorInit()
-        setViewAvailable()
-        colorViewInit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -211,49 +209,67 @@ class selectColorViewController: UIViewController {
         for c in colorData {
             colors.append(UIColor(named: c)!)
         }
+        borderInit()
+        availableColorInit()
+        setViewAvailable()
+        colorViewInit()
+    }
+    
+    func setProjectColors() {
+        for p in projectInfo {
+            colorData.append(p.color)
+        }
+        StringToUIColor()
     }
     
     // MARK: - IBAction
     @IBAction func selectProjectColor(_ sender: Any) {
-        colorHandler?(self.colors[index])
-        self.presentingViewController?.dismiss(animated: true)
+        if selectColor != nil {
+            colorHandler?(self.selectColor)
+            self.presentingViewController?.dismiss(animated: true)
+        }
     }
     
     // MARK: - Gesture
     @IBAction func team1ColorTap(_ sender: UITapGestureRecognizer) {
         index = 1
         setBorderView(idx: index)
+        selectColor = .team1
     }
     @IBAction func team2ColorTap(_ sender: UITapGestureRecognizer) {
         index = 2
         setBorderView(idx: index)
+        selectColor = .team2
     }
     @IBAction func team3ColorTap(_ sender: UITapGestureRecognizer) {
         index = 3
         setBorderView(idx: index)
+        selectColor = .team3
     }
     @IBAction func team4ColorTap(_ sender: UITapGestureRecognizer) {
         index = 4
         setBorderView(idx: index)
+        selectColor = .team4
     }
     @IBAction func team5ColorTap(_ sender: UITapGestureRecognizer) {
         index = 5
         setBorderView(idx: index)
+        selectColor = .team5
     }
     @IBAction func team6ColorTap(_ sender: UITapGestureRecognizer) {
         index = 6
         setBorderView(idx: index)
+        selectColor = .team6
     }
 }
 
 extension selectColorViewController {
     func getColorInfo() {
-        AddProjectAPI.shared.getcolorInfo { [weak self] infoData in
-            guard let infoData = infoData else { return }
+        AddProjectAPI.shared.getcolorInfo { [weak self] colorData in
+            guard let infoData = colorData else { return }
             let info = infoData.data?.result
-            let colorData = info
-            self?.StringToUIColor()
-            print(info!)
+            self?.projectInfo = info!
+            self?.setProjectColors()
         }
     }
 }
