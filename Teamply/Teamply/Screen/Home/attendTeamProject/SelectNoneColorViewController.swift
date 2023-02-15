@@ -33,6 +33,7 @@ class SelectNoneColorViewController: UIViewController {
     var colorData: [String] = []
     var selectColor: UIColor!
     var projectInfo: [ProjectInfo] = []
+    var code: String!
     let checkImage: UIImageView = {
         let check = UIImageView()
         
