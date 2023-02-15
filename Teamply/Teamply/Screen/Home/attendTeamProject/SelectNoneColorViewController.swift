@@ -31,7 +31,7 @@ class SelectNoneColorViewController: UIViewController {
     var index: Int = 0
     var colors: [UIColor] = []
     var colorData: [String] = []
-    var selectColor: UIColor!
+    var selectColor: String!
     var projectInfo: [ProjectInfo] = []
     var code: String!
     let checkImage: UIImageView = {
@@ -216,45 +216,39 @@ class SelectNoneColorViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func attendProject(_ sender: Any) {
-        if selectColor != nil {
-            self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-                let homeVC = HomeViewController()
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController?.present(homeVC, animated: true)
-            })
-        }
+        postAttendProject()
     }
     
     // MARK: - Gesture
     @IBAction func color1Tap(_ sender: UITapGestureRecognizer) {
         index = 1
         setBorderView(idx: index)
-        selectColor = .team1
+        selectColor = "team1"
     }
     @IBAction func color2Tap(_ sender: UITapGestureRecognizer) {
         index = 2
         setBorderView(idx: index)
-        selectColor = .team2
+        selectColor = "team2"
     }
     @IBAction func color3Tap(_ sender: UITapGestureRecognizer) {
         index = 3
         setBorderView(idx: index)
-        selectColor = .team3
+        selectColor = "team3"
     }
     @IBAction func color4Tap(_ sender: UITapGestureRecognizer) {
         index = 4
         setBorderView(idx: index)
-        selectColor = .team4
+        selectColor = "team4"
     }
     @IBAction func color5Tap(_ sender: UITapGestureRecognizer) {
         index = 5
         setBorderView(idx: index)
-        selectColor = .team5
+        selectColor = "team5"
     }
     @IBAction func color6Tap(_ sender: UITapGestureRecognizer) {
         index = 6
         setBorderView(idx: index)
-        selectColor = .team6
+        selectColor = "team6"
     }
 }
 
@@ -265,6 +259,32 @@ extension SelectNoneColorViewController {
             let info = infoData.data?.result
             self?.projectInfo = info!
             self?.setProjectColors()
+        }
+    }
+    
+    func postAttendProject() {
+        guard var inviteCode = self.code else { return }
+        guard var color = self.selectColor else { return }
+        
+        inviteCode = inviteCode.addSingleQuote(s: inviteCode)
+        color = color.addSingleQuote(s: color)
+
+        let attendRequest = AttendProjectRequest(inviteCode: inviteCode, color: color)
+        
+        AddProjectAPI.shared.attendProject(param: attendRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                if self.selectColor != nil {
+                    self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+                        let homeVC = HomeViewController()
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.window?.rootViewController?.present(homeVC, animated: true)
+                    })
+                }
+                NotificationCenter.default.post(name: NSNotification.Name("DismissAttendView"), object: nil, userInfo: nil)
+            }
+            
         }
     }
 }

@@ -102,6 +102,7 @@ class attendTeamProjectViewController: UIViewController, UITextFieldDelegate{
         bottomSheet.scrimColor = UIColor.basic2!.withAlphaComponent(0.7)
         
         nextVC.code = codeTextField.text
+
         self.present(bottomSheet, animated: true, completion: nil)
     }
     
