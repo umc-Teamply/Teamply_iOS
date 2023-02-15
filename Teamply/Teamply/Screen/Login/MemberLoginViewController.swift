@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MemberLoginViewController: UIViewController {
+class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -39,6 +39,46 @@ class MemberLoginViewController: UIViewController {
     
     @IBOutlet weak var joinButton: UIButton!
     
+    func isSameTextField(_ first: UITextField,_ second: UITextField) -> Bool {
+         if (first.text == second.text) {
+             return true
+         } else {
+             return false
+         }
+     }
+    
+    
+     @objc func TextFieldfilled(_ sender: Any) {
+         if !(self.nameTextField.text?.isEmpty ?? true)
+             && !(self.emailTextField.text?.isEmpty ?? true)
+             && !(self.codeTextField.text?.isEmpty ?? true)
+             && !(self.TermsofUseButton.image == UIImage(named: "check_circle"))
+             && !(self.personalInfoButton.image == UIImage(named: "check_circle"))
+             && isSameTextField(pwTextField, pwAgainTextField) {
+             
+             completionJoinButton(isOn: true)
+             
+         }
+         else {
+             completionJoinButton(isOn: false)
+         }
+     }
+    
+    func completionJoinButton(isOn: Bool) {
+        if (isOn == true) {
+            self.joinButton.backgroundColor = .team1
+            self.joinButton.setTitle("가입하기", for: .normal)
+            self.joinButton.setTitleColor(.basic1, for: .normal)
+            joinButton.titleLabel?.font = .body
+        } else {
+            self.joinButton.backgroundColor = .gray2
+            self.joinButton.setTitle("가입하기", for: .normal)
+            self.joinButton.setTitleColor(.basic1, for: .normal)
+            self.joinButton.titleLabel?.font = .body
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         componentStyle()
@@ -46,7 +86,38 @@ class MemberLoginViewController: UIViewController {
         TermsofUseButton.image = UIImage(named: "check_circle")
         personalInfoButton.image = UIImage(named: "check_circle")
         snsAgreeButton.image = UIImage(named: "check_circle")
+
+       
+        let taptermsGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapterms(_:)))
+        self.TermsofUseButton.addGestureRecognizer(taptermsGesture)
+        self.TermsofUseButton.isUserInteractionEnabled = true
         
+        let tappersonalGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappersonal(_:)))
+        self.personalInfoButton.addGestureRecognizer(tappersonalGesture)
+        self.personalInfoButton.isUserInteractionEnabled = true
+        
+        
+        let tapsnsGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapsns(_:)))
+        self.snsAgreeButton.addGestureRecognizer(tapsnsGesture)
+        self.snsAgreeButton.isUserInteractionEnabled = true
+        
+        self.completionJoinButton(isOn: false)
+        
+        self.nameTextField.delegate = self
+        self.pwTextField.delegate = self
+        self.pwAgainTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.codeTextField.delegate = self
+        taptermsGesture.delegate = self
+        tappersonalGesture.delegate = self
+        tapsnsGesture.delegate = self
+        
+        
+        self.nameTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        self.pwTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: UIControl.Event.allEditingEvents)
+        self.pwAgainTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: UIControl.Event.allEditingEvents)
+        self.emailTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        self.codeTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
     }
     
     func componentStyle() {
@@ -103,8 +174,6 @@ class MemberLoginViewController: UIViewController {
         snsAgreeLabel.text = "SNS 수신 동의"
         snsAgreeLabel.font = .body
         snsAgreeLabel.textColor = .basic2
-        
-        
    
         nameTextField.makeRound(radius: 15)
         pwTextField.makeRound(radius: 15)
@@ -158,11 +227,6 @@ class MemberLoginViewController: UIViewController {
         detail2Button.setTitleColor(.gray3, for: .normal)
         detail2Button.titleLabel?.font = .cap3
         
-        joinButton.backgroundColor = .gray2
-        joinButton.setTitle("가입하기", for: .normal)
-        joinButton.setTitleColor(.basic1, for: .normal)
-        joinButton.titleLabel?.font = .body
-        
     }
     @IBAction func backButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
@@ -173,22 +237,21 @@ class MemberLoginViewController: UIViewController {
     @IBAction func tapCheckCodeButton(_ sender: Any) {
     }
     
-    @IBAction func tapTermsofUseButton(_ sender: Any) {
+    @objc func tapterms(_ sender: UITapGestureRecognizer) {
         TermsofUseButton.image = UIImage(named: "green_check_circle")
     }
     
-    @IBAction func tapPersonalInfoButton(_ sender: Any) {
+    @objc func tappersonal(_ sender: UITapGestureRecognizer) {
         personalInfoButton.image = UIImage(named: "green_check_circle")
     }
     
-    @IBAction func tapsnsAgreeButton(_ sender: Any) {
+    
+    @objc func tapsns(_ sender: UITapGestureRecognizer) {
         snsAgreeButton.image = UIImage(named: "green_check_circle")
     }
     
     
     @IBAction func tapjoinButton(_ sender: Any) {
-        joinButton.backgroundColor = .team1
-        
     }
     
 }
@@ -199,4 +262,12 @@ extension UITextField {
         self.leftViewMode = ViewMode.always
     }
 }
+
+extension MemberLoginViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
+
 

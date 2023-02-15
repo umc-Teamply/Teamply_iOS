@@ -633,21 +633,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2M-pS-x6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="uaF-IK-4b9">
-                    <connections>
-                        <action selector="tapTermsofUseButton:" destination="uuf-JJ-pvO" id="6wj-fd-cJ7"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="jIy-su-ghM">
-                    <connections>
-                        <action selector="tapPersonalInfoButton:" destination="uuf-JJ-pvO" id="BvU-Q8-Xb7"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="hly-zE-g9a">
-                    <connections>
-                        <action selector="tapsnsAgreeButton:" destination="uuf-JJ-pvO" id="V2O-OZ-41c"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="uaF-IK-4b9"/>
+                <tapGestureRecognizer id="jIy-su-ghM"/>
+                <tapGestureRecognizer id="hly-zE-g9a"/>
             </objects>
             <point key="canvasLocation" x="651.14503816793888" y="-143.66197183098592"/>
         </scene>
