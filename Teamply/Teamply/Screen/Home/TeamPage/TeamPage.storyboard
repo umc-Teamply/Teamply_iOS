@@ -88,7 +88,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf0-nR-SHd">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Gf0-nR-SHd">
                                         <rect key="frame" x="25" y="119" width="343" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="62" id="d5M-7H-1TK"/>

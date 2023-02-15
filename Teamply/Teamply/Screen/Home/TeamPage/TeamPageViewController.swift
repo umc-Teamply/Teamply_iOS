@@ -38,38 +38,14 @@ class TeamPageViewController: UIViewController {
     var projectTitle: String!
     var date: String!
     var scheduleData: [Schedule]!
+    var memberInfo: [Member]!
     var memberImages = "defaultProfile"
     var addMemberImage = "add_friend"
-    
-    var memberView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        //view.backgroundColor = headerView.backgroundColor
-        view.heightAnchor.constraint(equalToConstant: 62).isActive = true
-        return view
-    }()
-    
-    var memberImage: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        //view.image = UIImage(named: memberImages)
-        return view
-    }()
-    
-    var memberName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .cap3
-        label.textColor = .basic1
-        label.textAlignment = .center
-        return label
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getProjectScheduleData()
+        getProjectMemberInfo()
         setTeamPageStyle()
         //setMemberStackView()
 //        periodBorder.layer.cornerRadius = 15
@@ -135,19 +111,45 @@ class TeamPageViewController: UIViewController {
     }
     
     func setMemberStackView() {
-        for _ in 0...scheduleData.count {
-            setMemberView()
-            memberStackview.addArrangedSubview(memberView)
+        for m in memberInfo {
+            print(m.userName)
+            setMemberView(name: m.userName)
         }
         setUnInviteMember()
     }
     
     
-    func setMemberView() {
-        print(scheduleData.count)
+    func setMemberView(name: String) {
+        let memberView: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            //view.backgroundColor = headerView.backgroundColor
+            view.heightAnchor.constraint(equalToConstant: 62).isActive = true
+            return view
+        }()
+        
+        let memberImage: UIImageView = {
+            let view = UIImageView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            view.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            //view.image = UIImage(named: memberImages)
+            return view
+        }()
+        
+        let memberName: UILabel = {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.font = .cap3
+            label.textColor = .basic1
+            label.textAlignment = .center
+            return label
+        }()
+        
         memberView.backgroundColor = headerView.backgroundColor
         memberImage.image = UIImage(named: memberImages)
         memberView.addSubview(memberImage)
+        memberName.text = name
         memberView.addSubview(memberName)
         
         NSLayoutConstraint.activate([
@@ -160,18 +162,37 @@ class TeamPageViewController: UIViewController {
             memberName.centerXAnchor.constraint(equalTo: memberView.centerXAnchor),
             memberName.bottomAnchor.constraint(equalTo: memberView.bottomAnchor)
         ])
+        
+        memberStackview.addArrangedSubview(memberView)
     }
     
     func setUnInviteMember() {
-        let unInviteCount = headcount-scheduleData.count
+        let plusView: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            //view.backgroundColor = headerView.backgroundColor
+            view.heightAnchor.constraint(equalToConstant: 62).isActive = true
+            return view
+        }()
+        
+        let plusImage: UIImageView = {
+            let view = UIImageView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            view.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            //view.image = UIImage(named: memberImages)
+            return view
+        }()
+        
+        let unInviteCount = headcount - memberInfo.count
         
         if unInviteCount > 0 {
             for _ in 0...unInviteCount {
-                memberView.backgroundColor = headerView.backgroundColor
-                memberImage.image = UIImage(named: addMemberImage)
-                memberView.addSubview(memberImage)
+                plusView.backgroundColor = headerView.backgroundColor
+                plusImage.image = UIImage(named: addMemberImage)
+                plusView.addSubview(plusImage)
                 
-                memberStackview.addArrangedSubview(memberView)
+                memberStackview.addArrangedSubview(plusView)
             }
         }
     }
@@ -225,6 +246,20 @@ extension TeamPageViewController {
                 if scheduleData.result.isEmpty {
                     self.emptySchedule()
                 }
+                //self.setMemberStackView()
+            }
+            
+        }
+    }
+    
+    func getProjectMemberInfo() {
+        TeamPageAPI.shared.getProjectMemberInfo(param: projectId) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                guard let memberInfo = result?.data else { return }
+                self.memberInfo = memberInfo.result
+                
                 self.setMemberStackView()
             }
             
