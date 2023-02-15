@@ -10,10 +10,12 @@ import Moya
 final class TeamPageAPI {
     static let shared: TeamPageAPI = TeamPageAPI()
     private let projectScheduleProvider = MoyaProvider<TeamPageService>(plugins: [MoyaLoggingPlugin()])
+    private let projectMemberProvider = MoyaProvider<TeamPageService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
     
     public private(set) var projectScheduleData: GeneralResponse<ProjectScheduleResponse>?
+    public private(set) var projectMemberData: GeneralResponse<ProjectMemberResponse>?
     
     // MARK: - Get
     
@@ -26,6 +28,25 @@ final class TeamPageAPI {
                     self?.projectScheduleData = try result.map(GeneralResponse<ProjectScheduleResponse>?.self)
                     guard let projectScheduleData = self?.projectScheduleData else { return }
                     completion(projectScheduleData, nil)
+                } catch(let err) {
+                    print(err.localizedDescription)
+                    completion(nil, err)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil, err)
+            }
+        }
+    }
+    
+    func getProjectMemberInfo(param: Int, completion: @escaping ((GeneralResponse<ProjectMemberResponse>?, Error?) -> ())) {
+        projectScheduleProvider.request(.getProjectMember(param: param)) { [weak self] response in
+            switch response {
+            case .success(let result):
+                do {
+                    self?.projectMemberData = try result.map(GeneralResponse<ProjectMemberResponse>?.self)
+                    guard let projectMemberData = self?.projectMemberData else { return }
+                    completion(projectMemberData, nil)
                 } catch(let err) {
                     print(err.localizedDescription)
                     completion(nil, err)
