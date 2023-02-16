@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct InviteCode: Codable {
+    let result: [String]
+}
