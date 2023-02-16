@@ -245,7 +245,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.projectColor = UIColor(named: projectInfo.color)!
             cell.titleLabel.text = projectInfo.title
             cell.contentLabel.text = projectInfo.contents
-            cell.headCount = projectInfo.headcount
+            cell.headCount = projectInfo.realCount
             cell.projectId = projectInfo.projectId
             
             let start = projectInfo.startDate
@@ -261,7 +261,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let data = projectData[indexPath.row]
         var projectId = data.projectId
         var projectColor = data.color
-        var totalHeadcount = data.headcount //지금은 real api 수정되면 total로 수정하기
+        var totalHeadcount = data.totalCount //지금은 real api 수정되면 total로 수정하기
         let projectTitle = data.title
         var startDate = data.startDate
         var endDate = data.endDate

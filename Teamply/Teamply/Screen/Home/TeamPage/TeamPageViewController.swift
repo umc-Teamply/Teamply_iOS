@@ -167,30 +167,36 @@ class TeamPageViewController: UIViewController {
     }
     
     func setUnInviteMember() {
-        let plusView: UIView = {
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            //view.backgroundColor = headerView.backgroundColor
-            view.heightAnchor.constraint(equalToConstant: 62).isActive = true
-            return view
-        }()
-        
-        let plusImage: UIImageView = {
-            let view = UIImageView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            view.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            //view.image = UIImage(named: memberImages)
-            return view
-        }()
-        
         let unInviteCount = totalHeadcount - memberInfo.count
         
         if unInviteCount > 0 {
-            for _ in 0...unInviteCount {
+            for _ in 1...unInviteCount {
+                let plusView: UIView = {
+                    let view = UIView()
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    //view.backgroundColor = headerView.backgroundColor
+                    view.heightAnchor.constraint(equalToConstant: 62).isActive = true
+                    return view
+                }()
+                
+                let plusImage: UIImageView = {
+                    let view = UIImageView()
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+                    view.widthAnchor.constraint(equalToConstant: 40).isActive = true
+                    //view.image = UIImage(named: memberImages)
+                    return view
+                }()
+                
                 plusView.backgroundColor = headerView.backgroundColor
                 plusImage.image = UIImage(named: addMemberImage)
                 plusView.addSubview(plusImage)
+                
+                NSLayoutConstraint.activate([
+                    plusImage.leadingAnchor.constraint(equalTo: plusView.leadingAnchor),
+                    plusImage.trailingAnchor.constraint(equalTo: plusView.trailingAnchor),
+                    plusImage.topAnchor.constraint(equalTo: plusView.topAnchor)
+                ])
                 
                 memberStackview.addArrangedSubview(plusView)
             }
