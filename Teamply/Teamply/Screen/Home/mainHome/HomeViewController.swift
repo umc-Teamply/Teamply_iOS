@@ -54,10 +54,25 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
             name: NSNotification.Name("DismissCreateView"),
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didDismissAttendNotification(_:)),
+            name: NSNotification.Name("DismissAttendView"),
+            object: nil
+        )
     }
     
     // MARK: - @objc
     @objc func didDismissCreateNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.getUserProjectInfo()
+            self.viewDidLayoutSubviews()
+            self.setCollectionViewInit()
+            self.projectCollectionView.reloadData()
+        }
+    }
+    
+    @objc func didDismissAttendNotification(_ notification: Notification) {
         DispatchQueue.main.async {
             self.getUserProjectInfo()
             self.viewDidLayoutSubviews()
