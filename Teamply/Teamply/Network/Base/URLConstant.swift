@@ -28,4 +28,6 @@ struct URLConstant {
     static let projectSchedule = "/schedule/project/"
     //프로젝트 회원 정보
     static let projectMemberInfo = "/project/member/"
+    //초대 코드
+    static let inviteCode = "/project/code/"
 }
