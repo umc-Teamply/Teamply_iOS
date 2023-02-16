@@ -261,7 +261,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let data = projectData[indexPath.row]
         var projectId = data.projectId
         var projectColor = data.color
-        var headcount = data.headcount
+        var totalHeadcount = data.headcount //지금은 real api 수정되면 total로 수정하기
         let projectTitle = data.title
         var startDate = data.startDate
         var endDate = data.endDate
@@ -272,7 +272,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         nextVC.modalPresentationStyle = .fullScreen
         nextVC.projectId = projectId
         nextVC.projectColor = projectColor
-        nextVC.headcount = headcount
+        nextVC.totalHeadcount = totalHeadcount
         nextVC.projectTitle = projectTitle
         nextVC.date = period
         self.present(nextVC, animated: true, completion: nil)

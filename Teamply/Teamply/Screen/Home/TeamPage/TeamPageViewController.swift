@@ -33,7 +33,7 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var memberStackview: UIStackView!
     
     var projectId: Int!
-    var headcount: Int!
+    var totalHeadcount: Int!
     var projectColor: String!
     var projectTitle: String!
     var date: String!
@@ -184,7 +184,7 @@ class TeamPageViewController: UIViewController {
             return view
         }()
         
-        let unInviteCount = headcount - memberInfo.count
+        let unInviteCount = totalHeadcount - memberInfo.count
         
         if unInviteCount > 0 {
             for _ in 0...unInviteCount {
