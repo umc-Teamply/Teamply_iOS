@@ -41,22 +41,14 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var wrongCodeLabel: UILabel!
 
-    func isSameTextField(_ first: UITextField,_ second: UITextField) -> Bool {
-         if (first.text == second.text) {
-             return true
-         } else {
-             return false
-         }
-     }
-    
-    
+  
      @objc func TextFieldfilled(_ sender: Any) {
          if !(self.nameTextField.text?.isEmpty ?? true)
              && !(self.emailTextField.text?.isEmpty ?? true)
              && !(self.codeTextField.text?.isEmpty ?? true)
              && !(self.TermsofUseButton.image == UIImage(named: "check_circle"))
              && !(self.personalInfoButton.image == UIImage(named: "check_circle"))
-             && isSameTextField(pwTextField, pwAgainTextField)
+             && !(self.pwCom())
              && (self.codeTextField.text == "123456") {
              
              completionJoinButton(isOn: true)
@@ -123,6 +115,9 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         self.codeTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
         
         wrongCodeLabel.isHidden = true
+        
+        pwTextField.addTarget(self, action: #selector(textFieldEdited), for: .editingChanged)
+        pwAgainTextField.addTarget(self, action: #selector(textFieldEdited), for: .editingChanged)
     }
     
     func componentStyle() {
@@ -238,7 +233,7 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func codeCom() -> Bool{
+    func codeCompare() -> Bool{
         if codeTextField.text == "123456" {
             return false
         }
@@ -263,12 +258,32 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tapCheckCodeButton(_ sender: Any) {
-        if codeCom() {
+        if codeCompare() {
             wrongCode()
         } else {
             correctCode()
         }
     }
+    
+    func pwCom() -> Bool{
+        if pwTextField.text == pwAgainTextField.text {
+            return false
+        }
+        return true
+    }
+    
+    func wrongpw() {
+        TextFieldfilled(self)
+    }
+    
+    func correctpw() {
+        TextFieldfilled(self)
+    }
+    
+    @IBAction func tappwAgainTextField(_ sender: Any) {
+        
+    }
+    
     
     @objc func tapterms(_ sender: UITapGestureRecognizer) {
         TermsofUseButton.image = UIImage(named: "green_check_circle")
@@ -276,6 +291,7 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func tappersonal(_ sender: UITapGestureRecognizer) {
         personalInfoButton.image = UIImage(named: "green_check_circle")
+   
     }
     
     
@@ -286,7 +302,30 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func tapjoinButton(_ sender: Any) {
     }
     
+    func isValidPassword(pw: String?) -> Bool{
+           if let hasPassword = pw{
+               if hasPassword.count < 8{
+                   return false
+               }
+           }
+           return true
+       }
     
+    
+    
+    @IBAction func tapPWTextField(_ sender: Any) {
+    }
+    
+    @objc func textFieldEdited(textField: UITextField) {
+        if textField == pwTextField {
+            if isValidPassword(pw: textField.text) {
+                completionJoinButton(isOn: true)
+            }
+            else {
+                completionJoinButton(isOn: false)
+            }
+        }
+    }
     
     
 }
