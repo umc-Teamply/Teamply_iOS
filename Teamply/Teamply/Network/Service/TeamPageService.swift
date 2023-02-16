@@ -10,6 +10,7 @@ import Moya
 enum TeamPageService {
     case getProjectSchedule(param: Int)
     case getProjectMember(param: Int)
+    case getInviteCode(param: Int)
 }
 
 extension TeamPageService: BaseTargetType {
@@ -19,6 +20,8 @@ extension TeamPageService: BaseTargetType {
             return URLConstant.projectSchedule+"\(projectId)"
         case .getProjectMember(let projectId):
             return URLConstant.projectMemberInfo+"\(projectId)"
+        case .getInviteCode(let projectId):
+            return URLConstant.inviteCode+"\(projectId)"
         }
     }
     
@@ -30,7 +33,7 @@ extension TeamPageService: BaseTargetType {
     
     var task: Task {
         switch self {
-        case .getProjectSchedule, .getProjectMember:
+        case .getProjectSchedule, .getProjectMember, .getInviteCode:
             return .requestPlain
         }
     }
