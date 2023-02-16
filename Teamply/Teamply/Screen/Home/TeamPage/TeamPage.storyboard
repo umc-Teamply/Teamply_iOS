@@ -642,7 +642,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znz-dK-UbZ">
-                                        <rect key="frame" x="80" y="101" width="41.333333333333343" height="20.333333333333329"/>
+                                        <rect key="frame" x="140.33333333333334" y="101" width="41.333333333333343" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -669,8 +669,8 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0dT-WB-PPq" secondAttribute="trailing" constant="21" id="2wa-cX-j2D"/>
                                     <constraint firstItem="5Zt-1E-EUU" firstAttribute="leading" secondItem="8RA-CJ-3Fa" secondAttribute="leading" constant="76" id="5TO-dm-RY7"/>
-                                    <constraint firstItem="znz-dK-UbZ" firstAttribute="leading" secondItem="8RA-CJ-3Fa" secondAttribute="leading" constant="80" id="7jD-25-Cw5"/>
                                     <constraint firstItem="5Zt-1E-EUU" firstAttribute="top" secondItem="8RA-CJ-3Fa" secondAttribute="top" constant="66" id="7pu-6Y-sTA"/>
+                                    <constraint firstItem="znz-dK-UbZ" firstAttribute="centerX" secondItem="8RA-CJ-3Fa" secondAttribute="centerX" id="INs-1c-FVy"/>
                                     <constraint firstAttribute="trailing" secondItem="rs5-gP-wgd" secondAttribute="trailing" constant="34" id="OZL-cI-5UA"/>
                                     <constraint firstItem="qlb-TT-PMA" firstAttribute="leading" secondItem="8RA-CJ-3Fa" secondAttribute="leading" constant="67" id="T7y-83-iSQ"/>
                                     <constraint firstItem="0dT-WB-PPq" firstAttribute="top" secondItem="8RA-CJ-3Fa" secondAttribute="top" constant="21" id="Vm8-Kc-S9d"/>

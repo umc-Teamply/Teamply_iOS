@@ -282,9 +282,9 @@ extension TeamPageViewController {
                 print(error)
             } else {
                 guard let code = result?.data?.result else { return }
-                let inviteCode = code
+                let inviteCode = code[0]
                 print(inviteCode)
-                self.code = code[0]
+                self.code = inviteCode.code
             }
             
         }
