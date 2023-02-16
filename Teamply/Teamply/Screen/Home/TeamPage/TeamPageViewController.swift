@@ -182,14 +182,15 @@ class TeamPageViewController: UIViewController {
                 let plusImage: UIImageView = {
                     let view = UIImageView()
                     view.translatesAutoresizingMaskIntoConstraints = false
+                    view.isUserInteractionEnabled = true
                     view.heightAnchor.constraint(equalToConstant: 40).isActive = true
                     view.widthAnchor.constraint(equalToConstant: 40).isActive = true
-                    //view.image = UIImage(named: memberImages)
+                    view.image = UIImage(named: addMemberImage)
+                    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.memberAddButton)))
                     return view
                 }()
                 
                 plusView.backgroundColor = headerView.backgroundColor
-                plusImage.image = UIImage(named: addMemberImage)
                 plusView.addSubview(plusImage)
                 
                 NSLayoutConstraint.activate([
@@ -208,12 +209,12 @@ class TeamPageViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true)
     }
     
-    @objc func memberAddButton(_ sender: Any) {
+    @objc func memberAddButton(_ sender: UITapGestureRecognizer){
         guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
             codevc.modalPresentationStyle = .overCurrentContext
         codevc.modalTransitionStyle = .crossDissolve
             self.present(codevc, animated: true, completion: nil)
-        }
+    }
     
     @IBAction func user2Button(_ sender: Any) {
         guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
