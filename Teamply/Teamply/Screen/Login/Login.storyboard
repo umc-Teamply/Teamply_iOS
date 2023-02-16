@@ -491,6 +491,16 @@
                                                     <outletCollection property="gestureRecognizers" destination="hly-zE-g9a" appends="YES" id="p5P-w5-RjL"/>
                                                 </connections>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10q-ar-VGG">
+                                                <rect key="frame" x="29" y="556" width="255" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="1GP-rH-kUR"/>
+                                                    <constraint firstAttribute="width" constant="255" id="qGW-qE-3Cx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -535,7 +545,6 @@
                                             <constraint firstItem="8ju-G7-TL5" firstAttribute="top" secondItem="uBs-sG-oK8" secondAttribute="bottom" constant="15" id="in9-to-fmy"/>
                                             <constraint firstItem="van-nK-cFa" firstAttribute="leading" secondItem="iAS-Pq-Os2" secondAttribute="trailing" constant="18" id="jLd-dN-8cX"/>
                                             <constraint firstItem="LRu-RI-mVL" firstAttribute="top" secondItem="iAS-Pq-Os2" secondAttribute="bottom" constant="12" id="jYV-bp-a66"/>
-                                            <constraint firstItem="rg0-MJ-6rq" firstAttribute="top" secondItem="W0R-To-y6s" secondAttribute="bottom" constant="34" id="jjG-xX-J3e"/>
                                             <constraint firstItem="W0R-To-y6s" firstAttribute="top" secondItem="AUg-T5-gVZ" secondAttribute="bottom" constant="19" id="jpx-bJ-7Z7"/>
                                             <constraint firstItem="VTp-h4-fiC" firstAttribute="leading" secondItem="qlT-bL-2yN" secondAttribute="leading" constant="9" id="ln0-9U-Mlv"/>
                                             <constraint firstItem="mzw-ML-z15" firstAttribute="leading" secondItem="qlT-bL-2yN" secondAttribute="leading" constant="11" id="o2t-9o-JR6"/>
@@ -543,6 +552,8 @@
                                             <constraint firstItem="hN6-1O-qwh" firstAttribute="top" secondItem="rg0-MJ-6rq" secondAttribute="bottom" constant="90" id="ofd-A9-eHm"/>
                                             <constraint firstItem="sVU-Zb-ILY" firstAttribute="top" secondItem="lMn-Ws-9Rf" secondAttribute="bottom" constant="27" id="pA2-PG-QFj"/>
                                             <constraint firstItem="y7b-7t-1y0" firstAttribute="top" secondItem="NJO-2w-2Br" secondAttribute="bottom" constant="38" id="pSh-no-pgW"/>
+                                            <constraint firstItem="10q-ar-VGG" firstAttribute="top" secondItem="W0R-To-y6s" secondAttribute="bottom" constant="6" id="pV3-Rk-QEK"/>
+                                            <constraint firstItem="10q-ar-VGG" firstAttribute="leading" secondItem="qlT-bL-2yN" secondAttribute="leading" constant="29" id="pVc-Bn-Yag"/>
                                             <constraint firstItem="van-nK-cFa" firstAttribute="top" secondItem="mzw-ML-z15" secondAttribute="bottom" constant="20" id="qcw-cm-iKY"/>
                                             <constraint firstItem="LRu-RI-mVL" firstAttribute="leading" secondItem="qlT-bL-2yN" secondAttribute="leading" constant="9" id="qfm-gS-hI8"/>
                                             <constraint firstItem="uBs-sG-oK8" firstAttribute="leading" secondItem="LRu-RI-mVL" secondAttribute="trailing" constant="18" id="r7H-cv-K9P"/>
@@ -555,6 +566,7 @@
                                             <constraint firstAttribute="trailing" secondItem="y20-Xv-U6A" secondAttribute="trailing" constant="10" id="vdk-Q5-hGr"/>
                                             <constraint firstItem="AUg-T5-gVZ" firstAttribute="top" secondItem="i4X-VI-qZS" secondAttribute="bottom" constant="12" id="vsZ-Rk-80v"/>
                                             <constraint firstItem="NJO-2w-2Br" firstAttribute="top" secondItem="LRu-RI-mVL" secondAttribute="bottom" constant="12" id="wiO-Hw-BSI"/>
+                                            <constraint firstItem="rg0-MJ-6rq" firstAttribute="top" secondItem="10q-ar-VGG" secondAttribute="bottom" constant="12" id="wou-Oh-NXq"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -630,6 +642,7 @@
                         <outlet property="snsAgreeButton" destination="NJO-2w-2Br" id="Ak5-5B-0k1"/>
                         <outlet property="snsAgreeLabel" destination="8ju-G7-TL5" id="yJ0-OZ-r5Q"/>
                         <outlet property="titleLabel" destination="kvM-tL-J2J" id="y7G-66-PGK"/>
+                        <outlet property="wrongCodeLabel" destination="10q-ar-VGG" id="O7Q-Lj-bxi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2M-pS-x6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

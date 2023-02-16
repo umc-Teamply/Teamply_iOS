@@ -39,6 +39,8 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var joinButton: UIButton!
     
+    @IBOutlet weak var wrongCodeLabel: UILabel!
+
     func isSameTextField(_ first: UITextField,_ second: UITextField) -> Bool {
          if (first.text == second.text) {
              return true
@@ -54,7 +56,8 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
              && !(self.codeTextField.text?.isEmpty ?? true)
              && !(self.TermsofUseButton.image == UIImage(named: "check_circle"))
              && !(self.personalInfoButton.image == UIImage(named: "check_circle"))
-             && isSameTextField(pwTextField, pwAgainTextField) {
+             && isSameTextField(pwTextField, pwAgainTextField)
+             && (self.codeTextField.text == "123456") {
              
              completionJoinButton(isOn: true)
              
@@ -118,6 +121,8 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         self.pwAgainTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: UIControl.Event.allEditingEvents)
         self.emailTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
         self.codeTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        
+        wrongCodeLabel.isHidden = true
     }
     
     func componentStyle() {
@@ -150,6 +155,10 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         checkCodeButton.setTitle("인증번호 확인", for: .normal)
         checkCodeButton.setTitleColor(.basic2, for: .normal)
         checkCodeButton.titleLabel?.font = .sub2
+        
+        wrongCodeLabel.text = "잘못된 인증번호 입니다. 인증번호를 다시 입력해주세요."
+        wrongCodeLabel.font = .cap3
+        wrongCodeLabel.textColor = .team1
         
         agreeLabel.text = "약관 동의"
         agreeLabel.font = .sub2
@@ -228,6 +237,25 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         detail2Button.titleLabel?.font = .cap3
         
     }
+    
+    func codeCom() -> Bool{
+        if codeTextField.text == "123456" {
+            return false
+        }
+        return true
+    }
+    
+    func wrongCode() {
+        wrongCodeLabel.isHidden = false
+        codeTextField.layer.borderWidth = 1
+        codeTextField.layer.borderColor = UIColor(named: "team1")?.cgColor
+    }
+    
+    func correctCode() {
+        wrongCodeLabel.isHidden = true
+        codeTextField.layer.borderWidth = 0
+    }
+    
     @IBAction func backButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
@@ -235,6 +263,11 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tapCheckCodeButton(_ sender: Any) {
+        if codeCom() {
+            wrongCode()
+        } else {
+            correctCode()
+        }
     }
     
     @objc func tapterms(_ sender: UITapGestureRecognizer) {
@@ -250,9 +283,11 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         snsAgreeButton.image = UIImage(named: "green_check_circle")
     }
     
-    
     @IBAction func tapjoinButton(_ sender: Any) {
     }
+    
+    
+    
     
 }
 extension UITextField {
@@ -268,6 +303,3 @@ extension MemberLoginViewController: UIGestureRecognizerDelegate {
         return true
     }
 }
-
-
-
