@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct InviteCode: Codable {
+struct InviteCodeResponse: Codable {
     let result: [String]
 }
