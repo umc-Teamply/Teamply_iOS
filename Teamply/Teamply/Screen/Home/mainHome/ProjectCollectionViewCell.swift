@@ -56,6 +56,7 @@ class ProjectCollectionViewCell: UICollectionViewCell {
     
     var projectColor:UIColor = .gray1!
     var headCount: Int = 0
+    var projectId: Int!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
