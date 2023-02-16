@@ -41,11 +41,13 @@ class TeamPageViewController: UIViewController {
     var memberInfo: [Member]!
     var memberImages = "defaultProfile"
     var addMemberImage = "add_friend"
+    var code: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getProjectScheduleData()
         getProjectMemberInfo()
+        getInviteCode()
         setTeamPageStyle()
         //setMemberStackView()
 //        periodBorder.layer.cornerRadius = 15
@@ -211,9 +213,10 @@ class TeamPageViewController: UIViewController {
     
     @objc func memberAddButton(_ sender: UITapGestureRecognizer){
         guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
-            codevc.modalPresentationStyle = .overCurrentContext
+        codevc.modalPresentationStyle = .overCurrentContext
         codevc.modalTransitionStyle = .crossDissolve
-            self.present(codevc, animated: true, completion: nil)
+        codevc.code = code
+        self.present(codevc, animated: true, completion: nil)
     }
     
     @IBAction func user2Button(_ sender: Any) {
@@ -268,6 +271,20 @@ extension TeamPageViewController {
                 self.memberInfo = memberInfo.result
                 
                 self.setMemberStackView()
+            }
+            
+        }
+    }
+    
+    func getInviteCode() {
+        TeamPageAPI.shared.getInviteCode(param: projectId) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                guard let code = result?.data?.result else { return }
+                let inviteCode = code
+                print(inviteCode)
+                self.code = code[0]
             }
             
         }

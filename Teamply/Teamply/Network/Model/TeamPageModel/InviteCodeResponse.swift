@@ -8,5 +8,9 @@
 import Foundation
 
 struct InviteCodeResponse: Codable {
-    let result: [String]
+    let result: [InviteCode]
+}
+
+struct InviteCode: Codable {
+    let code: String
 }
