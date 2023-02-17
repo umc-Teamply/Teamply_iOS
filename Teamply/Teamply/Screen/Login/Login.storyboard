@@ -167,6 +167,13 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5c-mr-SYo">
+                                <rect key="frame" x="29" y="344" width="336" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="okB-w9-Ngh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -182,7 +189,6 @@
                             <constraint firstItem="okB-w9-Ngh" firstAttribute="trailing" secondItem="Dlu-Az-qZ4" secondAttribute="trailing" constant="25" id="Mfb-SG-Ktj"/>
                             <constraint firstItem="Ulz-5B-7Tx" firstAttribute="leading" secondItem="okB-w9-Ngh" secondAttribute="leading" constant="26" id="WN5-Y3-QYi"/>
                             <constraint firstItem="RQa-Tc-iQZ" firstAttribute="leading" secondItem="Dpg-yR-sB3" secondAttribute="trailing" constant="121" id="WTa-Y2-CbW"/>
-                            <constraint firstItem="ANS-NC-oAX" firstAttribute="top" secondItem="Dlu-Az-qZ4" secondAttribute="bottom" constant="61" id="Z3t-mh-CO4"/>
                             <constraint firstItem="Ulz-5B-7Tx" firstAttribute="top" secondItem="ANS-NC-oAX" secondAttribute="bottom" constant="225" id="ZUV-O6-614"/>
                             <constraint firstItem="okB-w9-Ngh" firstAttribute="bottom" secondItem="5HG-mA-67u" secondAttribute="bottom" constant="25" id="aDE-dA-4QR"/>
                             <constraint firstItem="NLW-vb-iC2" firstAttribute="top" secondItem="OZb-07-IzS" secondAttribute="bottom" constant="14" id="ceK-5V-ASw"/>
@@ -200,6 +206,7 @@
                         <outlet property="emailTextField" destination="NLW-vb-iC2" id="EIq-TT-dcX"/>
                         <outlet property="googleLoginButton" destination="5HG-mA-67u" id="Olp-sN-4BS"/>
                         <outlet property="loginButton" destination="ANS-NC-oAX" id="Vi7-dG-jwI"/>
+                        <outlet property="loginErrorLabel" destination="N5c-mr-SYo" id="kyG-XQ-k4h"/>
                         <outlet property="naverLoginButton" destination="Ulz-5B-7Tx" id="Cfa-V1-wAc"/>
                         <outlet property="pwTextField" destination="Dlu-Az-qZ4" id="wat-H5-pkR"/>
                         <outlet property="titleLabel" destination="RQa-Tc-iQZ" id="FEg-AK-W6F"/>

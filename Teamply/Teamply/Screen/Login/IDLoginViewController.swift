@@ -8,23 +8,26 @@
 import UIKit
 
 class IDLoginViewController: UIViewController {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-   
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
     
     
-    @IBOutlet weak var loginButton: UIButton!    
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var naverLoginButton: UIButton!
     @IBOutlet weak var googleLoginButton: UIButton!
-
+    
+    @IBOutlet weak var loginErrorLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginsetStyle()
-
+        loginErrorLabel.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -36,6 +39,12 @@ class IDLoginViewController: UIViewController {
         emailLabel.text = "이메일"
         emailLabel.font = .sub2
         emailLabel.textColor = .basic2
+        
+        loginErrorLabel.text = "이메일 또는 비밀번호를 다시 확인해주세요. \n등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
+                loginErrorLabel.font = .cap3
+                loginErrorLabel.textColor = .team1
+                loginErrorLabel.textAlignment = .left
+                loginErrorLabel.numberOfLines = 0
         
         emailTextField.makeRound(radius: 15)
         pwTextField.makeRound(radius: 15)
@@ -67,7 +76,7 @@ class IDLoginViewController: UIViewController {
         naverLoginButton.setTitle("네이버로 로그인하기", for: .normal)
         naverLoginButton.setTitleColor(.basic1, for: .normal)
         naverLoginButton.titleLabel?.font = .sub2
-       
+        
         
         googleLoginButton.backgroundColor = UIColor(red: 0.325, green: 0.514, blue: 0.925, alpha: 1)
         googleLoginButton.setTitle("구글로 로그인하기", for: .normal)
@@ -82,7 +91,25 @@ class IDLoginViewController: UIViewController {
     }
     
     @IBAction func tapLoginButton(_ sender: Any) {
-        
+        if loginCompare() {
+            wrongLogin()
+        } else {
+            correctLogin()
+        }
     }
     
-}
+    func loginCompare() -> Bool {
+        if (emailTextField.text == "teamply2023@daum.net") && (pwTextField.text == "12345678") {
+            return false
+        }
+        return true
+    }
+    
+    func wrongLogin() {
+        loginErrorLabel.isHidden = false
+    }
+    
+    func correctLogin() {
+        loginErrorLabel.isHidden = true
+        }
+    }
