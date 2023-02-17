@@ -28,44 +28,72 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     
     @IBOutlet weak var weeklyCalendarView: FSCalendar!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
+
+
     // MARK: Properties
     let projectCell = "ProjectCell"
-    var projectList = ["브랜드 경험 디자인", "공간 프로젝트", "UX 디자인"]
-    var contentList = ["브랜드 경험 개선 프로젝트", "졸업 전시", "사용자 경험 개선"]
-    var colorList = ["team1", "team2", "team3","team2"]
-    var headCountList = [3, 4, 2]
-    var termList = ["2022.10.01-2022.12.21", "2022.10.13-2022.11.27", "2022.10.31-2022.12.31"]
+    var projectData: [ProjectInfo] = []
+    var userName: String!
+    var firstLoadFlag = true
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInfo()
+        getUserProjectInfo()
         
-        setTitleInit()
         setTodayPlayContent()
         setTodayScheduleContent()
         setViewInit()
         setTodayDate()
         weeklyCalendarInit()
         
-        setCollectionViewInit()
-        
-        
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.didDismissDetailNotification(_:)),
-            name: NSNotification.Name("attendTeamProjectVC"),
+            selector: #selector(self.didDismissCreateNotification(_:)),
+            name: NSNotification.Name("DismissCreateView"),
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didDismissAttendNotification(_:)),
+            name: NSNotification.Name("DismissAttendView"),
+            object: nil
+        )
+    }
+    
+    // MARK: - @objc
+    @objc func didDismissCreateNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.getUserProjectInfo()
+            self.viewDidLayoutSubviews()
+            self.setCollectionViewInit()
+            self.projectCollectionView.reloadData()
+        }
+    }
+    
+    @objc func didDismissAttendNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.getUserProjectInfo()
+            self.viewDidLayoutSubviews()
+            self.setCollectionViewInit()
+            self.projectCollectionView.reloadData()
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var height: CGFloat = 0.0
-        if projectList.count%2 == 0 {
-            height = CGFloat(projectList.count/2*160)
-        } else {
-            height = CGFloat((projectList.count/2+1)*160) + 5
+        
+        var projectCount = projectData.count
+        
+        switch projectCount {
+        case 3...4:
+            height = 320
+        case 5...6:
+            height = 480
+        default:
+            height = 160
         }
        
         collectionViewHeight.constant = height
@@ -132,13 +160,13 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     
     func setTitleInit() {
-        userScheduleLabel.text = "이프로님의 일정"
+        userScheduleLabel.text = userName+"님의 일정"
         userScheduleLabel.font = .head1
         
         todayScheduleLabel.text = "오늘 일정"
         todayScheduleLabel.font = .sub1
         
-        userTeamPlayLabel.text = "이프로님의 팀플"
+        userTeamPlayLabel.text = userName+"님의 팀플"
         userTeamPlayLabel.font = .head1
         
         todayPlanLabel.text = "오늘 계획"
@@ -213,25 +241,31 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if projectList.isEmpty {
+        if projectData.isEmpty {
             return 1
         }
-        return projectList.count
+        return projectData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectCell, for: indexPath) as! ProjectCollectionViewCell
         
-        if projectList.isEmpty {
+        if projectData.isEmpty {
             cell.projectColor = .gray1!
             cell.titleLabel.text = "팀프로젝트를\n등록해보세요"
             cell.setEmptyProject()
         } else {
-            cell.projectColor = UIColor(named: colorList[indexPath.row])!
-            cell.titleLabel.text = projectList[indexPath.row]
-            cell.contentLabel.text = contentList[indexPath.row]
-            cell.headCount = headCountList[indexPath.row]
-            cell.termLabel.text = termList[indexPath.row]
+            let projectInfo = projectData[indexPath.row]
+            
+            cell.projectColor = UIColor(named: projectInfo.color)!
+            cell.titleLabel.text = projectInfo.title
+            cell.contentLabel.text = projectInfo.contents
+            cell.headCount = projectInfo.realCount
+            cell.projectId = projectInfo.projectId
+            
+            let start = projectInfo.startDate
+            let end = projectInfo.endDate
+            cell.termLabel.text = start+"-"+end
             cell.setProjects()
         }
         cell.setProjectInit()
@@ -239,13 +273,46 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let data = projectData[indexPath.row]
+        var projectId = data.projectId
+        var projectColor = data.color
+        var totalHeadcount = data.totalCount //지금은 real api 수정되면 total로 수정하기
+        let projectTitle = data.title
+        var startDate = data.startDate
+        var endDate = data.endDate
+        let period = startDate+"-"+endDate
         let TeamPageVC = UIStoryboard.init(name: "TeamPage", bundle: nil)
         guard let nextVC = TeamPageVC.instantiateViewController(withIdentifier: "TeamPageVC") as? TeamPageViewController else { return true }
         
         nextVC.modalPresentationStyle = .fullScreen
-        
+        nextVC.projectId = projectId
+        nextVC.projectColor = projectColor
+        nextVC.totalHeadcount = totalHeadcount
+        nextVC.projectTitle = projectTitle
+        nextVC.date = period
         self.present(nextVC, animated: true, completion: nil)
         
         return false
+    }
+}
+
+extension HomeViewController {
+    func getUserInfo() {
+        HomeAPI.shared.getUserInfo { [weak self] userInfoData in
+            guard let infoData = userInfoData else { return }
+            let info = infoData.data?.result[0]
+            let name = info?.userName
+            self?.userName = name
+            self?.setTitleInit()
+        }
+    }
+    
+    func getUserProjectInfo() {
+        HomeAPI.shared.getUserProjectInfo { [weak self] infoData in
+            guard let infoData = infoData else { return }
+            let info = infoData.data?.result
+            self?.projectData = info!
+            self?.setCollectionViewInit()
+        }
     }
 }

@@ -12,10 +12,10 @@ class codeViewController: UIViewController {
     @IBOutlet weak var codeTitleLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var codeMessageLabel: UILabel!
-    
     @IBOutlet weak var codePopUpView: UIView!
-    
     @IBOutlet weak var codeCopyButton: UIButton!
+    
+    var code: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class codeViewController: UIViewController {
         codeTitleLabel.font = .body
         codeTitleLabel.textColor = .basic2
         
-        codeLabel.text = "A5D7QG8"
+        codeLabel.text = code
         codeLabel.font = UIFont(name: "NotoSansKR-Medium", size: 36.0)!
         codeLabel.textColor = .basic2
         

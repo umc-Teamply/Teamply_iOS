@@ -326,6 +326,9 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func tapjoinButton(_ sender: Any) {
+        joinButton.backgroundColor = .team1
+        signup()
+        self.presentingViewController?.dismiss(animated: true)
     }
     
    
@@ -371,4 +374,29 @@ extension MemberLoginViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+}
+extension MemberLoginViewController {
+    func signup() {
+        guard var name = nameTextField.text else { return }
+        guard var email = emailTextField.text else { return }
+        guard var pwd = pwTextField.text else { return }
+        
+        name = name.addSingleQuote(s: name)
+        email = email.addSingleQuote(s: email)
+        pwd = pwd.addSingleQuote(s: pwd)
+        
+        let signupRequest: SignUpRequest = SignUpRequest(name: name, email: email, pw: pwd, accessConsent: 1, serviceConsent: 1)
+        
+        
+        SignUpAPI.shared.signUp(param: signupRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                let result = result?.message
+                print(result!)
+            }
+            
+        }
+    }
+    
 }

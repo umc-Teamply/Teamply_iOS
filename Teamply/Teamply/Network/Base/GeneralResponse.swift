@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GenericResponse<T: Codable>: Codable {
+struct GeneralResponse<T: Codable>: Codable {
     var status: Int
     var success: Bool
     var message: String?
