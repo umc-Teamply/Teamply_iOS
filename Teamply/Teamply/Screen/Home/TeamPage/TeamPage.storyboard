@@ -59,36 +59,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7X-eO-QqO">
-                                        <rect key="frame" x="86" y="159" width="31" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="31" id="uhi-TA-sTQ"/>
-                                            <constraint firstAttribute="height" constant="22" id="yff-fa-Y76"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94t-Mm-ifv">
-                                        <rect key="frame" x="142" y="159" width="31" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="31" id="0ng-Zs-TYK"/>
-                                            <constraint firstAttribute="height" constant="22" id="7la-pU-J0D"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sx-tJ-qfE">
-                                        <rect key="frame" x="198" y="159" width="31" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="1Fw-Rx-FLx"/>
-                                            <constraint firstAttribute="width" constant="31" id="NpF-IX-Szb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Gf0-nR-SHd">
                                         <rect key="frame" x="25" y="119" width="343" height="62"/>
                                         <constraints>
@@ -105,10 +75,8 @@
                                 <color key="backgroundColor" name="team1"/>
                                 <constraints>
                                     <constraint firstItem="L5C-w3-CCK" firstAttribute="top" secondItem="id4-OK-Kt8" secondAttribute="top" constant="61" id="0nS-SS-tLC"/>
-                                    <constraint firstItem="8sx-tJ-qfE" firstAttribute="leading" secondItem="94t-Mm-ifv" secondAttribute="trailing" constant="25" id="8oU-FL-5cz"/>
                                     <constraint firstItem="zv4-KZ-rQe" firstAttribute="leading" secondItem="H4n-sm-oVP" secondAttribute="trailing" constant="14" id="FQI-M2-74l"/>
                                     <constraint firstItem="YTt-wb-xcl" firstAttribute="top" secondItem="id4-OK-Kt8" secondAttribute="top" constant="67" id="G2J-IY-tgU"/>
-                                    <constraint firstItem="94t-Mm-ifv" firstAttribute="leading" secondItem="S7X-eO-QqO" secondAttribute="trailing" constant="25" id="HZB-i5-ed1"/>
                                     <constraint firstItem="H4n-sm-oVP" firstAttribute="leading" secondItem="id4-OK-Kt8" secondAttribute="leading" constant="24" id="HzS-qP-PbT"/>
                                     <constraint firstItem="L5C-w3-CCK" firstAttribute="centerX" secondItem="id4-OK-Kt8" secondAttribute="centerX" id="UaU-9r-Ep4"/>
                                     <constraint firstItem="H4n-sm-oVP" firstAttribute="top" secondItem="Gf0-nR-SHd" secondAttribute="bottom" constant="17" id="YSs-y9-lIT"/>
@@ -135,26 +103,25 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-9p-QhJ">
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-9p-QhJ">
                                                         <rect key="frame" x="0.0" y="67.333333333333314" width="393" height="229"/>
                                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" priority="999" constant="229" id="Wnl-Ds-a2g"/>
-                                                        </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4WO-L5-VZh">
-                                                            <size key="itemSize" width="128" height="128"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="4WO-L5-VZh">
+                                                            <size key="itemSize" width="393" height="231"/>
+                                                            <size key="estimatedItemSize" width="393" height="231"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScheduleCell" id="XLi-R9-vWf" customClass="ScheduleCollectionViewCell" customModule="Teamply" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="231"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="loO-aZ-M0B">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="231"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </collectionViewCellContentView>
+                                                                <size key="customSize" width="393" height="231"/>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -291,6 +258,7 @@
                         <outlet property="projectToolLabel" destination="WsQ-tC-oP4" id="RHr-I2-5x2"/>
                         <outlet property="projectToolView" destination="l5V-uf-ukz" id="36k-KM-xtA"/>
                         <outlet property="scheduleCollectionView" destination="EU8-9p-QhJ" id="ZKK-L9-TU6"/>
+                        <outlet property="scheduleView" destination="O6Q-Hl-gQT" id="qcJ-pN-1lp"/>
                         <outlet property="teamPageStackView" destination="nZl-lJ-W50" id="4ll-ff-WaS"/>
                         <outlet property="titleLabel" destination="L5C-w3-CCK" id="RXD-8b-vLW"/>
                     </connections>

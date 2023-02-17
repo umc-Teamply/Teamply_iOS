@@ -20,6 +20,7 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var detailScheduleLabel: UILabel!
     @IBOutlet weak var addScheduleLabel: UILabel!
     @IBOutlet weak var addScheduleButton: UIButton!
+    @IBOutlet weak var scheduleView: UIView!
     
     @IBOutlet weak var teamPageStackView: UIStackView!
     @IBOutlet weak var projectToolView: UIView!
@@ -123,14 +124,23 @@ class TeamPageViewController: UIViewController {
     func setCollectionViewInit() {
         scheduleCollectionView.delegate = self
         scheduleCollectionView.dataSource = self
+        scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
+        if scheduleData.isEmpty {
+            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 129).isActive = true
+        } else {
+            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 229).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 299).isActive = true
+        }
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumInteritemSpacing = 9
-        flowLayout.minimumLineSpacing = 15
+        flowLayout.minimumInteritemSpacing = 24
         flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         scheduleCollectionView.setCollectionViewLayout(flowLayout, animated: true)
         scheduleCollectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: scheduleCell)
+        
+        
     }
     
     func setMemberView(name: String) {
@@ -243,6 +253,7 @@ class TeamPageViewController: UIViewController {
 }
 
 extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if scheduleData.isEmpty {
             return 1
@@ -253,6 +264,12 @@ extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: scheduleCell, for: indexPath) as! ScheduleCollectionViewCell
         
+        if scheduleData.isEmpty {
+            cell.emptySchedule()
+        }
+        let screenWidth = self.view.frame.width
+        let width = screenWidth - 48
+        cell.addScheduleView.widthAnchor.constraint(equalToConstant: width).isActive = true
         return cell
     }
 }
