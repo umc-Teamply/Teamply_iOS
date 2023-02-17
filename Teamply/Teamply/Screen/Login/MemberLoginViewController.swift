@@ -44,15 +44,18 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
   
      @objc func TextFieldfilled(_ sender: Any) {
          if !(self.nameTextField.text?.isEmpty ?? true)
+             && !(self.pwTextField.text?.isEmpty ?? true)
+             && !(self.pwAgainTextField.text?.isEmpty ?? true)
              && !(self.emailTextField.text?.isEmpty ?? true)
              && !(self.codeTextField.text?.isEmpty ?? true)
              && !(self.TermsofUseButton.image == UIImage(named: "check_circle"))
              && !(self.personalInfoButton.image == UIImage(named: "check_circle"))
-             && !(self.pwCom())
              && (self.codeTextField.text == "123456") {
-             
-             completionJoinButton(isOn: true)
-             
+             if pwCom() {
+                 completionJoinButton(isOn: true)
+             } else {
+                 completionJoinButton(isOn: false)
+             }
          }
          else {
              completionJoinButton(isOn: false)
@@ -82,19 +85,6 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         personalInfoButton.image = UIImage(named: "check_circle")
         snsAgreeButton.image = UIImage(named: "check_circle")
 
-       
-        let taptermsGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapterms(_:)))
-        self.TermsofUseButton.addGestureRecognizer(taptermsGesture)
-        self.TermsofUseButton.isUserInteractionEnabled = true
-        
-        let tappersonalGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappersonal(_:)))
-        self.personalInfoButton.addGestureRecognizer(tappersonalGesture)
-        self.personalInfoButton.isUserInteractionEnabled = true
-        
-        
-        let tapsnsGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapsns(_:)))
-        self.snsAgreeButton.addGestureRecognizer(tapsnsGesture)
-        self.snsAgreeButton.isUserInteractionEnabled = true
         
         self.completionJoinButton(isOn: false)
         
@@ -103,21 +93,34 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         self.pwAgainTextField.delegate = self
         self.emailTextField.delegate = self
         self.codeTextField.delegate = self
+        
+        self.nameTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        self.pwTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        self.pwAgainTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        self.emailTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        self.codeTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
+        
+        
+        let taptermsGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapterms(_:)))
+        self.TermsofUseButton.addGestureRecognizer(taptermsGesture)
+        self.TermsofUseButton.isUserInteractionEnabled = true
+        
+        let tappersonalGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappersonal(_:)))
+        self.personalInfoButton.addGestureRecognizer(tappersonalGesture)
+        self.personalInfoButton.isUserInteractionEnabled = true
+        
+        let tapsnsGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapsns(_:)))
+        self.snsAgreeButton.addGestureRecognizer(tapsnsGesture)
+        self.snsAgreeButton.isUserInteractionEnabled = true
+        
         taptermsGesture.delegate = self
         tappersonalGesture.delegate = self
         tapsnsGesture.delegate = self
         
         
-        self.nameTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
-        self.pwTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: UIControl.Event.allEditingEvents)
-        self.pwAgainTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: UIControl.Event.allEditingEvents)
-        self.emailTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
-        self.codeTextField.addTarget(self, action: #selector(self.TextFieldfilled(_:)), for: .editingChanged)
-        
         wrongCodeLabel.isHidden = true
         
-        pwTextField.addTarget(self, action: #selector(textFieldEdited), for: .editingChanged)
-        pwAgainTextField.addTarget(self, action: #selector(textFieldEdited), for: .editingChanged)
+        
     }
     
     func componentStyle() {
@@ -251,6 +254,7 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         codeTextField.layer.borderWidth = 0
     }
     
+    
     @IBAction func backButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
@@ -265,42 +269,6 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func pwCom() -> Bool{
-        if pwTextField.text == pwAgainTextField.text {
-            return false
-        }
-        return true
-    }
-    
-    func wrongpw() {
-        TextFieldfilled(self)
-    }
-    
-    func correctpw() {
-        TextFieldfilled(self)
-    }
-    
-    @IBAction func tappwAgainTextField(_ sender: Any) {
-        
-    }
-    
-    
-    @objc func tapterms(_ sender: UITapGestureRecognizer) {
-        TermsofUseButton.image = UIImage(named: "green_check_circle")
-    }
-    
-    @objc func tappersonal(_ sender: UITapGestureRecognizer) {
-        personalInfoButton.image = UIImage(named: "green_check_circle")
-   
-    }
-    
-    
-    @objc func tapsns(_ sender: UITapGestureRecognizer) {
-        snsAgreeButton.image = UIImage(named: "green_check_circle")
-    }
-    
-    @IBAction func tapjoinButton(_ sender: Any) {
-    }
     
     func isValidPassword(pw: String?) -> Bool{
            if let hasPassword = pw{
@@ -311,11 +279,56 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
            return true
        }
     
-    
-    
-    @IBAction func tapPWTextField(_ sender: Any) {
+    func pwCom() -> Bool{
+        if pwTextField.text == pwAgainTextField.text {
+            if isValidPassword(pw: pwTextField.text) && isValidPassword(pw: pwAgainTextField.text)  {
+                return true
+            }
+            return false
+        }
+        return false
     }
     
+    func wrongpw() {
+        TextFieldfilled(self)
+    }
+    
+    func correctpw() {
+        TextFieldfilled(self)
+    }
+    
+   
+    @objc func tapterms(_ sender: UITapGestureRecognizer) {
+        if TermsofUseButton.image == UIImage(named: "check_circle") {
+            TermsofUseButton.image = UIImage(named: "green_check_circle")
+        } else {
+            TermsofUseButton.image = UIImage(named: "check_circle")
+        }
+        return TextFieldfilled(self)
+    }
+    
+    @objc func tappersonal(_ sender: UITapGestureRecognizer) {
+        if personalInfoButton.image == UIImage(named: "check_circle") {
+            personalInfoButton.image = UIImage(named: "green_check_circle")
+        } else {
+            personalInfoButton.image = UIImage(named: "check_circle")
+        }
+        return TextFieldfilled(self)
+    }
+    
+    @objc func tapsns(_ sender: UITapGestureRecognizer) {
+        if snsAgreeButton.image == UIImage(named: "check_circle") {
+            snsAgreeButton.image = UIImage(named: "green_check_circle")
+        } else {
+            snsAgreeButton.image = UIImage(named: "check_circle")
+        }
+    }
+    
+    
+    @IBAction func tapjoinButton(_ sender: Any) {
+    }
+    
+   
     @objc func textFieldEdited(textField: UITextField) {
         if textField == pwTextField {
             if isValidPassword(pw: textField.text) {
@@ -325,6 +338,23 @@ class MemberLoginViewController: UIViewController, UITextFieldDelegate {
                 completionJoinButton(isOn: false)
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case nameTextField:
+            pwTextField.becomeFirstResponder()
+        case pwTextField:
+            pwAgainTextField.becomeFirstResponder()
+        case pwAgainTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            codeTextField.becomeFirstResponder()
+        default:
+            break
+        }
+        
+        return true
     }
     
     

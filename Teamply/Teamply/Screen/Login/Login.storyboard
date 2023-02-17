@@ -252,9 +252,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="tapPWTextField:" destination="uuf-JJ-pvO" eventType="editingDidEnd" id="neB-qh-n4J"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTp-h4-fiC">
                                                 <rect key="frame" x="9" y="232" width="342" height="51"/>
@@ -265,9 +262,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="tappwAgainTextField:" destination="uuf-JJ-pvO" eventType="editingChanged" id="l0E-D3-wGg"/>
-                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvr-lW-biz">
                                                 <rect key="frame" x="11" y="330" width="45" height="23"/>
