@@ -241,10 +241,11 @@ class TeamPageViewController: UIViewController {
         self.present(codevc, animated: true, completion: nil)
     }
 
-    @IBAction func tappedAddSchedule(_ sender: Any) {
+    @objc func tappedAddSchedule(_ sender: UITapGestureRecognizer) {
         let addDetailedScheduleVC = UIStoryboard.init(name: "addDetailedSchedule", bundle: nil)
         guard let nextVC = addDetailedScheduleVC.instantiateViewController(withIdentifier: "addDetailedScheduleVC") as? addDetailedScheduleViewController else { return }
         
+        nextVC.projectColor = headerView.backgroundColor
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
@@ -266,10 +267,11 @@ extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewData
         
         if scheduleData.isEmpty {
             cell.emptySchedule()
+            let screenWidth = self.view.frame.width
+            let width = screenWidth - 48
+            cell.addScheduleView.widthAnchor.constraint(equalToConstant: width).isActive = true
+            cell.addScheduleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedAddSchedule)))
         }
-        let screenWidth = self.view.frame.width
-        let width = screenWidth - 48
-        cell.addScheduleView.widthAnchor.constraint(equalToConstant: width).isActive = true
         return cell
     }
 }
