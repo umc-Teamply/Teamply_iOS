@@ -124,21 +124,21 @@ class TeamPageViewController: UIViewController {
         scheduleCollectionView.delegate = self
         scheduleCollectionView.dataSource = self
         scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        //scheduleCollectionView.showsHorizontalScrollIndicator = true
+        
         if scheduleData.isEmpty {
             scheduleCollectionView.heightAnchor.constraint(equalToConstant: 105).isActive = true
-            scheduleView.heightAnchor.constraint(equalToConstant: 147).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 157).isActive = true
         } else {
             scheduleCollectionView.heightAnchor.constraint(equalToConstant: 265).isActive = true
-            scheduleView.heightAnchor.constraint(equalToConstant: 317).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 327).isActive = true
         }
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumInteritemSpacing = 24
-        flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.sectionInset = UIEdgeInsets.init(top: 0, left: 24, bottom: 0, right: 24)
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.scrollDirection = .horizontal
         scheduleCollectionView.setCollectionViewLayout(flowLayout, animated: true)
         scheduleCollectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: scheduleCell)
-        
         
     }
     
@@ -253,7 +253,7 @@ class TeamPageViewController: UIViewController {
 }
 
 extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfItemsInSection(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         if scheduleData.isEmpty {
             return 1
         }
@@ -261,7 +261,7 @@ extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -334,7 +334,6 @@ extension TeamPageViewController {
                 print(inviteCode)
                 self.code = inviteCode.code
             }
-            
         }
     }
 }

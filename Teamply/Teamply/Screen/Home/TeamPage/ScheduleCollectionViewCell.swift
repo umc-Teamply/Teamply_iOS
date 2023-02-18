@@ -97,11 +97,10 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         
         self.contentView.addSubview(scheduleView)
         NSLayoutConstraint.activate([
-            scheduleView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             scheduleView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             scheduleView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            scheduleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
-            scheduleView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8)
+            scheduleView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scheduleView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     func emptySchedule() {
@@ -130,14 +129,14 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            periodLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            periodLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             periodLabel.leadingAnchor.constraint(equalTo: scheduleView.leadingAnchor, constant: 22)
         ])
         
         NSLayoutConstraint.activate([
             divisionView.topAnchor.constraint(equalTo: periodLabel.bottomAnchor, constant: 12),
             divisionView.leadingAnchor.constraint(equalTo: scheduleView.leadingAnchor, constant: 22),
-            divisionView.trailingAnchor.constraint(equalTo: scheduleView.trailingAnchor, constant: 22)
+            divisionView.trailingAnchor.constraint(equalTo: scheduleView.trailingAnchor, constant: -22)
         ])
         
         NSLayoutConstraint.activate([

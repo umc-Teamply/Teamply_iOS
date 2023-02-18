@@ -103,37 +103,37 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-9p-QhJ">
-                                                        <rect key="frame" x="0.0" y="67.333333333333314" width="393" height="229"/>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-9p-QhJ">
+                                                        <rect key="frame" x="0.0" y="49" width="393" height="271"/>
                                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="4WO-L5-VZh">
-                                                            <size key="itemSize" width="393" height="231"/>
-                                                            <size key="estimatedItemSize" width="393" height="231"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="4WO-L5-VZh">
+                                                            <size key="itemSize" width="393" height="251"/>
+                                                            <size key="estimatedItemSize" width="393" height="251"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScheduleCell" id="XLi-R9-vWf" customClass="ScheduleCollectionViewCell" customModule="Teamply" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="231"/>
+                                                                <rect key="frame" x="0.0" y="10" width="393" height="251"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="loO-aZ-M0B">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="231"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="251"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </collectionViewCellContentView>
-                                                                <size key="customSize" width="393" height="231"/>
+                                                                <size key="customSize" width="393" height="251"/>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="EU8-9p-QhJ" firstAttribute="top" secondItem="Dgu-hs-Zcc" secondAttribute="bottom" id="FQN-em-eUo"/>
                                                     <constraint firstAttribute="height" priority="999" constant="320" id="ceJ-2E-Wus"/>
                                                     <constraint firstItem="Dgu-hs-Zcc" firstAttribute="top" secondItem="O6Q-Hl-gQT" secondAttribute="top" constant="29" id="f5s-Vy-3HW"/>
                                                     <constraint firstItem="Dgu-hs-Zcc" firstAttribute="leading" secondItem="O6Q-Hl-gQT" secondAttribute="leading" constant="24" id="jVd-tl-ho9"/>
                                                     <constraint firstAttribute="trailing" secondItem="EU8-9p-QhJ" secondAttribute="trailing" id="mfn-wh-S6D"/>
                                                     <constraint firstItem="EU8-9p-QhJ" firstAttribute="leading" secondItem="O6Q-Hl-gQT" secondAttribute="leading" id="p1v-4f-Kld"/>
-                                                    <constraint firstItem="EU8-9p-QhJ" firstAttribute="top" secondItem="Dgu-hs-Zcc" secondAttribute="bottom" id="yir-cc-yFH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-uf-ukz">
