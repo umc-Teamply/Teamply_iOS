@@ -23,10 +23,13 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var profileChangeButton: UIButton!
     @IBOutlet weak var tendencyCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLable: UILabel!
     
     let tendencyCell = "TendencyCell"
     
-    var myTendencyList:[String] = ["시간약속 철저해요", "학점 A+ 목표", "PPT 자신 있어요", "책임감이 강해요", "ESFJ"]
+    var myTendencyList:[String] = ["학점 A+ 목표", "발표 자신있어요", "ENFP", "책임감이 강해요", "뭐든 열심히해요"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +57,19 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func setUserInfo() {
-        userNameLabel.text = "이프로"
+        userNameLabel.text = "성덕선"
         userNameLabel.font = .sub1
         userNameLabel.textColor = .basic2
         
+        profileImage.makeRound(radius: 48.5)
+        
+        phoneLabel.text = "010.1234.5678"
+        phoneLabel.font = .cap1
+        phoneLabel.textColor = .basic2
+        
+        emailLable.text = "unduck@gmail.com"
+        emailLable.font = .cap1
+        emailLable.textColor = .basic2
     }
     func componentInit() {
         titleLabel.text = "내 정보 관리"
@@ -176,5 +188,9 @@ class MyInformationViewController: UIViewController, UICollectionViewDelegate, U
         }
         
         self.present(nextVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func backToMyPage(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
     }
 }
