@@ -276,7 +276,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let data = projectData[indexPath.row]
         var projectId = data.projectId
         var projectColor = data.color
-        var totalHeadcount = data.totalCount //지금은 real api 수정되면 total로 수정하기
+        var totalHeadcount = data.totalCount
         let projectTitle = data.title
         var startDate = data.startDate
         var endDate = data.endDate

@@ -47,7 +47,7 @@ class TeamPageViewController: UIViewController {
     var date: String!
     var scheduleData: [Schedule]!
     var memberInfo: [Member]!
-    var memberImages = "defaultProfile"
+    var imageName: String!
     var addMemberImage = "add_friend"
     var code: String!
     var scheduleCell = "ScheduleCell"
@@ -114,7 +114,6 @@ class TeamPageViewController: UIViewController {
     
     func setMemberStackView() {
         for m in memberInfo {
-            print(m.userName)
             setMemberView(name: m.userName)
         }
         setUnInviteMember()
@@ -169,8 +168,27 @@ class TeamPageViewController: UIViewController {
             return label
         }()
         
+        if name == "성덕선" {
+            imageName = "duck"
+        } else if name == "최택" {
+            imageName = "tack"
+        } else if name == "김정환" {
+            imageName = "jeonghwan"
+        } else if name == "성선우" {
+            imageName = "seonwoo"
+        } else if name == "류동룡" {
+            imageName = "dong"
+        } else if name == "장미옥" {
+            imageName = "roseok"
+        } else if name == "왕자현" {
+            imageName = "prince"
+        } else {
+            imageName = "defaultProfile"
+        }
+        
         memberView.backgroundColor = headerView.backgroundColor
-        memberImage.image = UIImage(named: memberImages)
+        memberImage.image = UIImage(named: imageName)
+        memberImage.makeRound(radius: 20)
         memberView.addSubview(memberImage)
         memberName.text = name
         memberView.addSubview(memberName)

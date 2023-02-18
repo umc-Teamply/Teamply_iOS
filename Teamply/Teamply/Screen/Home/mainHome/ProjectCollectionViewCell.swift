@@ -104,7 +104,7 @@ class ProjectCollectionViewCell: UICollectionViewCell {
         ])
 
         self.contentView.addSubview(self.memberView)
-        let width = headCount*27
+        let width = headCount*20 + (headCount-1)*7
 
         NSLayoutConstraint.activate([
             memberView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -112,13 +112,22 @@ class ProjectCollectionViewCell: UICollectionViewCell {
             memberView.widthAnchor.constraint(equalToConstant: CGFloat(width)),
             memberView.heightAnchor.constraint(equalToConstant: 20)
         ])
-
-        for _ in 0...headCount {
+        var memberList = ["defaultProfile"]
+        if projectId == 5 {
+            memberList = ["duck","jeonghwan","seonwoo","dong","tack"]
+        } else if projectId == 6 {
+            memberList = ["duck", "seonwoo", "dong"]
+        } else if projectId == 7 {
+            memberList = ["duck", "roseok", "prince"]
+        }
+        
+        for i in 1...headCount {
             let image:UIImageView = {
                 let view = UIImageView()
-                view.image = UIImage(named: "defaultProfile")
                 view.makeRound(radius: 10)
                 view.translatesAutoresizingMaskIntoConstraints = false
+                view.image = UIImage(named: memberList[i-1])
+                view.clipsToBounds = true
                 return view
             }()
             
