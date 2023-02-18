@@ -58,7 +58,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="0AR-ne-z6y">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duck" translatesAutoresizingMaskIntoConstraints="NO" id="0AR-ne-z6y">
                                         <rect key="frame" x="24" y="18" width="47" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="9hW-kX-qVK"/>
@@ -216,6 +216,7 @@
                         <outlet property="meetingScheduleLabel" destination="zIo-bV-XZW" id="mqU-EP-eJm"/>
                         <outlet property="nameLabel" destination="d3m-mh-bEg" id="Mm2-Bd-c8g"/>
                         <outlet property="privacyPolicyLabel" destination="Qmu-Ft-0hA" id="6Bi-Ac-C5N"/>
+                        <outlet property="profileImage" destination="0AR-ne-z6y" id="oIb-fd-Caj"/>
                         <outlet property="questionLabel" destination="58z-jK-FOh" id="UYD-Li-NFT"/>
                         <outlet property="termsOfUseLabel" destination="Opy-Za-48M" id="Y7d-LT-Qnn"/>
                         <outlet property="titleLabel" destination="hvp-mq-nQ7" id="itT-9m-57M"/>
@@ -238,7 +239,7 @@
     </scenes>
     <resources>
         <image name="back" width="10" height="16"/>
-        <image name="defaultProfile" width="49" height="49"/>
+        <image name="duck" width="740" height="746"/>
         <image name="my" width="21" height="20"/>
         <image name="my_selected" width="22" height="21"/>
         <namedColor name="gray0">
