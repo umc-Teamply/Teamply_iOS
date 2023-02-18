@@ -32,7 +32,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         view.isUserInteractionEnabled = false
         view.heightAnchor.constraint(equalToConstant: 10).isActive = true
         view.widthAnchor.constraint(equalToConstant: 132.87).isActive = true
-        view.makeRound(radius: 7)
+        view.makeRound(radius: 5.5)
         view.trackTintColor = .gray0
         return view
     }()

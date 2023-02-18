@@ -253,15 +253,12 @@ class TeamPageViewController: UIViewController {
 }
 
 extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if scheduleData.isEmpty {
             return 1
         }
         return scheduleData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -281,11 +278,17 @@ extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewData
             let startDate = scheduleData.startAt
             let endDate = scheduleData.endAt
             let period = startDate+"~"+endDate
+            let progress = 0.75
             cell.titleLabel.text = scheduleData.schTitle
             cell.periodLabel.text = period
             cell.contentLabel.text = scheduleData.schContents
-            cell.progressView.tintColor = UIColor(named: self.projectColor)
-            //cell.progressView.progress = scheduleData.
+            
+            if progress < 0.5 {
+                cell.progressView.tintColor = .red
+            } else {
+                cell.progressView.tintColor = .green
+            }
+            cell.progressView.progress = Float(progress)
             cell.setSchedule()
             cell.scheduleView.heightAnchor.constraint(equalToConstant: 229).isActive = true
         }
