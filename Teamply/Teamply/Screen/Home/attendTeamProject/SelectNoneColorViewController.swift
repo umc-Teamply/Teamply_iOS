@@ -29,7 +29,11 @@ class SelectNoneColorViewController: UIViewController {
     
     // MARK: - Properties
     var index: Int = 0
-    let colors: [UIColor?] = [.team2, .team3, .team5, .team6] //이미 있는 프로젝트 색
+    var colors: [UIColor] = []
+    var colorData: [String] = []
+    var selectColor: String!
+    var projectInfo: [ProjectInfo] = []
+    var code: String!
     let checkImage: UIImageView = {
         let check = UIImageView()
         
@@ -40,12 +44,8 @@ class SelectNoneColorViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getColorInfo()
         comonentInit()
-        borderInit()
-        availableColorInit()
-        setViewAvailable()
-        colorViewInit()
 
     }
     // MARK: - Method
@@ -197,38 +197,94 @@ class SelectNoneColorViewController: UIViewController {
         ])
     }
     
+    func setProjectColors() {
+        for p in projectInfo {
+            colorData.append(p.color)
+        }
+        StringToUIColor()
+    }
+    
+    func StringToUIColor() {
+        for c in colorData {
+            colors.append(UIColor(named: c)!)
+        }
+        borderInit()
+        availableColorInit()
+        setViewAvailable()
+        colorViewInit()
+    }
+    
     // MARK: - IBAction
     @IBAction func attendProject(_ sender: Any) {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-            let homeVC = HomeViewController()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController?.present(homeVC, animated: true)
-        })
+        postAttendProject()
     }
     
     // MARK: - Gesture
     @IBAction func color1Tap(_ sender: UITapGestureRecognizer) {
         index = 1
         setBorderView(idx: index)
+        selectColor = "team1"
     }
     @IBAction func color2Tap(_ sender: UITapGestureRecognizer) {
         index = 2
         setBorderView(idx: index)
+        selectColor = "team2"
     }
     @IBAction func color3Tap(_ sender: UITapGestureRecognizer) {
         index = 3
         setBorderView(idx: index)
+        selectColor = "team3"
     }
     @IBAction func color4Tap(_ sender: UITapGestureRecognizer) {
         index = 4
         setBorderView(idx: index)
+        selectColor = "team4"
     }
     @IBAction func color5Tap(_ sender: UITapGestureRecognizer) {
         index = 5
         setBorderView(idx: index)
+        selectColor = "team5"
     }
     @IBAction func color6Tap(_ sender: UITapGestureRecognizer) {
         index = 6
         setBorderView(idx: index)
+        selectColor = "team6"
+    }
+}
+
+extension SelectNoneColorViewController {
+    func getColorInfo() {
+        AddProjectAPI.shared.getcolorInfo { [weak self] colorData in
+            guard let infoData = colorData else { return }
+            let info = infoData.data?.result
+            self?.projectInfo = info!
+            self?.setProjectColors()
+        }
+    }
+    
+    func postAttendProject() {
+        guard var inviteCode = self.code else { return }
+        guard var color = self.selectColor else { return }
+        
+        inviteCode = inviteCode.addSingleQuote(s: inviteCode)
+        color = color.addSingleQuote(s: color)
+
+        let attendRequest = AttendProjectRequest(inviteCode: inviteCode, color: color)
+        
+        AddProjectAPI.shared.attendProject(param: attendRequest) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                if self.selectColor != nil {
+                    self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+                        let homeVC = HomeViewController()
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.window?.rootViewController?.present(homeVC, animated: true)
+                    })
+                }
+                NotificationCenter.default.post(name: NSNotification.Name("DismissAttendView"), object: nil, userInfo: nil)
+            }
+            
+        }
     }
 }

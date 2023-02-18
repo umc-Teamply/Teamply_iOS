@@ -33,7 +33,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwV-gb-qVg">
-                                        <rect key="frame" x="136" y="61" width="41.333333333333343" height="29"/>
+                                        <rect key="frame" x="176" y="61" width="41.333333333333343" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="WwG-n8-VxI"/>
                                         </constraints>
@@ -45,13 +45,12 @@
                                 <color key="backgroundColor" name="team1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="393" id="LuP-di-9nP"/>
+                                    <constraint firstItem="nwV-gb-qVg" firstAttribute="centerX" secondItem="3gb-4Z-A7b" secondAttribute="centerX" id="O9Y-3k-hYc"/>
                                     <constraint firstItem="nwV-gb-qVg" firstAttribute="top" secondItem="3gb-4Z-A7b" secondAttribute="top" constant="61" id="ULl-Hk-BEh"/>
                                     <constraint firstAttribute="bottom" secondItem="4No-Vf-2Yw" secondAttribute="bottom" constant="36" id="iRC-Un-OBA"/>
                                     <constraint firstItem="4No-Vf-2Yw" firstAttribute="top" secondItem="3gb-4Z-A7b" secondAttribute="top" constant="67" id="kTe-qz-yoS"/>
-                                    <constraint firstItem="nwV-gb-qVg" firstAttribute="leading" secondItem="4No-Vf-2Yw" secondAttribute="trailing" constant="98" id="oaX-A8-cSg"/>
                                     <constraint firstItem="4No-Vf-2Yw" firstAttribute="leading" secondItem="3gb-4Z-A7b" secondAttribute="leading" constant="28" id="pgp-Oh-qP1"/>
                                     <constraint firstAttribute="height" constant="119" id="uxP-bi-EiJ"/>
-                                    <constraint firstItem="nwV-gb-qVg" firstAttribute="leading" secondItem="4No-Vf-2Yw" secondAttribute="trailing" constant="98" id="zTa-hF-2Uc"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="axj-9y-2uL">
@@ -165,6 +164,7 @@
                     </view>
                     <connections>
                         <outlet property="ToDoTextField" destination="CRR-IC-i8p" id="IR0-0Z-m9H"/>
+                        <outlet property="headerView" destination="3gb-4Z-A7b" id="B3P-so-Cxq"/>
                         <outlet property="participantButton" destination="PF3-9u-fJn" id="8MA-nP-kmg"/>
                         <outlet property="participantLabel" destination="jEo-1Z-ZTR" id="G8y-3v-qYO"/>
                         <outlet property="periodTextField" destination="WF4-ol-39e" id="zAC-Pu-iex"/>

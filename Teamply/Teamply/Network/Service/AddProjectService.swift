@@ -9,6 +9,8 @@ import Moya
 
 enum AddProjectService {
     case postCreateProject(param: CreateProjectRequest)
+    case postAttendProject(param: AttendProjectRequest)
+    case getColorInfo
 }
 
 extension AddProjectService: BaseTargetType {
@@ -16,12 +18,19 @@ extension AddProjectService: BaseTargetType {
         switch self {
         case .postCreateProject:
             return URLConstant.createProject
+        case .postAttendProject:
+            return URLConstant.attendProject
+        case .getColorInfo:
+            return URLConstant.userColorInfo
         }
     }
     
     var method: Moya.Method {
         switch self {
-        default: return .post
+        case .getColorInfo:
+            return .get
+        case .postCreateProject(_), .postAttendProject(_):
+            return .post
         }
     }
     
@@ -29,6 +38,10 @@ extension AddProjectService: BaseTargetType {
         switch self {
         case .postCreateProject(let param):
             return .requestJSONEncodable(param)
+        case .postAttendProject(let param):
+            return .requestJSONEncodable(param)
+        case .getColorInfo:
+            return .requestPlain
         }
     }
     

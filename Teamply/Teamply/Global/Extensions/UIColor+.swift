@@ -62,4 +62,12 @@ extension UIColor {
     class var gray4: UIColor? {
         return UIColor(named: "gray4")
     }
+    //UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+    class var red: UIColor? {
+        return UIColor(named: "red")
+    }
+    //UIColor(red: 0.101, green: 0.771, blue: 0.443, alpha: 1)
+    class var green: UIColor? {
+        return UIColor(named: "green")
+    }
 }

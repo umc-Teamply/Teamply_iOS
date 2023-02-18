@@ -11,13 +11,14 @@ import MaterialComponents
 class addDetailedScheduleViewController: UIViewController {
   
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scheduleTitleTextField: UITextField!
     @IBOutlet weak var periodTextField: UITextField!
     @IBOutlet weak var ToDoTextField: UITextField!
     @IBOutlet weak var participantButton: UIButton!
     @IBOutlet weak var participantLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
-    
+    var projectColor: UIColor!
     
     private lazy var datePicker: DatePicker = {
         let picker = DatePicker()
@@ -38,6 +39,7 @@ class addDetailedScheduleViewController: UIViewController {
     }
 
     func setaddDetailedScheduleStyle(){
+        headerView.backgroundColor = projectColor
         titleLabel.text = "일정 세부 보기"
         titleLabel.font = .head1
         titleLabel.textColor = .basic1
