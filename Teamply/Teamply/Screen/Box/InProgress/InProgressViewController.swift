@@ -26,7 +26,7 @@ class InProgressViewController: UIViewController {
     
     // MARK: - Method
     func labelInit() {
-        semesterLabel.text = "2022년 2학기"
+        semesterLabel.text = "2023년 1학기"
         semesterLabel.textColor = .gray3
         semesterLabel.font = .cap3
         semesterLabel.makeRound(radius: 15)
