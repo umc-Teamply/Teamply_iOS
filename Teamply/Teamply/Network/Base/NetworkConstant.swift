@@ -14,6 +14,6 @@ struct NetworkConstant {
                                  "Authorization": NetworkConstant.accessToken,
                                  "Refresh": NetworkConstant.refreshToken]
     
-    static var accessToken = "'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaGFzaCI6ImFhNjAwYmIxMzgxN2ZiMmExYjdmIiwiaXAiOjM1NTU1NTI4MzQsImlhdCI6MTY3NjYyNzQ0MSwiZXhwIjoxNjc2NzEzODQxfQ.-djrYhn7Ya677nmnXgfCldMMocICGU9xRcdTzKI2uGY'"
-    static var refreshToken = "'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzY2Mjc0NDEsImV4cCI6MTY3ODQ0MTg0MX0.UGkaINgaCVaslzB_Taj-BGFLdSFk_NbKmXtYIjViZvA'"
+    static var accessToken = "'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaGFzaCI6ImQ0NTJjNzQzNmE5Njg0ZjRmYmFhIiwiaXAiOjM1NTU1NTI4MzQsImlhdCI6MTY3NjY4NTU3OSwiZXhwIjoxNjc2NzcxOTc5fQ.RNForA-UmpstDvncrY2ps5G3JNF86_-hRByats72OO0'"
+    static var refreshToken = "'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzY2ODU1NzksImV4cCI6MTY3ODQ5OTk3OX0.ND8_Y0COQtm_frMIm45mdvyHpoBblFBtcbjMSydhDx0'"
 }

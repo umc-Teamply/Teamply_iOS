@@ -32,8 +32,10 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var voteScheduleLabel: UILabel!
     
     @IBOutlet weak var projectInfoLabel: UILabel!
+    @IBOutlet weak var projectInfoView: UIView!
     @IBOutlet weak var projectInfoButton: UIButton!
     
+    @IBOutlet weak var meetingScheduleView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var memberStackview: UIStackView!
     @IBOutlet weak var scheduleCollectionView: UICollectionView!
@@ -77,19 +79,16 @@ class TeamPageViewController: UIViewController {
         detailScheduleLabel.text = "일정 세부 보기"
         detailScheduleLabel.font = .sub1
         detailScheduleLabel.textColor = .basic2
+
+        meetingScheduleView.translatesAutoresizingMaskIntoConstraints = false
+        meetingScheduleView.isUserInteractionEnabled = true
+        meetingScheduleView.makeRound(radius: 10)
+        meetingScheduleView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 10)
         
-        //addScheduleLabel.text = "+ 일정을 등록해보세요"
-//        addScheduleLabel.font = .sub2
-//        addScheduleLabel.textColor = .gray2
-        
-        //addScheduleButton.makeRound(radius: 12)
-        
-        //meetingScheduleButton.makeRound(radius: 10)
-        
-//        voteScheduleLabel.text = "일정에 투표하세요"
-//        voteScheduleLabel.font = .cap2
-//        voteScheduleLabel.textColor = .basic2
-//
+        projectInfoView.makeRound(radius: 10)
+        projectInfoView.translatesAutoresizingMaskIntoConstraints = false
+        projectInfoView.isUserInteractionEnabled = true
+        projectInfoView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 10)
         
         setProjectToolInit()
     }
@@ -125,13 +124,13 @@ class TeamPageViewController: UIViewController {
         scheduleCollectionView.delegate = self
         scheduleCollectionView.dataSource = self
         scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+        //scheduleCollectionView.showsHorizontalScrollIndicator = true
         if scheduleData.isEmpty {
-            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 64).isActive = true
-            scheduleView.heightAnchor.constraint(equalToConstant: 129).isActive = true
+            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 105).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 147).isActive = true
         } else {
-            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 229).isActive = true
-            scheduleView.heightAnchor.constraint(equalToConstant: 299).isActive = true
+            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 265).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 317).isActive = true
         }
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 24
@@ -254,23 +253,41 @@ class TeamPageViewController: UIViewController {
 }
 
 extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfItemsInSection(in collectionView: UICollectionView) -> Int {
         if scheduleData.isEmpty {
             return 1
         }
         return scheduleData.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: scheduleCell, for: indexPath) as! ScheduleCollectionViewCell
         
+        let screenWidth = self.view.frame.width
+        let width = screenWidth - 48
+        cell.scheduleView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
         if scheduleData.isEmpty {
             cell.emptySchedule()
-            let screenWidth = self.view.frame.width
-            let width = screenWidth - 48
-            cell.addScheduleView.widthAnchor.constraint(equalToConstant: width).isActive = true
-            cell.addScheduleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedAddSchedule)))
+            
+            cell.scheduleView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+            cell.scheduleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedAddSchedule)))
+        } else {
+            let scheduleData = self.scheduleData[indexPath.row]
+            let startDate = scheduleData.startAt
+            let endDate = scheduleData.endAt
+            let period = startDate+"~"+endDate
+            cell.titleLabel.text = scheduleData.schTitle
+            cell.periodLabel.text = period
+            cell.contentLabel.text = scheduleData.schContents
+            cell.progressView.tintColor = UIColor(named: self.projectColor)
+            //cell.progressView.progress = scheduleData.
+            cell.setSchedule()
+            cell.scheduleView.heightAnchor.constraint(equalToConstant: 229).isActive = true
         }
         return cell
     }

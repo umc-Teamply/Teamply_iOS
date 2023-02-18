@@ -91,8 +91,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6p9-uE-Lwb">
                                 <rect key="frame" x="0.0" y="238" width="393" height="614"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="nZl-lJ-W50">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="523"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nZl-lJ-W50">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="505"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6Q-Hl-gQT">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="320"/>
@@ -103,7 +103,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-9p-QhJ">
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EU8-9p-QhJ">
                                                         <rect key="frame" x="0.0" y="67.333333333333314" width="393" height="229"/>
                                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="4WO-L5-VZh">
@@ -131,13 +131,13 @@
                                                     <constraint firstAttribute="height" priority="999" constant="320" id="ceJ-2E-Wus"/>
                                                     <constraint firstItem="Dgu-hs-Zcc" firstAttribute="top" secondItem="O6Q-Hl-gQT" secondAttribute="top" constant="29" id="f5s-Vy-3HW"/>
                                                     <constraint firstItem="Dgu-hs-Zcc" firstAttribute="leading" secondItem="O6Q-Hl-gQT" secondAttribute="leading" constant="24" id="jVd-tl-ho9"/>
-                                                    <constraint firstItem="EU8-9p-QhJ" firstAttribute="top" secondItem="Dgu-hs-Zcc" secondAttribute="bottom" constant="18" id="ka0-Pu-If2"/>
                                                     <constraint firstAttribute="trailing" secondItem="EU8-9p-QhJ" secondAttribute="trailing" id="mfn-wh-S6D"/>
                                                     <constraint firstItem="EU8-9p-QhJ" firstAttribute="leading" secondItem="O6Q-Hl-gQT" secondAttribute="leading" id="p1v-4f-Kld"/>
+                                                    <constraint firstItem="EU8-9p-QhJ" firstAttribute="top" secondItem="Dgu-hs-Zcc" secondAttribute="bottom" id="yir-cc-yFH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-uf-ukz">
-                                                <rect key="frame" x="0.0" y="348" width="393" height="175"/>
+                                                <rect key="frame" x="0.0" y="330" width="393" height="175"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsQ-tC-oP4">
                                                         <rect key="frame" x="24.000000000000004" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
@@ -250,11 +250,13 @@
                         <outlet property="detailScheduleLabel" destination="Dgu-hs-Zcc" id="6wf-Di-DXj"/>
                         <outlet property="headerView" destination="id4-OK-Kt8" id="HCG-zy-mjX"/>
                         <outlet property="meetingScheduleLabel" destination="OSE-mb-LOx" id="I8A-pO-SUn"/>
+                        <outlet property="meetingScheduleView" destination="Ak5-AS-19N" id="YFg-yy-iCu"/>
                         <outlet property="memberStackview" destination="Gf0-nR-SHd" id="AXt-ak-fDL"/>
                         <outlet property="periodBorder" destination="U7a-CL-alu" id="oUC-He-eYs"/>
                         <outlet property="periodLabel" destination="H4n-sm-oVP" id="piS-pS-sVM"/>
                         <outlet property="projectInfoButton" destination="oX3-br-K3O" id="0qH-Ae-rKJ"/>
                         <outlet property="projectInfoLabel" destination="qNJ-nm-SyI" id="C2t-xM-ck5"/>
+                        <outlet property="projectInfoView" destination="BTT-N0-Ejc" id="Fne-27-xZF"/>
                         <outlet property="projectToolLabel" destination="WsQ-tC-oP4" id="RHr-I2-5x2"/>
                         <outlet property="projectToolView" destination="l5V-uf-ukz" id="36k-KM-xtA"/>
                         <outlet property="scheduleCollectionView" destination="EU8-9p-QhJ" id="ZKK-L9-TU6"/>
