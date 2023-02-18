@@ -24,6 +24,7 @@ class MyPageViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInfo()
         labelInit()
     }
     
@@ -32,11 +33,9 @@ class MyPageViewController: UIViewController {
         titleLabel.textColor = .basic2
         titleLabel.font = .head1
         
-        nameLabel.text = "이프로"
         nameLabel.textColor = .basic2
         nameLabel.font = .body
-        
-        emailLabel.text = "leepro@gmail.com"
+
         emailLabel.textColor = .gray3
         emailLabel.font = .cap3
         
@@ -87,5 +86,18 @@ class MyPageViewController: UIViewController {
         
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
+    }
+}
+
+extension MyPageViewController {
+    func getUserInfo() {
+        HomeAPI.shared.getUserInfo { [weak self] userInfoData in
+            guard let infoData = userInfoData else { return }
+            let info = infoData.data?.result[0]
+            let name = info?.userName
+            let email = info?.userEmail
+            self?.nameLabel.text = name
+            self?.emailLabel.text = email
+        }
     }
 }

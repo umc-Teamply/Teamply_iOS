@@ -41,10 +41,10 @@ class IDLoginViewController: UIViewController {
         emailLabel.textColor = .basic2
         
         loginErrorLabel.text = "이메일 또는 비밀번호를 다시 확인해주세요. \n등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
-                loginErrorLabel.font = .cap3
-                loginErrorLabel.textColor = .team1
-                loginErrorLabel.textAlignment = .left
-                loginErrorLabel.numberOfLines = 0
+        loginErrorLabel.font = .cap3
+        loginErrorLabel.textColor = .team1
+        loginErrorLabel.textAlignment = .left
+        loginErrorLabel.numberOfLines = 0
         
         emailTextField.makeRound(radius: 15)
         pwTextField.makeRound(radius: 15)
@@ -112,10 +112,10 @@ class IDLoginViewController: UIViewController {
     
     func correctLogin() {
         loginErrorLabel.isHidden = true
-        }
     }
-    
 }
+    
+
 
 extension IDLoginViewController {
     func login() {
