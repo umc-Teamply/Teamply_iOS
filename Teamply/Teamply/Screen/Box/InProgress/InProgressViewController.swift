@@ -13,17 +13,14 @@ class InProgressViewController: UIViewController {
     @IBOutlet weak var projectStackView: UIStackView!
     
     // MARK: - Method
-    let projectComponent: [[String]] = [["공간 프로젝트","졸업 전시","2022.9.19"],
-                                        ["브랜드 경험 디자인","공모전","2020.9.22"],
-                                        ["현대 디자인의 이해", "현대 디자인 조사 및 발표", "2022.10.15"],
-                                        ["부모와 가정의 이해", "다양한 가정의 모습 탐구", "2022.09.12"],
-                                        ["기초 GUI 디자인", "어플리케이션 클론", "2022.04.04"]]
+    var projectList: [ProjectInfo]!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getInProgressProjectList()
         labelInit()
-        setSemesterProject()
+        //setSemesterProject()
         // Do any additional setup after loading the view.
     }
     
@@ -47,7 +44,7 @@ class InProgressViewController: UIViewController {
     }
     
     func setProjectLayout() {
-        for p in projectComponent{
+        for p in projectList{
             let project: UIView = {
                 let view = UIView()
                 view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +53,7 @@ class InProgressViewController: UIViewController {
                 view.leadingAnchor.constraint(equalTo: projectStackView.leadingAnchor)
                 view.trailingAnchor.constraint(equalTo: projectStackView.trailingAnchor)
                 view.topAnchor.constraint(equalTo: projectStackView.topAnchor)
-                view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.projectTapGesture)))
+                //view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.projectTapGesture)))
                 
                 return view
             }()
@@ -65,27 +62,12 @@ class InProgressViewController: UIViewController {
             var idx = 0
             var top: CGFloat = 0
             var font: UIFont = .sub1
-            for l in p {
-                switch idx {
-                case 0:
-                    top = 15
-                    idx += 1
-                    font = .sub1
-                    break
-                case 1:
-                    top = 43
-                    idx += 1
-                    font = .cap2
-                    break
-                case 2:
-                    top = 74
-                    font = .cap3
-                    break
-                default:
-                    break
-                }
-                setProjectComponent(view: project, text: l, top: top, font: font)
-            }
+            
+            setProjectComponent(view: project, text: p.title, top: 15, font: .sub1)
+            setProjectComponent(view: project, text: p.contents, top: 43, font: .cap2)
+            let period = p.startDate+"-"+p.endDate
+            setProjectComponent(view: project, text: period, top: 74, font: .cap3)
+            
             let height = project.fs_height
             
             projectStackView.heightAnchor.constraint(equalToConstant: height).isActive
@@ -105,14 +87,14 @@ class InProgressViewController: UIViewController {
         projectStackView.addArrangedSubview(division)
     }
    
-    @objc func projectTapGesture(_ sender: UITapGestureRecognizer){
-        let impressionVC = UIStoryboard.init(name: "Impression", bundle: nil)
-        guard let nextVC = impressionVC.instantiateViewController(withIdentifier: "ImpressionVC") as? ImpressionViewController else { return }
-        
-        nextVC.modalPresentationStyle = .fullScreen
-        self.present(nextVC, animated: true, completion: nil)
-        
-    }
+//    @objc func projectTapGesture(_ sender: UITapGestureRecognizer){
+//        let impressionVC = UIStoryboard.init(name: "Impression", bundle: nil)
+//        guard let nextVC = impressionVC.instantiateViewController(withIdentifier: "ImpressionVC") as? ImpressionViewController else { return }
+//        
+//        nextVC.modalPresentationStyle = .fullScreen
+//        self.present(nextVC, animated: true, completion: nil)
+//        
+//    }
     
     func setProjectComponent(view: UIView, text: String, top: CGFloat, font: UIFont) {
         let component: UILabel = {
@@ -154,4 +136,15 @@ class InProgressViewController: UIViewController {
     }
     // MARK: - IBAction
 
+}
+
+extension InProgressViewController {
+    func getInProgressProjectList() {
+        HomeAPI.shared.getUserProjectInfo { [weak self] infoData in
+            guard let infoData = infoData else { return }
+            let info = infoData.data?.result
+            self?.projectList = info
+            self?.setSemesterProject()
+        }
+    }
 }
