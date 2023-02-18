@@ -18,6 +18,7 @@ class addDetailedScheduleViewController: UIViewController {
     @IBOutlet weak var participantButton: UIButton!
     @IBOutlet weak var participantLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
+    
     var projectColor: UIColor!
     
     private lazy var datePicker: DatePicker = {

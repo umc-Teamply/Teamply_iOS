@@ -20,6 +20,8 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     @IBOutlet weak var todayPlanContentLabel: UILabel!
     @IBOutlet weak var todayScheduleLabel: UILabel!
     @IBOutlet weak var todayScheduleContentLabel: UILabel!
+    @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var tagView: UIView!
     
     @IBOutlet weak var scheduleView: UIView!
     @IBOutlet weak var todayScheduleView: UIView!
@@ -48,6 +50,14 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
         setTodayDate()
         weeklyCalendarInit()
         
+        tagView.makeRound(radius: 3)
+        tagLabel.text = "할 일"
+        tagLabel.font = .cap3
+        tagLabel.backgroundColor = .team1
+        tagLabel.textColor = .basic1
+        tagLabel.makeRound(radius: 3)
+        tagLabel.textAlignment = .center
+        todayScheduleContentLabel.text = "바둑 관련 서적 읽고 규칙 조사하기"
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.didDismissCreateNotification(_:)),
@@ -174,9 +184,9 @@ class HomeViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSo
     }
     
     func setTodayScheduleContent() {
-        todayScheduleContentLabel.text = "팀 프로젝트를 등록해보세요"
+        //todayScheduleContentLabel.text = "팀 프로젝트를 등록해보세요"
         todayScheduleContentLabel.font = .body
-        todayScheduleContentLabel.textColor = .gray3
+        todayScheduleContentLabel.textColor = .basic2
     }
     
     func setTodayPlayContent() {
@@ -276,7 +286,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let data = projectData[indexPath.row]
         var projectId = data.projectId
         var projectColor = data.color
-        var totalHeadcount = data.totalCount //지금은 real api 수정되면 total로 수정하기
+        var totalHeadcount = data.totalCount
         let projectTitle = data.title
         var startDate = data.startDate
         var endDate = data.endDate

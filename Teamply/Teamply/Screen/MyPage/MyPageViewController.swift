@@ -18,6 +18,7 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var termsOfUseLabel: UILabel!
     @IBOutlet weak var privacyPolicyLabel: UILabel!
     @IBOutlet weak var helpLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
     
     // MARK: - Properties
     
@@ -98,6 +99,7 @@ extension MyPageViewController {
             let email = info?.userEmail
             self?.nameLabel.text = name
             self?.emailLabel.text = email
+            self?.profileImage.makeRound(radius: 23.5)
         }
     }
 }

@@ -16,6 +16,11 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var dateLabel: UILabel!
     //@IBOutlet weak var scheduleTableView: UITableView!
     @IBOutlet weak var schedulContentLabel: UILabel!
+    @IBOutlet weak var team1TagView: UIView!
+    @IBOutlet weak var team2TagView: UIView!
+    @IBOutlet weak var team3TagView: UIView!
+    @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     // MARK: - Properties
     let today = Date()
@@ -31,6 +36,19 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         titleInit()
         scheduleInit()
         setCalendarView()
+        team1TagView.makeRound(radius: 1.67)
+        team2TagView.makeRound(radius: 1.67)
+        team3TagView.makeRound(radius: 1.67)
+        
+        tagLabel.makeRound(radius: 3)
+        tagLabel.text = "할 일"
+        tagLabel.textColor = .basic1
+        tagLabel.textAlignment = .center
+        tagLabel.backgroundColor = .team1
+        tagLabel.font = .cap3
+        
+        contentLabel.text = "바둑 관련 서적 읽고 규칙 조사하기"
+        contentLabel.font = .body
     }
     
     // MARK: - Method
@@ -55,7 +73,49 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     func setScheduleContent() {
-        if isExistSchedule() {
+        if isExistSchedule() && dateLabel.text == "2023년 02월 28일 화요일 일정" {
+            team3TagView.backgroundColor = .basic1
+            schedulContentLabel.text = ""
+            let todoLabel: UILabel = {
+                let label = UILabel()
+                label.textAlignment = .center
+                label.textColor = .basic1
+                label.font = .cap3
+                label.makeRound(radius: 3)
+                label.widthAnchor.constraint(equalToConstant: 35).isActive = true
+                label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            
+            let contentLabel: UILabel = {
+                let label = UILabel()
+                label.textColor = .basic2
+                label.font = .body
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            
+            todoLabel.text = "마감일"
+            todoLabel.backgroundColor = .team2
+            contentLabel.text = "스페인 전통 노래 조사 마감일"
+            
+            tagLabel.text = "할 일"
+            tagLabel.backgroundColor = .team3
+            self.contentLabel.text = "읽을 책 선정"
+            self.view.addSubview(todoLabel)
+            self.view.addSubview(contentLabel)
+            
+            NSLayoutConstraint.activate([
+                todoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+                todoLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 57)
+            ])
+            NSLayoutConstraint.activate([
+                contentLabel.leadingAnchor.constraint(equalTo: todoLabel.trailingAnchor,constant: 14),
+                contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 55)
+            ])
+            
+        } else if isExistSchedule() && dateLabel.text == "오늘 일정" {
             
         }
         else {
@@ -108,6 +168,10 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     // 날짜 선택 했을 때 호출되는 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        team3TagView.backgroundColor = .team3
+        tagLabel.backgroundColor = .none
+        tagLabel.text = ""
+        contentLabel.text = ""
         let current = Calendar.current
         
         calendarView.appearance.titleTodayColor = .gray4
@@ -140,7 +204,7 @@ class scheduleViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     func isExistSchedule() -> Bool {
-        return false
+        return true
     }
     
     //MARK: - IBAction
