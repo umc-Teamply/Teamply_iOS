@@ -8,15 +8,15 @@
 import Moya
 
 enum BoxService {
-    case getCompletedProject
+    //case getCompletedProject
     case getUserProject
 }
 
 extension BoxService: BaseTargetType {
     var path: String {
         switch self {
-        case .getCompletedProject:
-            return URLConstant.completedProject
+        //case .getCompletedProject:
+        //   return URLConstant.completedProject
         case .getUserProject:
             return URLConstant.userProject
         }
@@ -30,7 +30,7 @@ extension BoxService: BaseTargetType {
     
     var task: Task {
         switch self {
-        case .getCompletedProject, .getUserProject:
+        case .getUserProject:
             return .requestPlain
         }
     }
