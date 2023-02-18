@@ -87,7 +87,6 @@ class TendencyCollectionViewCell: UICollectionViewCell {
             addButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             addButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        
     }
-    
-    
 }

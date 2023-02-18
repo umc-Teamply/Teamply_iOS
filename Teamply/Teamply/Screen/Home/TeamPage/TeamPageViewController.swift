@@ -20,6 +20,11 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var detailScheduleLabel: UILabel!
     @IBOutlet weak var addScheduleLabel: UILabel!
     @IBOutlet weak var addScheduleButton: UIButton!
+    @IBOutlet weak var scheduleView: UIView!
+    
+    @IBOutlet weak var teamPageStackView: UIStackView!
+    @IBOutlet weak var projectToolView: UIView!
+    
     @IBOutlet weak var projectToolLabel: UILabel!
     @IBOutlet weak var meetingScheduleLabel: UILabel!
     @IBOutlet weak var meetingScheduleButton: UIButton!
@@ -27,10 +32,13 @@ class TeamPageViewController: UIViewController {
     @IBOutlet weak var voteScheduleLabel: UILabel!
     
     @IBOutlet weak var projectInfoLabel: UILabel!
+    @IBOutlet weak var projectInfoView: UIView!
     @IBOutlet weak var projectInfoButton: UIButton!
     
+    @IBOutlet weak var meetingScheduleView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var memberStackview: UIStackView!
+    @IBOutlet weak var scheduleCollectionView: UICollectionView!
     
     var projectId: Int!
     var totalHeadcount: Int!
@@ -42,28 +50,20 @@ class TeamPageViewController: UIViewController {
     var memberImages = "defaultProfile"
     var addMemberImage = "add_friend"
     var code: String!
-    
+    var scheduleCell = "ScheduleCell"
     override func viewDidLoad() {
         super.viewDidLoad()
         getProjectScheduleData()
         getProjectMemberInfo()
         getInviteCode()
-        setTeamPageStyle()
-        //setMemberStackView()
-//        periodBorder.layer.cornerRadius = 15
-//        periodBorder.layer.borderWidth = 1
-//        periodBorder.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        setTeamPageInit()
     }
     
-    func setTeamPageStyle() {
+    func setTeamPageInit() {
         headerView.backgroundColor = UIColor(named: projectColor)
         titleLabel.text = projectTitle
         titleLabel.font = .head1
         titleLabel.textColor = .basic1
-
-//        user0Label.text = "이프로"
-//        user0Label.font = .cap3
-//        user0Label.textColor = .basic1
 
         periodLabel.text = "기간"
         periodLabel.font = .cap3
@@ -79,13 +79,21 @@ class TeamPageViewController: UIViewController {
         detailScheduleLabel.text = "일정 세부 보기"
         detailScheduleLabel.font = .sub1
         detailScheduleLabel.textColor = .basic2
+
+        meetingScheduleView.translatesAutoresizingMaskIntoConstraints = false
+        meetingScheduleView.isUserInteractionEnabled = true
+        meetingScheduleView.makeRound(radius: 10)
+        meetingScheduleView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 10)
         
-        //addScheduleLabel.text = "+ 일정을 등록해보세요"
-        addScheduleLabel.font = .sub2
-        addScheduleLabel.textColor = .gray2
+        projectInfoView.makeRound(radius: 10)
+        projectInfoView.translatesAutoresizingMaskIntoConstraints = false
+        projectInfoView.isUserInteractionEnabled = true
+        projectInfoView.makeShadow(.gray1!, 1, CGSize(width: 0, height: 3), 10)
         
-        addScheduleButton.makeRound(radius: 12)
-        
+        setProjectToolInit()
+    }
+    
+    func setProjectToolInit() {
         projectToolLabel.text = "프로젝트 도구"
         projectToolLabel.font = .sub1
         projectToolLabel.textColor = .basic2
@@ -93,14 +101,6 @@ class TeamPageViewController: UIViewController {
         meetingScheduleLabel.text = "회의일정 정하기"
         meetingScheduleLabel.font = .sub2
         meetingScheduleLabel.textColor = .basic2
-        
-        meetingScheduleButton.makeRound(radius: 10)
-        
-        voteScheduleLabel.text = "일정에 투표하세요"
-        voteScheduleLabel.font = .cap2
-        voteScheduleLabel.textColor = .basic2
-        
-        
         projectInfoLabel.text = "프로젝트 정보보기"
         projectInfoLabel.font = .sub2
         projectInfoLabel.textColor = .basic2
@@ -120,6 +120,27 @@ class TeamPageViewController: UIViewController {
         setUnInviteMember()
     }
     
+    func setCollectionViewInit() {
+        scheduleCollectionView.delegate = self
+        scheduleCollectionView.dataSource = self
+        scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        if scheduleData.isEmpty {
+            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 105).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 157).isActive = true
+        } else {
+            scheduleCollectionView.heightAnchor.constraint(equalToConstant: 265).isActive = true
+            scheduleView.heightAnchor.constraint(equalToConstant: 327).isActive = true
+        }
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.sectionInset = UIEdgeInsets.init(top: 0, left: 24, bottom: 0, right: 24)
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.scrollDirection = .horizontal
+        scheduleCollectionView.setCollectionViewLayout(flowLayout, animated: true)
+        scheduleCollectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: scheduleCell)
+        
+    }
     
     func setMemberView(name: String) {
         let memberView: UIView = {
@@ -218,31 +239,61 @@ class TeamPageViewController: UIViewController {
         codevc.code = code
         self.present(codevc, animated: true, completion: nil)
     }
-    
-    @IBAction func user2Button(_ sender: Any) {
-        guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
-            codevc.modalPresentationStyle = .overCurrentContext
-        codevc.modalTransitionStyle = .crossDissolve
-            self.present(codevc, animated: true, completion: nil)
-    }
-    
-    @IBAction func user3Button(_ sender: Any) {
-        guard let codevc = self.storyboard?.instantiateViewController(withIdentifier: "codeVC") as? codeViewController else { return }
-            codevc.modalPresentationStyle = .overCurrentContext
-        codevc.modalTransitionStyle = .crossDissolve
-            self.present(codevc, animated: true, completion: nil)
-    }
 
-    
-    @IBAction func tappedAddSchedule(_ sender: Any) {
+    @objc func tappedAddSchedule(_ sender: UITapGestureRecognizer) {
         let addDetailedScheduleVC = UIStoryboard.init(name: "addDetailedSchedule", bundle: nil)
         guard let nextVC = addDetailedScheduleVC.instantiateViewController(withIdentifier: "addDetailedScheduleVC") as? addDetailedScheduleViewController else { return }
-
-                       nextVC.modalPresentationStyle = .fullScreen
-                       self.present(nextVC, animated: true, completion: nil)
+        
+        nextVC.projectColor = headerView.backgroundColor
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
     }
     
 
+}
+
+extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if scheduleData.isEmpty {
+            return 1
+        }
+        return scheduleData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: scheduleCell, for: indexPath) as! ScheduleCollectionViewCell
+        
+        let screenWidth = self.view.frame.width
+        let width = screenWidth - 48
+        cell.scheduleView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
+        if scheduleData.isEmpty {
+            cell.emptySchedule()
+            
+            cell.scheduleView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+            cell.scheduleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedAddSchedule)))
+        } else {
+            let scheduleData = self.scheduleData[indexPath.row]
+            let startDate = scheduleData.startAt
+            let endDate = scheduleData.endAt
+            let period = startDate+"~"+endDate
+            let progress = 0.75
+            cell.titleLabel.text = scheduleData.schTitle
+            cell.periodLabel.text = period
+            cell.contentLabel.text = scheduleData.schContents
+            
+            if progress < 0.5 {
+                cell.progressView.tintColor = .red
+            } else {
+                cell.progressView.tintColor = .green
+            }
+            cell.progressView.progress = Float(progress)
+            cell.setSchedule()
+            cell.scheduleView.heightAnchor.constraint(equalToConstant: 229).isActive = true
+        }
+        return cell
+    }
 }
 
 extension TeamPageViewController {
@@ -253,10 +304,10 @@ extension TeamPageViewController {
             } else {
                 guard let scheduleData = result?.data else { return }
                 self.scheduleData = scheduleData.result
-                if scheduleData.result.isEmpty {
-                    self.emptySchedule()
-                }
-                //self.setMemberStackView()
+//                if scheduleData.result.isEmpty {
+//                    self.emptySchedule()
+//                }
+                self.setCollectionViewInit()
             }
             
         }
@@ -286,7 +337,6 @@ extension TeamPageViewController {
                 print(inviteCode)
                 self.code = inviteCode.code
             }
-            
         }
     }
 }
