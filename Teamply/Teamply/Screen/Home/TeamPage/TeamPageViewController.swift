@@ -278,7 +278,7 @@ extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewData
             let startDate = scheduleData.startAt
             let endDate = scheduleData.endAt
             let period = startDate+"~"+endDate
-            let progress = 0.75
+            let progress = scheduleData.schProgress
             cell.titleLabel.text = scheduleData.schTitle
             cell.periodLabel.text = period
             cell.contentLabel.text = scheduleData.schContents
@@ -288,7 +288,7 @@ extension TeamPageViewController: UICollectionViewDelegate, UICollectionViewData
             } else {
                 cell.progressView.tintColor = .green
             }
-            cell.progressView.progress = Float(progress)
+            cell.progressView.progress = progress
             cell.setSchedule()
             cell.scheduleView.heightAnchor.constraint(equalToConstant: 229).isActive = true
         }
@@ -304,9 +304,6 @@ extension TeamPageViewController {
             } else {
                 guard let scheduleData = result?.data else { return }
                 self.scheduleData = scheduleData.result
-//                if scheduleData.result.isEmpty {
-//                    self.emptySchedule()
-//                }
                 self.setCollectionViewInit()
             }
             

@@ -13,7 +13,8 @@ struct ProjectScheduleResponse: Codable {
 
 struct Schedule: Codable {
     let schID, projID: Int
-    let schTitle, schContents, schProgress, startAt, endAt: String
+    let schProgress: Float
+    let schTitle, schContents, startAt, endAt: String
 
     enum CodingKeys: String, CodingKey {
         case schID = "sch_id"
