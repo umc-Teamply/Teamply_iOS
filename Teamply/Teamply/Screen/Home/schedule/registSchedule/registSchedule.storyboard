@@ -144,6 +144,7 @@
                     </view>
                     <connections>
                         <outlet property="contentField" destination="SaD-pK-Rmu" id="PBz-Xz-vyS"/>
+                        <outlet property="contentView" destination="Vdm-Tw-wuI" id="9jQ-bC-4lR"/>
                         <outlet property="projectLabel" destination="WKP-yf-Ziv" id="k4o-dD-4vl"/>
                         <outlet property="saveButton" destination="J5W-Ta-VIK" id="aYW-kT-OpZ"/>
                         <outlet property="timeField" destination="cpK-Va-pFU" id="F4G-Hg-qOh"/>

@@ -28,8 +28,8 @@ class selectProjectViewController: UIViewController, UIGestureRecognizerDelegate
     
     
     // MARK: - Properties
-    let colorArray: [String] = ["team1", "team2"]
-    let nameArray: [String] = ["프로젝트1", "프로젝트2"]
+    let colorArray: [String] = ["team1", "team2", "team3"]
+    let nameArray: [String] = ["바둑의 이해", "스페인 문화 이해", "한국 소설 읽기"]
     lazy var projectArray: [UIView] = [project1View, project2View, project3View, project4View, project5View, project6View]
     var projectHandler: ((String) -> ())?
     var projectName: String = "프로젝트 이름"
