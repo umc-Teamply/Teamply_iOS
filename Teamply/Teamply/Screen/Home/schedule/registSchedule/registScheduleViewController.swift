@@ -16,7 +16,7 @@ class registScheduleViewController: UIViewController {
     @IBOutlet weak var contentField: UITextField!
     @IBOutlet weak var timeField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    
+    @IBOutlet weak var contentView: UIView!
     // MARK: - Properties
     let timePicker = UIDatePicker()
     var selectionDate: String?
@@ -65,6 +65,7 @@ class registScheduleViewController: UIViewController {
     }
     
     func contentFieldInit() {
+        contentView.makeRound(radius: 10)
         contentField.attributedPlaceholder = NSAttributedString(string: "내용을 입력하세요.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2!, NSAttributedString.Key.font: UIFont.body])
     }
     
